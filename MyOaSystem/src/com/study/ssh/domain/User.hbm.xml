@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.study.ssh.domain">
+
+	<class name="User" table="user">
+		<id name="id">
+            <generator class="native"/>
+		</id>
+		<property name="loginName"/>
+		<property name="name" />
+		<property name="password"/>
+		<property name="gender"/>
+		<property name="phoneNum"/>
+		<property name="email"/>
+		<property name="description" />
+		<!--  roles属性，是本类与Role类的多对多关系 -->
+		<set name="roles" table="user_role">
+			<key column="roleId"></key>
+			<many-to-many class="Role" column="userId"></many-to-many>
+		</set>
+		<!-- department属性，是本类与Department类的多对一关系 -->
+		<many-to-one name="department" class="Department" column="departmentId"></many-to-one>
+	</class>
+	
+</hibernate-mapping>

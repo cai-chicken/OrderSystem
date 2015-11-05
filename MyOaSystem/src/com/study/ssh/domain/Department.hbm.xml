@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.study.ssh.domain">
+
+	<class name="Department" table="department">
+		<id name="id">
+            <generator class="native"/>
+		</id>
+		<property name="name" />
+		<property name="description" />
+		<!--  users属性，是本类与User类的一对多关系 -->
+		<set name="users">
+			<key column="departmentId"></key>
+			<one-to-many class="User"/>
+		</set>
+		<!-- parent属性，是本类与Department的多对一关系 -->
+		<many-to-one name="parent" class="Department" column="parentId"/>
+		<!-- children属性，是本类与Department的一对多关系 -->
+		<set name="children">
+			<key column="parentId"></key>
+			<one-to-many class="Department"/>
+		</set>
+	</class>
+	
+</hibernate-mapping>

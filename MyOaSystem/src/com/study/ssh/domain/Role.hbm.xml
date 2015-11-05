@@ -11,16 +11,16 @@
 		</id>
 		<property name="name" />
 		<property name="description" />
-		<!--  users属性，是本类与User类的多对多关系
+		<!--  users属性，是本类与User类的多对多关系 -->
 		<set name="users" table="user_role">
 			<key column="userId"></key>
 			<many-to-many class="User" column="roleId"></many-to-many>
 		</set>
-		privileges属性，是本类与Privilege类的多对多关系
-		<set name="privileges" table="privilege_role" lazy="false">
+		<!-- privileges属性，是本类与Privilege类的多对多关系 -->
+		<set name="privileges" table="privilege_role">
 			<key column="roleId"></key>
 			<many-to-many class="Privilege" column="privilegeId"></many-to-many>
-		</set> -->
+		</set>
 	</class>
 	
 </hibernate-mapping>

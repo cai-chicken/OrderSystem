@@ -18,6 +18,9 @@
 
 		<!-- 3，导入映射文件 -->
 		<mapping resource="com/study/ssh/domain/Role.hbm.xml" />
+		<mapping resource="com/study/ssh/domain/User.hbm.xml" />
+		<mapping resource="com/study/ssh/domain/Privilege.hbm.xml" />
+		<mapping resource="com/study/ssh/domain/Department.hbm.xml" />
 		
 		<!-- jbpm导入映射文件 -->
 		<mapping resource="jbpm.repository.hbm.xml" />
