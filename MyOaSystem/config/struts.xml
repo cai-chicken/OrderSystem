@@ -13,10 +13,17 @@
 
 
 	<package name="default" namespace="/" extends="struts-default">
+		<!-- 岗位管理 -->
 		<action name="role_*" class="roleAction" method="{1}">
 			<result name="list">/WEB-INF/jsp/roleAction/role_list.jsp</result>
 			<result name="saveUI">/WEB-INF/jsp/roleAction/role_saveUI.jsp</result>
 			<result name="toList" type="redirectAction">role_list</result>
+		</action>
+		<!-- 部门管理 -->
+		<action name="department_*" class="departmentAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/departmentAction/department_list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/departmentAction/department_saveUI.jsp</result>
+			<result name="toList" type="redirectAction">department_list?parentId=${parentId}</result>
 		</action>
 	</package>
 

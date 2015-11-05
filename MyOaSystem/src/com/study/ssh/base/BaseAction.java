@@ -3,6 +3,7 @@ package com.study.ssh.base;
 import javax.annotation.Resource;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.study.ssh.service.DepartmentService;
 import com.study.ssh.service.RoleService;
 
 /**
@@ -16,6 +17,9 @@ public class BaseAction extends ActionSupport {
 	//------------------------------Service提供-----------------------------------
 	@Resource
 	protected RoleService roleService;
+	
+	@Resource
+	protected DepartmentService departmentService;
 	//-----------------------------------------------------------------
 	//-----------------------------------------------------------------
 	//-----------------------------------------------------------------
