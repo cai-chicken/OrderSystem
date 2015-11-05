@@ -25,6 +25,12 @@
 			<result name="saveUI">/WEB-INF/jsp/departmentAction/department_saveUI.jsp</result>
 			<result name="toList" type="redirectAction">department_list?parentId=${parentId}</result>
 		</action>
+		<!-- 用户管理 -->
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/userAction/user_list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/userAction/user_saveUI.jsp</result>
+			<result name="toList" type="redirectAction">user_list</result>
+		</action>
 	</package>
 
 </struts>

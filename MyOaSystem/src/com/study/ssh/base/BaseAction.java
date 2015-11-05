@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import com.opensymphony.xwork2.ActionSupport;
 import com.study.ssh.service.DepartmentService;
 import com.study.ssh.service.RoleService;
+import com.study.ssh.service.UserService;
 
 /**
  * 所有不需要ModelDriven接口的都必须继承该Action
@@ -20,6 +21,9 @@ public class BaseAction extends ActionSupport {
 	
 	@Resource
 	protected DepartmentService departmentService;
+	
+	@Resource
+	protected UserService userService;
 	//-----------------------------------------------------------------
 	//-----------------------------------------------------------------
 	//-----------------------------------------------------------------
