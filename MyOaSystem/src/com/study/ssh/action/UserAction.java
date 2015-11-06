@@ -106,6 +106,29 @@ public class UserAction extends ModelDrivenBaseAction<User> {
 		return "toList";
 	}
 	
+	/**登录页面*/
+	public String loginUI() throws Exception {
+		return "loginUI";
+	}
+	
+	/**登录成功时，转到首页*/
+	public String login() throws Exception {
+		User user = userService.findByNameAndPwd(model.getLoginName(), model.getPassword());
+		if (user == null) {
+			addFieldError("error", "用户名或密码错误");
+			return "loginUI";
+		} else {
+			ActionContext.getContext().getSession().put("user", user);
+			return "toIndex";
+		}
+	}
+	
+	/**退出*/
+	public String logout() throws Exception {
+		ActionContext.getContext().getSession().remove("user");
+		return "logout";
+	}
+	
 	private void getDepartmentListByTree() {
 		// 1准备所有部门的数据，为了有树状结构的显示，我们不用findAll()方法
 		List<Department> topList = departmentService.findTopList();

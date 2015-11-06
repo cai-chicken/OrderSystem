@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.study.ssh.domain">
+
+	<class name="Forum" table="forum">
+		<id name="id">
+            <generator class="native"/>
+		</id>
+		<property name="name" />
+		<property name="description" />
+		<property name="position"/>
+		
+		<!-- topics属性，是本类与Topic类的一对多关系 -->
+		<set name="topics">
+			<key column="forumId"></key>
+			<one-to-many class="Topic"/>
+		</set>
+		<property name="topicCount" />
+		<property name="articleCount" />
+		<!-- lastTopic属性，是本类与Topic类的一对一关系 -->
+		<many-to-one name="lastTopic" class="Topic" column="lastTopicId" unique="true"></many-to-one>
+	</class>
+	
+</hibernate-mapping>

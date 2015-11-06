@@ -31,6 +31,31 @@
 			<result name="list">/WEB-INF/jsp/userAction/user_list.jsp</result>
 			<result name="saveUI">/WEB-INF/jsp/userAction/user_saveUI.jsp</result>
 			<result name="toList" type="redirectAction">user_list</result>
+			<result name="loginUI">/WEB-INF/jsp/userAction/user_loginUI.jsp</result>
+			<result name="logout">/WEB-INF/jsp/userAction/user_logout.jsp</result>
+			<result name="toIndex">/index.jsp</result>
+		</action>
+		
+		<!-- 首页 -->
+		<action name="home_*" class="homeAction" method="{1}">
+			<result name="{1}">/WEB-INF/jsp/homeAction/{1}.jsp</result>
+		</action>
+		
+		<!-- 网上交流：版块管理 -->
+		<action name="forumManage_*" class="forumManageAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/forumManageAction/forumManage_list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/forumManageAction/forumManage_saveUI.jsp</result>
+			<result name="toList" type="redirectAction">forumManage_list</result>
+		</action>
+		<!-- 网上交流：版块 -->
+		<action name="forum_*" class="forumAction" method="{1}">
+			<result name="showLastTopic" type="redirectAction"></result>
+			<result name="{1}">/WEB-INF/jsp/forumAction/forum_{1}.jsp</result>
+		</action>
+		<!-- 网上交流：版块中的主题 -->
+		<action name="topic_*" class="topicAction" method="{1}">
+			<result name="addUI">/WEB-INF/jsp/topicAction/topic_addUI.jsp</result>
+			<result name="showReply">/WEB-INF/jsp/topicAction/topic_showReply.jsp</result>
 		</action>
 	</package>
 

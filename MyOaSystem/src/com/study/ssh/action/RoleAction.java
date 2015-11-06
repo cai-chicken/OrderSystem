@@ -1,5 +1,6 @@
 package com.study.ssh.action;
 
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.context.annotation.Scope;
@@ -87,6 +88,9 @@ public class RoleAction extends ModelDrivenBaseAction<Role> {
 
 	/** 设置权限成功时，返回岗位岗位 */
 	public String setPrivilege() throws Exception {
+		model.setPrivileges(//
+				new HashSet<Privilege>(privilegeService.getByIds(privilegeIds)));
+		roleService.update(model);
 		return "toList";
 	}
 

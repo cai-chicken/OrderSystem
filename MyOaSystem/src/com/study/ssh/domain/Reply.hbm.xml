@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.study.ssh.domain">
+
+	<class name="Reply" table="reply">
+		<id name="id">
+            <generator class="native"/>
+		</id>
+		<property name="title" />
+		<property name="content" type="text" length="65536"/>
+		<property name="ipAddr"/>
+		<property name="postTime" type="timestamp"/>
+		<!-- author属性，是本类与User类的多对一关系 -->
+		<many-to-one name="author" class="User" column="authorId"></many-to-one>
+		<!-- topic属性，是本类与Topic类的多对一关系 -->
+		<many-to-one name="topic" class="Topic" column="topicId"></many-to-one>
+	</class>
+	
+</hibernate-mapping>

@@ -81,7 +81,7 @@
 				<div class="ItemBlock_Title1">
 					<img border="0" width="4" height="7"
 						src="${pageContext.request.contextPath}/style/blue/images/item_point.gif" />
-					正在为【${role.name}】配置权限
+					正在为【${name}】配置权限
 				</div>
 			</div>
 
@@ -95,7 +95,7 @@
 								<td width="300px" style="padding-left: 7px;">
 									<!-- 如果把全选元素的id指定为selectAll，并且有函数selectAll()，就会有错。因为有一种用法：可以直接用id引用元素 -->
 									<input type="CHECKBOX" id="cbSelectAll"
-									onClick="selectAll(this.checked)" /> <label for="cbSelectAll">全选</label>
+									onClick="$('[name=privilegeIds]').attr('checked', this.checked)" /> <label for="cbSelectAll">全选</label>
 								</td>
 							</tr>
 						</thead>
@@ -105,7 +105,16 @@
 							<tr class="TableDetail1">
 								<!-- 显示权限树 -->
 								<td>
-									<ul id='tree'>
+								<%-- <s:checkboxlist name="privilegeIds" list="#privilegeList"
+									listKey="id" listValue="name">
+								</s:checkboxlist> --%>
+								<s:iterator value="#privilegeList">
+									<input type="checkbox" name="privilegeIds" value="${id}" id="cd_${id}" 
+										<s:property value="%{id in privilegeIds? 'checked':''}"/>
+										/>
+									<label for="cd_${id}">${name}</label><br>
+								</s:iterator>
+									<!-- <ul id='tree'>
 										<li id='li_45'><input type='checkbox'
 											name='resourceIdList' id='cb_45'
 											onclick='doChecked("li_45", this.checked)' /> <label
@@ -121,9 +130,11 @@
 															onclick='doChecked("li_128", this.checked)' /> <label
 															for='cb_128'><span class='folder' id='128'>部门列表</span></label>
 														</li>
-													</ul></li>
-											</ul></li>
-									</ul>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul> -->
 								</td>
 							</tr>
 						</tbody>
