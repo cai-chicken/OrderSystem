@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.study.ssh.service.DepartmentService;
+import com.study.ssh.service.PrivilegeService;
 import com.study.ssh.service.RoleService;
 import com.study.ssh.service.UserService;
 
@@ -24,6 +25,9 @@ public class BaseAction extends ActionSupport {
 	
 	@Resource
 	protected UserService userService;
+	
+	@Resource
+	protected PrivilegeService privilegeService;
 	//-----------------------------------------------------------------
 	//-----------------------------------------------------------------
 	//-----------------------------------------------------------------

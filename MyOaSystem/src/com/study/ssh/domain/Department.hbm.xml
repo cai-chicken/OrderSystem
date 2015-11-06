@@ -17,9 +17,9 @@
 			<one-to-many class="User"/>
 		</set>
 		<!-- parent属性，是本类与Department的多对一关系 -->
-		<many-to-one name="parent" class="Department" column="parentId" lazy="false"/>
+		<many-to-one name="parent" class="Department" column="parentId"/>
 		<!-- children属性，是本类与Department的一对多关系 -->
-		<set name="children" cascade="delete" lazy="false">
+		<set name="children" cascade="delete" order-by="id ASC">
 			<key column="parentId"></key>
 			<one-to-many class="Department"/>
 		</set>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.study.ssh.base.ModelDrivenBaseAction;
+import com.study.ssh.domain.Privilege;
 import com.study.ssh.domain.Role;
 
 /**
@@ -19,6 +20,8 @@ import com.study.ssh.domain.Role;
 @Controller("roleAction")
 @Scope("prototype")
 public class RoleAction extends ModelDrivenBaseAction<Role> {
+	private Long[] privilegeIds;// 用于回显已选的权限
+
 	/** 列表 */
 	public String list() throws Exception {
 		// 1、执行相关service的findAll()
@@ -59,11 +62,40 @@ public class RoleAction extends ModelDrivenBaseAction<Role> {
 
 	/** 修改 */
 	public String edit() throws Exception {
-		// 1、从数据库中找到对应的id的对象
-		// 2、设置需要修改的属性
-		// 3、更新到数据库中
-		
 		roleService.update(model);
 		return "toList";
 	}
+
+	/** 设置权限页面 */
+	public String setPrivilegeUI() throws Exception {
+		// 准备当前岗位的数据
+		Role role = roleService.getById(model.getId());
+		ActionContext.getContext().getValueStack().push(role);
+		// 准备所有的权限数据
+		List<Privilege> privileges = privilegeService.findAll();
+		ActionContext.getContext().put("privilegeList", privileges);
+		//给privilegeIds赋值
+		if (role.getPrivileges() != null) {
+			privilegeIds = new Long[role.getPrivileges().size()];
+			int index = 0;
+			for(Privilege privilege : role.getPrivileges()) {
+				privilegeIds[index ++] = privilege.getId();
+			}
+		}
+		return "privilegeUI";
+	}
+
+	/** 设置权限成功时，返回岗位岗位 */
+	public String setPrivilege() throws Exception {
+		return "toList";
+	}
+
+	public Long[] getPrivilegeIds() {
+		return privilegeIds;
+	}
+
+	public void setPrivilegeIds(Long[] privilegeIds) {
+		this.privilegeIds = privilegeIds;
+	}
+
 }
