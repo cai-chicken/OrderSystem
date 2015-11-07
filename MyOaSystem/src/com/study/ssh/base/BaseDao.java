@@ -2,6 +2,9 @@ package com.study.ssh.base;
 
 import java.util.List;
 
+import com.study.ssh.domain.PageBean;
+import com.study.ssh.util.QueryHelper;
+
 /**
  * 封装"增删改查"等共有方法
  * 
@@ -56,4 +59,13 @@ public interface BaseDao<T> {
 	 * @return
 	 */
 	List<T> findAll();
+	
+	/**
+	 * 
+	 * @param pageNum 当前页
+	 * @param pageSize 每页显示的数量
+	 * @param queryHelper
+	 * @return
+	 */
+	PageBean getPageBean(int pageNum, int pageSize, QueryHelper queryHelper);
 }

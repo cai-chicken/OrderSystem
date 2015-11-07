@@ -6,14 +6,18 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.study.ssh.domain.PageBean;
 import com.study.ssh.util.LoggerManager;
+import com.study.ssh.util.QueryHelper;
 
 /**
  * BaseDao的实现类，对增删改查进行实现
+ * 
  * @author anbang
  * @param <T>
  */
@@ -22,9 +26,9 @@ import com.study.ssh.util.LoggerManager;
 public class BaseDaoImpl<T> implements BaseDao<T> {
 	@Resource
 	private SessionFactory sessionFactory;
-	
+
 	protected Class<T> clazz = null;
-	
+
 	/**
 	 * 用于反射得到真实类型
 	 */
@@ -33,9 +37,10 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		this.clazz = (Class) pt.getActualTypeArguments()[0];
 		LoggerManager.getClassInfo(clazz);
 	}
-	
+
 	/**
 	 * 得到当前可用的Session
+	 * 
 	 * @return 当前可用的Session对象
 	 */
 	protected Session getSession() {
@@ -72,19 +77,47 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	@Override
 	public List<T> getByIds(Long[] ids) {
 		if (ids == null || ids.length == 0) {
-			 return Collections.EMPTY_LIST;
+			return Collections.EMPTY_LIST;
 		}
-		return getSession().createQuery(//
-				"FROM " + clazz.getSimpleName() + " WHERE id IN(:ids)")//
+		return getSession()
+				.createQuery(//
+						"FROM " + clazz.getSimpleName() + " WHERE id IN(:ids)")//
 				.setParameterList("ids", ids)//
 				.list();
 	}
 
 	@Override
 	public List<T> findAll() {
-		return getSession().createQuery(//
-				"FROM " + clazz.getSimpleName())//
+		return getSession()
+				.createQuery(//
+						"FROM " + clazz.getSimpleName())//
 				.list();
+	}
+
+	@Override
+	public PageBean getPageBean(int pageNum, int pageSize, QueryHelper queryHelper) {
+		// 参数列表
+		List<Object> paramList = queryHelper.getParamList();
+		// 查询到的数据列表
+		Query listQuery = getSession().createQuery(queryHelper.getListQueryHql());
+		// 设置参数
+		if (paramList != null) {
+			for (int i = 0; i < paramList.size(); i++) {
+				listQuery.setParameter(i, paramList.get(i));
+			}
+		}
+		listQuery.setFirstResult((pageNum - 1) * pageSize);
+		listQuery.setMaxResults(pageSize);
+		List list = listQuery.list();// 执行查询
+		// 查询总记录数量
+		Query countQuery = getSession().createQuery(queryHelper.getCountQueryHql());
+		if (paramList != null) { // 设置参数
+			for (int i = 0; i < paramList.size(); i++) {
+				countQuery.setParameter(i, paramList.get(i));
+			}
+		}
+		Long count = (Long) countQuery.uniqueResult(); // 执行查询
+		return new PageBean(pageNum, pageSize, count.intValue(), list);
 	}
 
 }

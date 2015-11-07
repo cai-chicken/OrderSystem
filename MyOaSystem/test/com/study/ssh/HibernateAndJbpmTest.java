@@ -22,4 +22,10 @@ public class HibernateAndJbpmTest {
 		ProcessEngine pe = (ProcessEngine) ac.getBean("processEngine");
 		System.out.println(pe);
 	}
+	
+	@Test
+	public void testPage () {
+		PageTestService pts = (PageTestService) ac.getBean("pageTestService");
+		pts.save100User();
+	}
 }

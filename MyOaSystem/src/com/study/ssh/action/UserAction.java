@@ -13,6 +13,7 @@ import com.study.ssh.domain.Department;
 import com.study.ssh.domain.Role;
 import com.study.ssh.domain.User;
 import com.study.ssh.util.DepartmentUtil;
+import com.study.ssh.util.QueryHelper;
 
 @Controller("userAction")
 @Scope("prototype")
@@ -22,10 +23,14 @@ public class UserAction extends ModelDrivenBaseAction<User> {
 	
 	/** 列表 */
 	public String list() throws Exception {
-		// 1、执行相关service的findAll()
-		List<User> users = userService.findAll();
-		// 2、将其放入到ValueStack对象的Map中
-		ActionContext.getContext().put("userList", users);
+//		// 1、执行相关service的findAll()
+//		List<User> users = userService.findAll();
+//		// 2、将其放入到ValueStack对象的Map中
+//		ActionContext.getContext().put("userList", users);
+		
+		//考虑分页
+		new QueryHelper(User.class, "u")
+			.preparePageBean(userService, pageNum, pageSize);
 		return "list";
 	}
 

@@ -47,5 +47,23 @@ public class BaseAction extends ActionSupport {
 		return (User) ActionContext.getContext().getSession().get("user");
 	}
 	//-----------------------------------------------------------------
+	protected int pageNum = 1;// 当前页，默认是第一页
+	protected int pageSize = 10;// 每页显示多少条，默认是第十页
+
+	public int getPageNum() {
+		return pageNum;
+	}
+
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
+	}
+
+	public int getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
 	//-----------------------------------------------------------------
 }
