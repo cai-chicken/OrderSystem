@@ -60,18 +60,18 @@
 					<tr height="35" id="d0" class="template">
 						<td></td>
 						<td class="ForumTopicPageDataLine" align="center"><img src="${pageContext.request.contextPath}/style/images/topicType_${type}.gif" /></td>
-						<td class="Topic"><s:a cssClass="Default" action="topic_showReply">${title}</s:a></td>
+						<td class="Topic"><s:a cssClass="Default" action="topic_showReply?id=%{id}">${title}</s:a></td>
 						<td class="ForumTopicPageDataLine">
 							<ul class="ForumPageTopicUl">
-								<li class="Author">管理员</li>
-								<li class="CreateTime">2010-06-12 18:18</li>
+								<li class="Author">${author.name}</li>
+								<li class="CreateTime">${postTime}</li>
 							</ul>
 						</td>
-						<td class="ForumTopicPageDataLine Reply" align="center"><b>${topic.replyCount}</b></td>
+						<td class="ForumTopicPageDataLine Reply" align="center"><b>${replyCount}</b></td>
 						<td class="ForumTopicPageDataLine">
 							<ul class="ForumPageTopicUl">
-								<li class="Author">user</li>
-								<li class="CreateTime">2010-06-12 18:24</li>
+								<li class="Author">${lastReply.author.name}</li>
+								<li class="CreateTime">${lastReply.postTime}</li>
 							</ul>
 						</td>
 						<td></td>

@@ -4,7 +4,7 @@
 
 <html>
 <head>
-	<title>查看主题：新手发帖</title>
+	<title>查看主题：${topic.title}</title>
 	<%@include file="/WEB-INF/jsp/public/commons.jspf" %>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/style/blue/forum.css" />
 	
@@ -40,10 +40,10 @@
 			<font class="MenuPoint"> &gt; </font>
 			<s:a action="forum_list">论坛</s:a>
 			<font class="MenuPoint"> &gt; </font>
-			<s:a action="forum_showTopic">客服常见问题</s:a>
+			<s:a action="forum_showTopic?id=%{#topic.forum.id}">${topic.forum.name}</s:a>
 			<font class="MenuPoint"> &gt;&gt; </font>
 			帖子阅读
-			<span style="margin-left:30px;"><s:a action="topic_addUI">
+			<span style="margin-left:30px;"><s:a action="topic_addUI?forumId=%{#topic.forum.id}">
 				<img align="absmiddle" src="${pageContext.request.contextPath}/style/blue/images/button/publishNewTopic.png"/></s:a>
 			</span>
 		</div>
@@ -54,9 +54,12 @@
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr valign="bottom">
 				<td width="3" class="ForumPageTableTitleLeft">&nbsp;</td>
-					<td class="ForumPageTableTitle"><b>本帖主题：新手发帖</b></td>
+					<td class="ForumPageTableTitle"><b>本帖主题：${topic.title}</b></td>
 					<td class="ForumPageTableTitle" align="right" style="padding-right:12px;">
-						<a class="detail" href="${pageContext.request.contextPath}/BBS_Reply/saveUI.html"><img border="0" src="${pageContext.request.contextPath}/style/images/reply.gif" />回复</a>
+						<s:a cssClass="detail" action="reply_addUI?topicId=%{#topic.id}">
+							<img border="0" src="${pageContext.request.contextPath}/style/images/reply.gif" />
+							回复
+						</s:a>
 						<a href="moveUI.html"><img border="0" src="${pageContext.request.contextPath}/style/images/edit.gif" />移动到其他版块</a>
 						<a href="#" onClick="return confirm('要把本主题设为精华吗？')"><img border="0" src="${pageContext.request.contextPath}/style/images/forum_hot.gif" />精华</a>
 						<a href="#" onClick="return confirm('要把本主题设为置顶吗？')"><img border="0" src="${pageContext.request.contextPath}/style/images/forum_top.gif" />置顶</a>
@@ -78,7 +81,7 @@
 									onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/style/images/defaultAvatar.gif';" />
 							</div>
 							<!--作者名称-->
-							<div class="AuthorName">管理员</div>
+							<div class="AuthorName">${topic.author.name}</div>
 						</td>
 						<td align="center">
 							<ul class="TopicFunc">
@@ -90,21 +93,21 @@
 								<!-- 文章表情与标题 -->
 								<li class="TopicSubject">
 									<img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face1.gif"/>
-									新手发帖
+									${topic.title}
 								</li>
 							</ul>
 						</td>
 					</tr>
 					<tr><!-- 文章内容 -->
 						<td valign="top" align="center">
-							<div class="Content">好好学习，天天向上！</div>
+							<div class="Content">${topic.content}</div>
 						</td>
 					</tr>
 					<tr><!--显示楼层等信息-->
 						<td class="Footer" height="28" align="center" valign="bottom">
 							<ul style="margin: 0px; width: 98%;">
 								<li style="float: left; line-height:18px;"><font color=#C30000>[楼主]</font>
-									2007-08-17 15:18
+									${topic.postTime}
 								</li>
 								<li style="float: right;"><a href="javascript:scroll(0,0)">
 									<img border="0" src="${pageContext.request.contextPath}/style/images/top.gif" /></a>
@@ -118,6 +121,7 @@
 
 
 			<!-- ~~~~~~~~~~~~~~~ 显示回复列表 ~~~~~~~~~~~~~~~ -->
+			<s:iterator value="#replyList" status="status">
 			<div class="ListArea template">
 				<table border="0" cellpadding="0" cellspacing="1" width="100%">
 					<tr>
@@ -128,7 +132,7 @@
 									onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/style/images/defaultAvatar.gif';" />
 							</div>
 							<!--作者名称-->
-							<div class="AuthorName">管理员</div>
+							<div class="AuthorName">${author.name}</div>
 						</td>
 						<td align="center">
 							<ul class="TopicFunc">
@@ -140,21 +144,21 @@
 								<!-- 文章表情与标题 -->
 								<li class="TopicSubject">
 									<img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/${reply.faceIcon}"/>
-									${reply.title}
+									${title}
 								</li>
 							</ul>
 						</td>
 					</tr>
 					<tr><!-- 文章内容 -->
 						<td valign="top" align="center">
-							<div class="Content">${reply.content}</div>
+							<div class="Content">${content}</div>
 						</td>
 					</tr>
 					<tr><!--显示楼层等信息-->
 						<td class="Footer" height="28" align="center" valign="bottom">
 							<ul style="margin: 0px; width: 98%;">
-								<li style="float: left; line-height:18px;"><font color=#C30000>[${reply.floor}楼]</font>
-									2007-08-17 15:18
+								<li style="float: left; line-height:18px;"><font color=#C30000>[${status.count}楼]</font>
+									${postTime}
 								</li>
 								<li style="float: right;"><a href="javascript:scroll(0,0)">
 									<img border="0" src="${pageContext.request.contextPath}/style/images/top.gif" /></a>
@@ -164,6 +168,7 @@
 					</tr>
 				</table>
 			</div>
+			</s:iterator>
 			<!-- ~~~~~~~~~~~~~~~ 显示回复列表结束 ~~~~~~~~~~~~~~~ -->
 		</div>
 
@@ -229,75 +234,7 @@
 						<input type="text" name="title" class="InputStyle" value="回复：昨天发现在表单里删除的图片" style="width:90%"/>
 					</td>
 				</tr>
-				<tr height="30" class="Tint">
-					<td width="50px" class="Deep"><b>表情</b></td>
-					<td class="no_color_bg"><div class="InputContent">
-						<!-- 显示表情符号 -->
-						<!--现在在设计单选框(radio)和复选框(checkbox)时都会给选择文字加上label增大选择范围，以提高用户体验。
-							但在给单独的图片加label时无法成功。
-							解决方法是：给图片img标签加上disabled即可。-->
-						<table cellpadding="0" border="0" cellspacing="0">
-							<tr>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="1" id="r_1"/>
-									<label for="r_1"><img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face1.gif" disabled="true" align="absmiddle"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="2" id="r_2"/>
-									<label for="r_2"><img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face2.gif" disabled="true" align="absmiddle"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="3" id="r_3"/>
-									<label for="r_3"><img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face3.gif" disabled="true" align="absmiddle"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="4" id="r_4"/>
-									<label for="r_4"><img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face4.gif" disabled="true" align="absmiddle"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="5" id="r_5"/>
-									<label for="r_5"><img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face5.gif" disabled="true" align="absmiddle"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="6" id="r_6"/>
-									<label for="r_6"><img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face6.gif" disabled="true" align="absmiddle"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="7" id="r_7"/>
-									<label for="r_7"><img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face7.gif" disabled="true" align="absmiddle"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="8" id="r_8"/>
-									<label for="r_8"><img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face8.gif" align="absmiddle" disabled="true"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="9" id="r_9"/>
-									<label for="r_9"><img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face9.gif" align="absmiddle" disabled="true"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="10" id="r_10"/>
-									<label for="r_10"><img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face10.gif" align="absmiddle" disabled="true"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="11" id="r_11"/>
-									<label for="r_11"><img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face11.gif" align="absmiddle" disabled="true"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="12" id="r_12"/>
-									<label for="r_12"><img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face12.gif" align="absmiddle" disabled="true"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="13" id="r_13"/>
-									<label for="r_13"><img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face13.gif" align="absmiddle" disabled="true"/></label>
-								</td>
-								<td width="50" style="border-bottom:0 solid #ffffff">
-									<input type="radio" name="faceIcon" value="14" id="r_14"/>
-									<label for="r_14"><img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face14.gif" align="absmiddle" disabled="true"/></label>
-								</td>
-							</tr>
-						</table></div>
-					</td>
-				</tr>
+				
 				<tr class="Tint" height="200">
 					<td valign="top" rowspan="2" class="Deep"><b>内容</b></td>
 					<td valign="top" class="no_color_bg">

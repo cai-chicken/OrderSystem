@@ -27,7 +27,7 @@ public class ForumAction extends ModelDrivenBaseAction<Forum> {
 		Forum forum = forumService.getById(model.getId());
 		ActionContext.getContext().put("forum", forum);
 		//不考虑分页
-		List<Topic> topics = topicService.findAll();
+		List<Topic> topics = topicService.findByForum(forum);
 		ActionContext.getContext().put("topicList", topics);
 		return "showTopic";
 	}

@@ -56,6 +56,12 @@
 		<action name="topic_*" class="topicAction" method="{1}">
 			<result name="addUI">/WEB-INF/jsp/topicAction/topic_addUI.jsp</result>
 			<result name="showReply">/WEB-INF/jsp/topicAction/topic_showReply.jsp</result>
+			<result name="toShowReply" type="redirectAction">topic_showReply?id=${id}</result>
+		</action>
+		<!-- 网上交流：主题中的回复 -->
+		<action name="reply_*" class="replyAction" method="{1}">
+			<result name="addUI">/WEB-INF/jsp/replyAction/reply_addUI.jsp</result>
+			<result name="toShowReply" type="redirectAction">topic_showReply?id=${topicId}</result>
 		</action>
 	</package>
 
