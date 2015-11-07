@@ -4,6 +4,9 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+
+import javax.xml.crypto.Data;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.context.annotation.Scope;
@@ -13,6 +16,8 @@ import com.opensymphony.xwork2.ActionContext;
 import com.study.ssh.base.BaseAction;
 import com.study.ssh.domain.Application;
 import com.study.ssh.domain.ApplicationTemplate;
+import com.study.ssh.domain.ApproveInfo;
+import com.study.ssh.domain.TaskView;
 import com.study.ssh.util.QueryHelper;
 
 @Controller("flowAction")
@@ -23,6 +28,9 @@ public class FlowAction extends BaseAction {
 	private Long applicationId;
 	private Long applicationTemplateId;
 	private String status;// 过滤分页的条件
+	private String comment;// 用户接收审批意见
+	private boolean approval;// 用于接收是否同意
+	private String outcomes;// 多分支的时候使用
 
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -80,13 +88,13 @@ public class FlowAction extends BaseAction {
 		// 准备所有的表单申请数据
 		List<ApplicationTemplate> list = applicationTemplateService.findAll();
 		ActionContext.getContext().put("applicationTemplateList", list);
-		//准备分页数据，构建查询条件的技巧，是页面中有可能影响分页的属性
+		// 准备分页数据，构建查询条件的技巧，是页面中有可能影响分页的属性
 		new QueryHelper(Application.class, "a")//
-			.addWhereCondition("a.applicant=?", getCurrentUser())//
-			.addWhereCondition("a.applicationTemplate.id=?", applicationTemplateId)//
-			.addWhereCondition(StringUtils.isNotBlank(status), "a.status=?", status)//
-			.addOrderProperty("a.applyTime", false)//
-			.preparePageBean(applicationService, pageNum, pageSize);
+				.addWhereCondition("a.applicant=?", getCurrentUser())//
+				.addWhereCondition("a.applicationTemplate.id=?", applicationTemplateId)//
+				.addWhereCondition(StringUtils.isNotBlank(status), "a.status=?", status)//
+				.addOrderProperty("a.applyTime", false)//
+				.preparePageBean(applicationService, pageNum, pageSize);
 		return "myApplicationList";
 	}
 
@@ -97,6 +105,9 @@ public class FlowAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String myTaskList() throws Exception {
+		// 这里没有考虑分页
+		List<TaskView> taskViews = applicationService.getMyTaskViewList(getCurrentUser());
+		ActionContext.getContext().put("taskViewList", taskViews);
 		return "myTaskList";
 	}
 
@@ -107,6 +118,9 @@ public class FlowAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String approveUI() throws Exception {
+		// 准备数据:获取指定任务活动中所有流出的连线名称
+		Set<String> outComes = applicationService.getOutcomesByTaskId(taskId);
+		ActionContext.getContext().put("outcomes", outComes);
 		return "approveUI";
 	}
 
@@ -117,6 +131,17 @@ public class FlowAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String approve() throws Exception {
+		// 封装审批信息
+		ApproveInfo approveInfo = new ApproveInfo();
+		// 表单传递过来的数据
+		approveInfo.setApplication(applicationService.getById(applicationId));
+		approveInfo.setApproval(approval);
+		approveInfo.setComment(comment);
+
+		approveInfo.setApprover(getCurrentUser());
+		approveInfo.setApproveTime(new Date());
+		// 调用业务方法(保存本次的审批信息，并办理完任务，维护申请的状态)
+		applicationService.approve(approveInfo, taskId, outcomes);
 		return "toMyTaskList";
 	}
 
@@ -171,6 +196,30 @@ public class FlowAction extends BaseAction {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public boolean isApproval() {
+		return approval;
+	}
+
+	public void setApproval(boolean approval) {
+		this.approval = approval;
+	}
+
+	public String getOutcomes() {
+		return outcomes;
+	}
+
+	public void setOutcomes(String outcomes) {
+		this.outcomes = outcomes;
 	}
 
 }

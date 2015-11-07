@@ -3,7 +3,9 @@ package com.study.ssh.domain;
 import org.jbpm.api.task.Task;
 
 public class TaskView {
+	//任务
 	private Task task;
+	//申请信息
 	private Application application;
 
 	public TaskView(Task task, Application application) {
