@@ -44,3 +44,7 @@
 	
 	
 	<%@include file="/WEB-INF/jsp/public/commons.jspf" %>
+	
+	//分页
+	<%@include file="/WEB-INF/jsp/public/pageView.jspf"%>
+<s:form action="user_list"></s:form>
