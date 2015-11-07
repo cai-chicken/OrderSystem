@@ -63,6 +63,29 @@
 			<result name="addUI">/WEB-INF/jsp/replyAction/reply_addUI.jsp</result>
 			<result name="toShowReply" type="redirectAction">topic_showReply?id=${topicId}</result>
 		</action>
+		
+		<!-- 审批流程管理 -->
+		<action name="processDefinition_*" class="processDefinitionAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/processDefinitionAction/list.jsp</result>
+			<result name="addUI">/WEB-INF/jsp/processDefinitionAction/addUI.jsp</result>
+			<result name="toList" type="redirectAction">processDefinition_list</result>
+			<result name="downloadImgResource" type="stream">
+				<param name="contentType">image/png</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 表单模板管理 -->
+		<action name="applicationTemplate_*" class="applicationTemplateAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/applicationTemplateAction/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/applicationTemplateAction/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">applicationTemplate_list</result>
+			<result name="download" type="stream">
+				<!-- http请求相应头信息的一些东西 -->
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${#fileName}.doc"</param>
+			</result>
+		</action>
 	</package>
 
 </struts>
