@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.study.ssh.model">
+
+	<class name="Application" table="application">
+		<id name="id">
+			<generator class="native" />
+		</id>
+		<property name="path" />
+		<property name="title" />
+		<property name="status" />
+		<property name="applyTime" type="timestamp" />
+		<!-- applicationTemplate属性，是本类与ApplicationTemplate类的多对一关系 -->
+		<many-to-one name="applicationTemplate" class="ApplicationTemplate"
+			column="applicationTemplateId"></many-to-one>
+		<!-- approveInfos属性，本类与ApproveInfo的一对多 -->
+		<set name="approveInfos" order-by="approveTime ASC">
+			<key column="applicationId"></key>
+			<one-to-many class="ApproveInfo" />
+		</set>
+
+		<!-- applicant属性，本类与User的多对一 -->
+		<many-to-one name="applicant" class="User" column="applicantId"></many-to-one>
+	</class>
+
+</hibernate-mapping>

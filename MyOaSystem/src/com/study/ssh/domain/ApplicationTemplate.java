@@ -1,16 +1,20 @@
 package com.study.ssh.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
- * 表单模板
+ * 实体：申请模板
  * 
- * @author anbang
- *
+ * @author tyg
+ * 
  */
 public class ApplicationTemplate {
 	private Long id;
 	private String name;
-	private String processDefinitionKey;// 所使用的流程定义的key
-	private String path;// 文件在服务器端的存储路径
+	private String processDefinitionKey;
+	private String path; // 文件在服务器端存储的路径
+	private Set<Application> applications = new HashSet<Application>();//申请信息
 
 	public Long getId() {
 		return id;
@@ -42,6 +46,14 @@ public class ApplicationTemplate {
 
 	public void setPath(String path) {
 		this.path = path;
+	}
+
+	public Set<Application> getApplications() {
+		return applications;
+	}
+
+	public void setApplications(Set<Application> applications) {
+		this.applications = applications;
 	}
 
 }

@@ -12,6 +12,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.study.ssh.domain.User;
+import com.study.ssh.service.ApplicationService;
 import com.study.ssh.service.ApplicationTemlateService;
 import com.study.ssh.service.DepartmentService;
 import com.study.ssh.service.ForumService;
@@ -59,6 +60,9 @@ public class BaseAction extends ActionSupport {
 
 	@Resource
 	protected ApplicationTemlateService applicationTemplateService;
+	
+	@Resource
+	protected ApplicationService applicationService;
 
 	// ------------------------------获取当前登录-----------------------------------
 	protected User getCurrentUser() {

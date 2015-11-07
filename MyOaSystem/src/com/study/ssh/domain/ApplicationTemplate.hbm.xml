@@ -3,15 +3,20 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="com.study.ssh.domain">
+<hibernate-mapping package="com.study.ssh.model">
 
 	<class name="ApplicationTemplate" table="applicationTemplate">
 		<id name="id">
-            <generator class="native"/>
+			<generator class="native" />
 		</id>
 		<property name="name" />
 		<property name="processDefinitionKey" />
-		<property name="path"/>
+		<property name="path" />
+		<!-- applications属性，是本类与Application类的一对多关系 -->
+		<set name="applications">
+			<key column="applicationTemplateId"></key>
+			<one-to-many class="Application"/>
+		</set>
 	</class>
-	
+
 </hibernate-mapping>

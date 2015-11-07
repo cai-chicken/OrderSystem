@@ -25,6 +25,8 @@
 		<mapping resource="com/study/ssh/domain/Topic.hbm.xml" />
 		<mapping resource="com/study/ssh/domain/Reply.hbm.xml" />
 		<mapping resource="com/study/ssh/domain/ApplicationTemplate.hbm.xml" />
+		<mapping resource="com/study/ssh/domain/Application.hbm.xml" />
+		<mapping resource="com/study/ssh/domain/ApproveInfo.hbm.xml" />
 		
 		<!-- jbpm导入映射文件 -->
 		<mapping resource="jbpm.repository.hbm.xml" />
