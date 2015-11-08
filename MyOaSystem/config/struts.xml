@@ -13,6 +13,22 @@
 
 
 	<package name="default" namespace="/" extends="struts-default">
+		<!-- 配置拦截器 -->
+		<interceptors>
+			<interceptor name="checkPrivilege" class="com.study.ssh.util.CheckPrivilegeIterceptor"/>
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="checkPrivilege"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<!-- 配置全局结果 -->
+		<global-results>
+			<result name="loginUI">/WEB-INF/jsp/userAction/user_loginUI.jsp</result>
+			<result name="noPrivilege">/noPrivilegeError.jsp</result>
+		</global-results>
+
+	
 		<!-- 岗位管理 -->
 		<action name="role_*" class="roleAction" method="{1}">
 			<result name="list">/WEB-INF/jsp/roleAction/role_list.jsp</result>
@@ -28,12 +44,11 @@
 		</action>
 		<!-- 用户管理 -->
 		<action name="user_*" class="userAction" method="{1}">
-			<result name="list">/WEB-INF/jsp/userAction/user_list.jsp</result>
 			<result name="saveUI">/WEB-INF/jsp/userAction/user_saveUI.jsp</result>
 			<result name="toList" type="redirectAction">user_list</result>
-			<result name="loginUI">/WEB-INF/jsp/userAction/user_loginUI.jsp</result>
-			<result name="logout">/WEB-INF/jsp/userAction/user_logout.jsp</result>
 			<result name="toIndex">/index.jsp</result>
+			<result name="list">/WEB-INF/jsp/userAction/user_list.jsp</result>
+			<result name="logoutUI">/WEB-INF/jsp/userAction/user_logoutUI.jsp</result>
 		</action>
 		
 		<!-- 首页 -->

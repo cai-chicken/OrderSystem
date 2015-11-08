@@ -79,8 +79,8 @@ public class InstallPrivilege {
 		// --------------------------------------------------------------------
 		parent = new Privilege("审批流转", null, null);
 		children1 = new Privilege("审批流程管理", "/processDefinition_list", parent);
-		children2 = new Privilege("申请模板管理", "/template_list", parent);
-		children3 = new Privilege("起草申请", "/flow_templateList", parent);
+		children2 = new Privilege("申请模板管理", "/applicationTemplate_list", parent);
+		children3 = new Privilege("起草申请", "/flow_applicationTemplateList", parent);
 		children4 = new Privilege("待我审批", "/flow_myTaskList", parent);
 		children5 = new Privilege("我的申请查询", "/flow_myApplicationList", parent);
 		session.save(parent);

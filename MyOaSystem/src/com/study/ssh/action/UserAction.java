@@ -129,9 +129,9 @@ public class UserAction extends ModelDrivenBaseAction<User> {
 	}
 	
 	/**退出*/
-	public String logout() throws Exception {
+	public String logoutUI() throws Exception {
 		ActionContext.getContext().getSession().remove("user");
-		return "logout";
+		return "logoutUI";
 	}
 	
 	private void getDepartmentListByTree() {

@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="com.study.ssh.model">
+<hibernate-mapping package="com.study.ssh.domain">
 
 	<class name="ApproveInfo" table="approveInfo">
 		<id name="id">

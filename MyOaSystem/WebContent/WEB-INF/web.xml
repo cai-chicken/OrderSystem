@@ -16,6 +16,11 @@
 		<param-value>classpath:applicationContext*.xml</param-value>
 	</context-param>
 	
+	<!-- 用来初始化左侧权限列表，一定要放在ContextLoaderListener之后，因为需要用到spring的容器 -->
+	<listener>
+		<listener-class>com.study.ssh.util.InitLeftDataListener</listener-class>
+	</listener>
+	
 	<!-- 配置过滤器用于解决懒加载异常，一定要配置在struts2的核心过滤器前面。 -->
 	<filter>
 		<filter-name>OpenSessionInViewFilter</filter-name>

@@ -17,7 +17,7 @@
 		<property name="email"/>
 		<property name="description" />
 		<!--  roles属性，是本类与Role类的多对多关系 -->
-		<set name="roles" table="user_role">
+		<set name="roles" table="user_role" lazy="false">
 			<key column="roleId"></key>
 			<many-to-many class="Role" column="userId"></many-to-many>
 		</set>

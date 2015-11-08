@@ -14,42 +14,20 @@
 	href="${pageContext.request.contextPath}/script/jquery_treeview/jquery.treeview.css" />
 
 <script type="text/javascript">
-	// 选择所有
-	function selectAll(checkedValue) {
-		$("input[type=checkbox][name=resourceIdList]").attr("checked",
-				checkedValue);
-	}
-
-	function doChecked(liID, checkedValue) {
-		// 当前点击的checkbox元素所在的li元素
-		var jLi = $("#" + liID);
-
-		// 选中所有的直属下级。（children()方法是筛选下一级，find()是筛选所有后代）
-		jLi.children("ul").find("input[type=checkbox]").attr("checked",
-				checkedValue);
-
-		// 选中或取消选中直属上级
-		if (checkedValue) { // checkedValue是boolean型，表示是否选中了当前复选框
-			// 如果当前是选中，则选中所有的直属上级
-			jLi.parents("li").children("input[type=checkbox]").attr("checked",
-					checkedValue);
-		} else {
-			// 如果当前是取消选中，并且同级中没有被选中的项，则也取消上级的选中状态
-			var jCheckedSibingCB = jLi.siblings("li").children(
-					"input[type=checkbox]:checked");
-			if (jCheckedSibingCB.size() == 0) {
-				var jCheckboxInput = jLi.parent("ul").prev("label").prev(
-						"input[type=checkbox]");
-				jCheckboxInput.attr("checked", checkedValue);
-
-				// 递归操作每一层直属上级
-				var jParentLi = jCheckboxInput.parent("li");
-				if (jParentLi.size() > 0) {
-					doChecked(jParentLi.attr("id"), checkedValue);
+		$(function(){
+			// 指定事件处理函数
+			$("[name=privilegeIds]").click(function(){
+				
+				// 当选中或取消一个权限时，也同时选中或取消所有的下级权限
+				$(this).siblings("ul").find("input").attr("checked", this.checked);
+				
+				// 当选中一个权限时，也要选中所有的直接上级权限
+				if(this.checked == true){
+					$(this).parents("li").children("input").attr("checked", true);
 				}
-			}
-		}
-	}
+				
+			});
+		});
 
 	$(function() {
 		$("#tree").treeview();
@@ -95,7 +73,8 @@
 								<td width="300px" style="padding-left: 7px;">
 									<!-- 如果把全选元素的id指定为selectAll，并且有函数selectAll()，就会有错。因为有一种用法：可以直接用id引用元素 -->
 									<input type="CHECKBOX" id="cbSelectAll"
-									onClick="$('[name=privilegeIds]').attr('checked', this.checked)" /> <label for="cbSelectAll">全选</label>
+									onClick="$('[name=privilegeIds]').attr('checked', this.checked)" />
+									<label for="cbSelectAll">全选</label>
 								</td>
 							</tr>
 						</thead>
@@ -105,36 +84,38 @@
 							<tr class="TableDetail1">
 								<!-- 显示权限树 -->
 								<td>
-								<%-- <s:checkboxlist name="privilegeIds" list="#privilegeList"
+									<%-- <s:checkboxlist name="privilegeIds" list="#privilegeList"
 									listKey="id" listValue="name">
-								</s:checkboxlist> --%>
-								<s:iterator value="#privilegeList">
+								</s:checkboxlist> --%> <%-- <s:iterator value="#privilegeList">
 									<input type="checkbox" name="privilegeIds" value="${id}" id="cd_${id}" 
 										<s:property value="%{id in privilegeIds? 'checked':''}"/>
 										/>
 									<label for="cd_${id}">${name}</label><br>
-								</s:iterator>
-									<!-- <ul id='tree'>
-										<li id='li_45'><input type='checkbox'
-											name='resourceIdList' id='cb_45'
-											onclick='doChecked("li_45", this.checked)' /> <label
-											for='cb_45'><span class='folder' id='45'>系统管理</span></label>
-											<ul>
-												<li id='li_46'><input type='checkbox'
-													name='resourceIdList' id='cb_46'
-													onclick='doChecked("li_46", this.checked)' /> <label
-													for='cb_46'><span class='folder' id='46'>部门管理</span></label>
-													<ul>
-														<li id='li_128'><input type='checkbox'
-															name='resourceIdList' id='cb_128'
-															onclick='doChecked("li_128", this.checked)' /> <label
-															for='cb_128'><span class='folder' id='128'>部门列表</span></label>
-														</li>
-													</ul>
-												</li>
-											</ul>
-										</li>
-									</ul> -->
+								</s:iterator> --%> <!-- 显示树状结构的内容 -->
+									<ul id="tree">
+										<s:iterator value="#application.topPrivilegeList">
+											<li>
+												<input type="checkbox" name="privilegeIds" value="${id}" id="cd_${id}"
+													<s:property value="%{id in privilegeIds? 'checked':''}"/> />
+												<label for="cd_${id}"><span class="folder">${name}</span></label>
+												<ul>
+													<s:iterator value="children">
+														<li>
+															<input type="checkbox" name="privilegeIds" value="${id}" id="cd_${id}"
+																<s:property value="%{id in privilegeIds? 'checked':''}"/> />
+															<label for="cd_${id}"><span class="folder">${name}</span></label>
+															<ul>
+																<s:iterator value="children">
+																	<li><input type="checkbox" name="privilegeIds"
+																		value="${id}" id="cd_${id}"
+																		<s:property value="%{id in privilegeIds? 'checked':''}"/> />
+																		<label for="cd_${id}"><span class="folder">${name}</span></label></li>
+																</s:iterator>
+															</ul></li>
+													</s:iterator>
+												</ul></li>
+										</s:iterator>
+									</ul>
 								</td>
 							</tr>
 						</tbody>
@@ -145,8 +126,8 @@
 			<!-- 表单操作 -->
 			<div id="InputDetailBar">
 				<input type="image"
-					src="${pageContext.request.contextPath}/style/images/save.png" /> <a
-					href="javascript:history.go(-1);"><img
+					src="${pageContext.request.contextPath}/style/images/save.png" />
+				<a href="javascript:history.go(-1);"><img
 					src="${pageContext.request.contextPath}/style/images/goBack.png" /></a>
 			</div>
 		</s:form>

@@ -31,9 +31,9 @@
 								<s:if test="#session.user.hasPrivilegeByName(name)">
 									<li class="level2">
 										<div class="level2Style">
-											<img src="style/images/MenuIcon/menu_arrow_single.gif" /> <a
-												target="right"
-												href="${pageContext.request.contextPath}${url}.action">
+											<img src="style/images/MenuIcon/menu_arrow_single.gif" /> 
+											<a target="right"
+						href="${pageContext.request.contextPath}${url}.action">
 												${name}</a>
 										</div>
 									</li>

@@ -88,9 +88,10 @@ public class RoleAction extends ModelDrivenBaseAction<Role> {
 
 	/** 设置权限成功时，返回岗位岗位 */
 	public String setPrivilege() throws Exception {
-		model.setPrivileges(//
+		Role role = roleService.getById(model.getId());
+		role.setPrivileges(//
 				new HashSet<Privilege>(privilegeService.getByIds(privilegeIds)));
-		roleService.update(model);
+		roleService.update(role);
 		return "toList";
 	}
 
