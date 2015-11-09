@@ -54,7 +54,7 @@
 					<td class="ForumPageTableDataLine">
 						<ul class="ForumPageTopicUl">
 							<li><font color="#444444">┌ 主题：</font> 
-								<s:a cssClass="ForumTitle" action="forum_showLastTopic?id=%{id}">${lastTopic.title}</s:a>
+								<s:a cssClass="ForumTitle" action="topic_showReply?id=%{lastTopic.id}">${lastTopic.title}</s:a>
 							</li>
 							<li><font color="#444444">├ 作者：</font> ${lastTopic.author.name}</li>
 							<li><font color="#444444">└ 时间：</font> ${lastTopic.postTime}</li>

@@ -10,7 +10,8 @@
 	<constant name="struts.action.extension" value="action" />
 	<!-- 把主题配置为simple -->
 	<constant name="struts.ui.theme" value="simple" />
-
+	<!-- 让OGNL中可以使用静态的方法 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true" />
 
 	<package name="default" namespace="/" extends="struts-default">
 		<!-- 配置拦截器 -->
@@ -58,25 +59,24 @@
 		
 		<!-- 网上交流：版块管理 -->
 		<action name="forumManage_*" class="forumManageAction" method="{1}">
-			<result name="list">/WEB-INF/jsp/forumManageAction/forumManage_list.jsp</result>
-			<result name="saveUI">/WEB-INF/jsp/forumManageAction/forumManage_saveUI.jsp</result>
 			<result name="toList" type="redirectAction">forumManage_list</result>
+			<result name="saveUI">/WEB-INF/jsp/forumManageAction/forumManage_saveUI.jsp</result>
+			<result name="{1}">/WEB-INF/jsp/forumManageAction/forumManage_{1}.jsp</result>
 		</action>
 		<!-- 网上交流：版块 -->
 		<action name="forum_*" class="forumAction" method="{1}">
-			<result name="showLastTopic" type="redirectAction"></result>
 			<result name="{1}">/WEB-INF/jsp/forumAction/forum_{1}.jsp</result>
 		</action>
 		<!-- 网上交流：版块中的主题 -->
 		<action name="topic_*" class="topicAction" method="{1}">
-			<result name="addUI">/WEB-INF/jsp/topicAction/topic_addUI.jsp</result>
-			<result name="showReply">/WEB-INF/jsp/topicAction/topic_showReply.jsp</result>
 			<result name="toShowReply" type="redirectAction">topic_showReply?id=${id}</result>
+			<result name="{1}">/WEB-INF/jsp/topicAction/topic_{1}.jsp</result>
 		</action>
 		<!-- 网上交流：主题中的回复 -->
 		<action name="reply_*" class="replyAction" method="{1}">
-			<result name="addUI">/WEB-INF/jsp/replyAction/reply_addUI.jsp</result>
 			<result name="toShowReply" type="redirectAction">topic_showReply?id=${topicId}</result>
+			<result name="toShowTopic" type="redirectAction">forum_showTopic?forumId=${forumId}</result>
+			<result name="{1}">/WEB-INF/jsp/replyAction/reply_{1}.jsp</result>
 		</action>
 		
 		<!-- 审批流程管理 -->

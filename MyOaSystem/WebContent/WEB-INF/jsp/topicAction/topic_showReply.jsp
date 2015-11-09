@@ -60,10 +60,13 @@
 							<img border="0" src="${pageContext.request.contextPath}/style/images/reply.gif" />
 							回复
 						</s:a>
-						<a href="moveUI.html"><img border="0" src="${pageContext.request.contextPath}/style/images/edit.gif" />移动到其他版块</a>
-						<a href="#" onClick="return confirm('要把本主题设为精华吗？')"><img border="0" src="${pageContext.request.contextPath}/style/images/forum_hot.gif" />精华</a>
-						<a href="#" onClick="return confirm('要把本主题设为置顶吗？')"><img border="0" src="${pageContext.request.contextPath}/style/images/forum_top.gif" />置顶</a>
-						<a href="#" onClick="return confirm('要把本主题设为普通吗？')"><img border="0" src="${pageContext.request.contextPath}/style/images/forum_comm.gif" />普通</a>
+						<s:a action="reply_moveToOtherForumUI?topicId=%{id}"><img border="0" src="${pageContext.request.contextPath}/style/images/edit.gif" />移动到其他版块</s:a>
+						<s:a action="reply_changeType?topicType=1&topicId=%{#topic.id}" onClick="return confirm('要把本主题设为精华吗？')">
+							<img border="0" src="${pageContext.request.contextPath}/style/images/topicType_1.gif" />精华</s:a>
+						<s:a action="reply_changeType?topicType=2&topicId=%{#topic.id}" onClick="return confirm('要把本主题设为置顶吗？')">
+							<img border="0" src="${pageContext.request.contextPath}/style/images/topicType_2.gif" />置顶</s:a>
+						<s:a action="reply_changeType?topicType=0&topicId=%{#topic.id}" onClick="return confirm('要把本主题设为普通吗？')">
+							<img border="0" src="${pageContext.request.contextPath}/style/images/topicType_0.gif" />普通</s:a>
 					</td>
 					<td width="3" class="ForumPageTableTitleRight">&nbsp;</td>
 				</tr>
@@ -87,12 +90,13 @@
 							<ul class="TopicFunc">
 								<!--操作列表-->
 								<li class="TopicFuncLi">
-									<a class="detail" href="${pageContext.request.contextPath}/BBS_Topic/saveUI.html"><img border="0" src="${pageContext.request.contextPath}/style/images/edit.gif" />编辑</a>
-									<a class="detail" href="#" onClick="return confirm('确定要删除本帖吗？')"><img border="0" src="${pageContext.request.contextPath}/style/images/delete.gif" />删除</a>
+									<s:a cssClass="detail" action="reply_delete?forumId=%{#topic.forum.id}&topicId=%{#topic.id}" onClick="return confirm('确定要删除本帖吗？')">
+										<img border="0" src="${pageContext.request.contextPath}/style/images/delete.gif" />
+									删除</s:a>
 								</li>
 								<!-- 文章表情与标题 -->
 								<li class="TopicSubject">
-									<img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/face1.gif"/>
+									<img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/1.gif"/>
 									${topic.title}
 								</li>
 							</ul>
@@ -136,14 +140,14 @@
 						</td>
 						<td align="center">
 							<ul class="TopicFunc">
-								<!--操作列表-->
+								<!--操作列表
 								<li class="TopicFuncLi">
 									<a class="detail" href="${pageContext.request.contextPath}/BBS_Topic/saveUI.html"><img border="0" src="${pageContext.request.contextPath}/style/images/edit.gif" />编辑</a>
 									<a class="detail" href="#" onClick="return confirm('确定要删除本帖吗？')"><img border="0" src="${pageContext.request.contextPath}/style/images/delete.gif" />删除</a>
-								</li>
+								</li>-->
 								<!-- 文章表情与标题 -->
 								<li class="TopicSubject">
-									<img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/${reply.faceIcon}"/>
+									<img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/2.gif"/>
 									${title}
 								</li>
 							</ul>
@@ -192,13 +196,14 @@
 			
 	<!--快速回复-->
 	<div class="QuictReply">
-	<form action="">
+	<s:form action="reply_add">
+	<s:hidden name="topicId" value="%{#topic.id}"/>
 		<div style="padding-left: 3px;">
 			<table border="0" cellspacing="1" width="98%" cellpadding="5" class="TableStyle">
 				<tr height="30" class="Tint">
 					<td width="50px" class="Deep"><b>标题</b></td>
 					<td class="no_color_bg">
-						<input type="text" name="title" class="InputStyle" value="回复：昨天发现在表单里删除的图片" style="width:90%"/>
+						<input type="text" name="title" class="InputStyle" value="回复：${topic.title}" style="width:90%"/>
 					</td>
 				</tr>
 				
@@ -215,7 +220,7 @@
 				</tr>
 			</table>
 		</div>
-	</form>
+	</s:form>
 	</div>
 </div>
 

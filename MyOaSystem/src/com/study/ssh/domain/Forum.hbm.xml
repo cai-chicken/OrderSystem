@@ -14,14 +14,14 @@
 		<property name="position"/>
 		
 		<!-- topics属性，是本类与Topic类的一对多关系 -->
-		<set name="topics">
+		<set name="topics" cascade="delete">
 			<key column="forumId"></key>
 			<one-to-many class="Topic"/>
 		</set>
 		<property name="topicCount" />
 		<property name="articleCount" />
 		<!-- lastTopic属性，是本类与Topic类的一对一关系 -->
-		<many-to-one name="lastTopic" class="Topic" column="lastTopicId" unique="true"></many-to-one>
+		<many-to-one name="lastTopic" class="Topic" column="lastTopicId" unique="true" cascade="delete"></many-to-one>
 	</class>
 	
 </hibernate-mapping>

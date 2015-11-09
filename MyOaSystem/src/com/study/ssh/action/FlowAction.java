@@ -40,7 +40,7 @@ public class FlowAction extends BaseAction {
 	 */
 	public String applicationTemplateList() throws Exception {
 		List<ApplicationTemplate> list = applicationTemplateService.findAll();
-		ActionContext.getContext().put("applicationTemplageList", list);
+		ActionContext.getContext().put("applicationTemplateList", list);
 		return "applicationTemplateList";
 	}
 

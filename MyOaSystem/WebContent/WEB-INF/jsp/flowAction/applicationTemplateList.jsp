@@ -44,7 +44,7 @@
 				<s:iterator value="#applicationTemplateList">
 				<div id="DetailBlock" class="template"> 
 					<img width="16" height="16" src="${pageContext.request.contextPath}/style/images/FileType/doc.gif"/> 
-					<s:a action="flow_submitUI?applicationTemplateId=%{id}">${formTemplate.name}</s:a> 
+					<s:a action="flow_submitUI?applicationTemplateId=%{id}">${name}</s:a> 
 				</div>
 				</s:iterator>
 			</td>

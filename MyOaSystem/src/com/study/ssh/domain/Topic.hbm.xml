@@ -18,14 +18,14 @@
 		<!-- forum属性，是本类与Forum类的多对一关系 -->
 		<many-to-one name="forum" class="Forum" column="forumId"></many-to-one>
 		<!-- replies属性，是本类与Reply类的一对多关系 -->
-		<set name="replies">
+		<set name="replies" cascade="delete">
 			<key column="topicId"></key>
 			<one-to-many class="Reply"/>
 		</set>
 		<property name="type" />
 		<property name="replyCount" />
 		<!-- lastReply属性，是本类与Reply类的一对一关系 -->
-		<many-to-one name="lastReply" class="Reply" column="lastReplyId" unique="true"/>
+		<many-to-one name="lastReply" class="Reply" column="lastReplyId" unique="true" cascade="delete"/>
 		<property name="lastUpdateTime" type="timestamp"/>
 	</class>
 	

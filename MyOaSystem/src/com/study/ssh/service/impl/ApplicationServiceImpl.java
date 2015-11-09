@@ -35,7 +35,7 @@ public class ApplicationServiceImpl extends BaseDaoImpl<Application> implements 
 		Map<String, Object> variablesMap = new HashMap<String, Object>();
 		variablesMap.put("application", application);
 		String pdKey = application.getApplicationTemplate().getProcessDefinitionKey();
-		ProcessInstance pi = processEngine.getExecutionService().startProcessInstanceById(pdKey);
+		ProcessInstance pi = processEngine.getExecutionService().startProcessInstanceByKey(pdKey, variablesMap);
 		//办理完第一个任务"提交申请"
 		Task task = processEngine.getTaskService()//
 				.createTaskQuery()//查询出本流程实例中当前仅有的一个任务"提交申请"

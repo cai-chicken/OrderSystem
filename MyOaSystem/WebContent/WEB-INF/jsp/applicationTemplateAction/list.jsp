@@ -50,7 +50,7 @@
     <!-- 其他功能超链接 -->
     <div id="TableTail">
         <div id="TableTail_inside">
-			<s:a action="applicationTemplate_addUI"><img src="${pageContext.request.contextPath}/style/blue/images/button/addNew.png" /></s:a>
+			<s:a action="applicationTemplate_addUI"><img src="${pageContext.request.contextPath}/style/blue/images/button/addNew.PNG" /></s:a>
         </div>
     </div>
 

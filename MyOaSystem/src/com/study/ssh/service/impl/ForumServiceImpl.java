@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.study.ssh.base.BaseDaoImpl;
 import com.study.ssh.domain.Forum;
+import com.study.ssh.domain.Topic;
 import com.study.ssh.service.ForumService;
 
 @Service("forumService")
@@ -14,7 +15,7 @@ import com.study.ssh.service.ForumService;
 @SuppressWarnings("unchecked")
 public class ForumServiceImpl extends BaseDaoImpl<Forum> implements ForumService {
 	@Override
-	public List<Forum> findAll() { 
+	public List<Forum> findAll() {
 		return getSession()
 				.createQuery(//
 						"FROM Forum f ORDER BY f.position ASC")//
@@ -84,6 +85,24 @@ public class ForumServiceImpl extends BaseDaoImpl<Forum> implements ForumService
 				.setFirstResult(0)//
 				.setMaxResults(1)//
 				.uniqueResult();
+	}
+
+	@Override
+	public void editField(Long forumId, int replyCount, Topic lastTopic, boolean isDelete) {
+		Forum forum = getById(forumId);
+		if (isDelete) {
+			forum.setTopicCount(forum.getTopicCount() - 1);
+			forum.setArticleCount(forum.getArticleCount() - (1 + replyCount));
+			//最后发表主题为空，则表示原来的最后发表主题没有发生变化
+			/*if (lastTopic != null) {
+				forum.setLastTopic(lastTopic);
+			}*/
+		} else {
+			forum.setTopicCount(forum.getTopicCount() + 1);
+			forum.setArticleCount(forum.getArticleCount() + (1 + replyCount));
+		}
+		forum.setLastTopic(lastTopic);
+		getSession().update(forum);
 	}
 
 }

@@ -3,6 +3,7 @@ package com.study.ssh.action;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.net.URLDecoder;
 import java.util.List;
 import java.util.zip.ZipInputStream;
 
@@ -31,6 +32,7 @@ public class ProcessDefinitionAction extends BaseAction {
 
 	/** 删除 */
 	public String delete() throws Exception {
+		key = URLDecoder.decode(key, "utf-8");
 		processDefinitionService.deleteByKey(key);
 		return "toList";
 	}
@@ -57,6 +59,7 @@ public class ProcessDefinitionAction extends BaseAction {
 
 	/** 查看流程图 */
 	public String downloadImgResource() throws Exception {
+		id = URLDecoder.decode(id, "utf-8");
 		inputStream = processDefinitionService.getProcessImgResourceAsStream(id);
 		return "downloadImgResource";
 	}

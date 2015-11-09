@@ -65,11 +65,6 @@ public class ForumAction extends ModelDrivenBaseAction<Forum> {
 		return "showTopic";
 	}
 
-	/** 显示板块下的所有主题 */
-	public String showLastTopic() throws Exception {
-		return "showLastTopic";
-	}
-
 	public int getViewType() {
 		return viewType;
 	}

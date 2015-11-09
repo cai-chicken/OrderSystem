@@ -8,8 +8,14 @@
 <%@include file="/WEB-INF/jsp/public/commons.jspf"%>
 <script type="text/javascript">
 	function showProcessImage(id) {
+		// alert("原文：" + pdId);
+    	id = encodeURI(id);
+    	// alert("第一次URL编码：" + pdId);
+
+    	id = encodeURI(id);
+    	// alert("第二次URL编码：" + pdId);
 		/* t参数，是为了解决页面缓存的问题 */
-		var url = "processDefinition_downloadProcessImage.action?id=" + id + "&t=" + new Date(); // + processDefId;
+		var url = "processDefinition_downloadImgResource.action?id=" + id + "&t=" + new Date(); // + processDefId;
         window.showModalDialog(url, null, "dialogHeight:500px;dialogWidth:600px;resizable:yes");
 	}
 </script>
@@ -49,8 +55,10 @@
 						<td>${name}&nbsp;</td>
 						<td align="CENTER">${version}&nbsp;</td>
 						<td>${description}&nbsp;</td>
-						<td><s:a onClick="return delConfirm()" action="processDefinition_delete?key=%{key}">删除</s:a>
-							<a href="javascript: showProcessImage(${id})">查看流程图</a>
+						<td><s:a onClick="return delConfirm()" action="processDefinition_delete">
+						<s:param name="key" value="%{@java.net.URLEncoder@encode(key, 'utf-8')}"></s:param>
+						删除</s:a>
+							<a href="javascript: showProcessImage('${id}')">查看流程图</a>
 						</td>
 					</tr>
 				</s:iterator>
