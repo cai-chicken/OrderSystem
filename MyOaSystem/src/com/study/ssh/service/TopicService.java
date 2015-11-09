@@ -15,6 +15,6 @@ public interface TopicService extends BaseDao<Topic> {
 	 * @param topicId 
 	 * @return
 	 */
-	Topic getLastTopic(Long topicId);
+	Topic getLastTopic(Long topicId, boolean isDelete);
 
 }

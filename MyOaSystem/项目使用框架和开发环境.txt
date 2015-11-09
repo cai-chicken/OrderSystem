@@ -5,6 +5,7 @@
 	Spring		2.5.6	
 	jBPM		4.4			工作流支持
 	Junit		4.10		单元测试
+	FCKeditor				好像ie中有点问题
 
 开发环境：
 	操作系统		Windows7 64位	
@@ -12,3 +13,4 @@
 	数据库		MySql 5.1.52	
 	Web容器		Tomcat 7.0.59	
 	浏览器		IE
+	

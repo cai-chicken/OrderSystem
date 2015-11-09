@@ -12,6 +12,7 @@ import com.study.ssh.base.ModelDrivenBaseAction;
 import com.study.ssh.domain.Forum;
 import com.study.ssh.domain.Reply;
 import com.study.ssh.domain.Topic;
+import com.study.ssh.util.LoggerManager;
 
 @Controller("replyAction")
 @Scope("prototype")
@@ -76,6 +77,8 @@ public class ReplyAction extends ModelDrivenBaseAction<Reply> {
 		Topic topic = topicService.getById(topicId);
 		Forum forum = topic.getForum();//先拿到原来版块
 		topic.setForum(forumService.getById(forumId));//再修改成新版块
+		String info = "从id为：" + forum.getId() + " 移动到id为：" + forumId + "的版块";
+		LoggerManager.printInfo(ReplyAction.class, info);
 		// 更新数据
 		topicService.update(topic);
 		// 维护主题所在原来版块的特殊属性
@@ -124,10 +127,15 @@ public class ReplyAction extends ModelDrivenBaseAction<Reply> {
 		int replyCount = topicService.getById(topicId).getReplyCount();
 		// 如果当前主题是最新主题，那么它的前一个发表主题(也就是版块中最后发表主题的修改)
 		Topic lastTopic = null;
-		if (isDelete) {
-			lastTopic = topicService.getLastTopic(topicId);
+//		if (isDelete) {
+			lastTopic = topicService.getLastTopic(topicId, isDelete);
+//		} else {
+//			lastTopic = topicService.getById(topicId);
+//		}
+		if (lastTopic != null) {
+			LoggerManager.printInfo(ReplyAction.class, "最新主题的信息：" + lastTopic.getTitle());
 		} else {
-			lastTopic = topicService.getById(topicId);
+			LoggerManager.printInfo(ReplyAction.class, "最新主题的信息：" + lastTopic);
 		}
 		forumService.editField(forumId, replyCount, lastTopic, isDelete);
 	}

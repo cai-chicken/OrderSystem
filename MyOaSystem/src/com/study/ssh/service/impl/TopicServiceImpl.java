@@ -43,25 +43,37 @@ public class TopicServiceImpl extends BaseDaoImpl<Topic> implements TopicService
 	}
 
 	@Override
-	public Topic getLastTopic(Long topicId) {
+	public Topic getLastTopic(Long topicId, boolean isDelete) {
 		Date oldTime = getById(topicId).getPostTime();
+		Forum forum = getById(topicId).getForum();
 		//找出发表时间比这个oldTime还大的主题，如果没有，那么删除的就是最新主题，继续找出前一个发表时间最新的主题，如果有，那么删除
 		//的就不是最新主题，返回返回原来最新的主题。
-		Topic lastTopic = (Topic) getSession().createQuery(//
-				"FROM Topic t WHERE t.postTime > ? ORDER BY t.postTime DESC")//
+		String hql = "";
+		if (isDelete) {
+			hql = "FROM Topic t WHERE t.postTime > ? AND t.forum = ? ORDER BY t.postTime DESC";
+			Topic lastTopic = getTopic(oldTime, forum, hql);
+			if (lastTopic == null) {
+				//按发表时间降序，取出第一个，就是前一个发表时间最新的主题
+				hql = "FROM Topic t WHERE t.postTime < ? AND t.forum = ? ORDER BY t.postTime DESC";
+				return getTopic(oldTime, forum, hql);
+			}
+			return lastTopic;
+		} else {
+			//移动到新版块，那么对于新版块来说，该主题就是最后发表主题
+			hql = "FROM Topic t WHERE t.postTime = ? AND t.forum = ?";
+			return (Topic) getSession().createQuery(hql)//
+					.setParameter(0, oldTime)//
+					.setParameter(1, forum)//
+					.uniqueResult();
+		}
+	}
+	
+	private Topic getTopic (Date oldTime, Forum forum, String hql) {
+		return (Topic) getSession().createQuery(hql)//
 				.setParameter(0, oldTime)//
+				.setParameter(1, forum)//
 				.setFirstResult(0)//
 				.setMaxResults(1)//
 				.uniqueResult();
-		if (lastTopic == null) {
-			//按发表时间降序，取出第一个，就是前一个发表时间最新的主题
-			return (Topic) getSession().createQuery(//
-					"FROM Topic t WHERE t.postTime < ? ORDER BY t.postTime DESC")//
-					.setParameter(0, oldTime)//
-					.setFirstResult(0)//
-					.setMaxResults(1)//
-					.uniqueResult();
-		}
-		return lastTopic;
 	}
 }

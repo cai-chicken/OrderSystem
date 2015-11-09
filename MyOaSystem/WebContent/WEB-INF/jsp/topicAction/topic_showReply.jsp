@@ -60,7 +60,7 @@
 							<img border="0" src="${pageContext.request.contextPath}/style/images/reply.gif" />
 							回复
 						</s:a>
-						<s:a action="reply_moveToOtherForumUI?topicId=%{id}"><img border="0" src="${pageContext.request.contextPath}/style/images/edit.gif" />移动到其他版块</s:a>
+						<%-- <s:a action="reply_moveToOtherForumUI?topicId=%{id}"><img border="0" src="${pageContext.request.contextPath}/style/images/edit.gif" />移动到其他版块</s:a> --%>
 						<s:a action="reply_changeType?topicType=1&topicId=%{#topic.id}" onClick="return confirm('要把本主题设为精华吗？')">
 							<img border="0" src="${pageContext.request.contextPath}/style/images/topicType_1.gif" />精华</s:a>
 						<s:a action="reply_changeType?topicType=2&topicId=%{#topic.id}" onClick="return confirm('要把本主题设为置顶吗？')">
@@ -88,12 +88,12 @@
 						</td>
 						<td align="center">
 							<ul class="TopicFunc">
-								<!--操作列表-->
+								<!--操作列表
 								<li class="TopicFuncLi">
 									<s:a cssClass="detail" action="reply_delete?forumId=%{#topic.forum.id}&topicId=%{#topic.id}" onClick="return confirm('确定要删除本帖吗？')">
 										<img border="0" src="${pageContext.request.contextPath}/style/images/delete.gif" />
 									删除</s:a>
-								</li>
+								</li>-->
 								<!-- 文章表情与标题 -->
 								<li class="TopicSubject">
 									<img width="19" height="19" src="${pageContext.request.contextPath}/style/images/face/1.gif"/>

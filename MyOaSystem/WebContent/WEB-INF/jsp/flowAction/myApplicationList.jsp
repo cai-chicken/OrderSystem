@@ -79,6 +79,7 @@
 <%@include file="/WEB-INF/jsp/public/pageView.jspf" %>
 <div class="Description">
 	说明：<br />
+	<span style="color: red">1、请选择过滤条件进行查询显示数据</span>
 	<!--
 	1，对于退回的表单，可以执行“修改后再次提交”与“删除”的操作。<br />&nbsp;&nbsp;
 	   其他状态表单（正在审批的或是审批完成的）则没有这两个操作。<br />

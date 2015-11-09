@@ -75,7 +75,7 @@
 		<!-- 网上交流：主题中的回复 -->
 		<action name="reply_*" class="replyAction" method="{1}">
 			<result name="toShowReply" type="redirectAction">topic_showReply?id=${topicId}</result>
-			<result name="toShowTopic" type="redirectAction">forum_showTopic?forumId=${forumId}</result>
+			<result name="toShowTopic" type="redirectAction">forum_showTopic?id=${forumId}</result>
 			<result name="{1}">/WEB-INF/jsp/replyAction/reply_{1}.jsp</result>
 		</action>
 		

@@ -68,18 +68,23 @@ public class ApplicationTemplateAction extends ModelDrivenBaseAction<Application
 
 	/** 修改 */
 	public String edit() throws Exception {
+		// 1、从数据库中找到对应的id的对象
+		ApplicationTemplate applicationTemplate = applicationTemplateService.getById(model.getId());
+		// 2、设置需要修改的属性
+		applicationTemplate.setName(model.getName());
+		applicationTemplate.setProcessDefinitionKey(model.getProcessDefinitionKey());
 		// 表示有重新上传文件
 		if (upload != null) {
 			// 删除老文件
-			File file = new File(model.getPath());
+			File file = new File(applicationTemplate.getPath());
 			if (file.exists()) {
 				file.delete();
 			}
 			// 使用新文件
 			String path = saveUploadFile(upload);
-			model.setPath(path);
+			applicationTemplate.setPath(path);
 		}
-		applicationTemplateService.update(model);
+		applicationTemplateService.update(applicationTemplate);
 		return "toList";
 	}
 

@@ -9,6 +9,7 @@ import com.study.ssh.base.BaseDaoImpl;
 import com.study.ssh.domain.Forum;
 import com.study.ssh.domain.Topic;
 import com.study.ssh.service.ForumService;
+import com.study.ssh.util.LoggerManager;
 
 @Service("forumService")
 @Transactional
@@ -91,13 +92,11 @@ public class ForumServiceImpl extends BaseDaoImpl<Forum> implements ForumService
 	public void editField(Long forumId, int replyCount, Topic lastTopic, boolean isDelete) {
 		Forum forum = getById(forumId);
 		if (isDelete) {
+			LoggerManager.printInfo(ForumServiceImpl.class, "执行版块特殊属性的减少");
 			forum.setTopicCount(forum.getTopicCount() - 1);
 			forum.setArticleCount(forum.getArticleCount() - (1 + replyCount));
-			//最后发表主题为空，则表示原来的最后发表主题没有发生变化
-			/*if (lastTopic != null) {
-				forum.setLastTopic(lastTopic);
-			}*/
 		} else {
+			LoggerManager.printInfo(ForumServiceImpl.class, "执行版块特殊属性的增加");
 			forum.setTopicCount(forum.getTopicCount() + 1);
 			forum.setArticleCount(forum.getArticleCount() + (1 + replyCount));
 		}
