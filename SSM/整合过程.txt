@@ -1,0 +1,25 @@
+1、加jar包
+2、配置db.properties数据库连接信息文件
+3、配置log4j.properties日志打印文件
+4、SqlMapConfig.xml，这是mybatis的配置文件
+5、applicationContext-dao.xml
+	(1) 主要配置数据源信息
+	(2) 管理sqlSessionFactory
+	(3) 管理Mapper，即扫描指定包名下的所有Mapper接口
+	(4) 配置自动扫描bean，即@controller,@service,@component……的类
+6、applicationContext-transaction.xml
+	(1) 配置事务管理器
+	(2) 配置通知和aop
+7、springmvc.xml
+	(1) 使用注解的处理器映射器和处理器适配器
+	(2) 视图解析器
+	(3) 定义自定义扫描controller类的所在包
+8、web.xml
+	(1) 加载spring容器(ContextLoaderListener)
+	(2) 加载springMVC的前端控制器(DispatcherServlet)
+	(3) post乱码过滤器
+测试：
+9、反向工程生成po类、mapper接口、mapper的配置文件
+10、写service
+11、写controller
+12、写jsp
