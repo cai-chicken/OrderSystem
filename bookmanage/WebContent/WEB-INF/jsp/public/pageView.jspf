@@ -26,24 +26,28 @@
 		</s:else>
 		
 		<a href="javascript:goToPage(${pageCount})">最后一页</a> 
-		转到第<select onchange="goToPage(this.value)" id="_pn">
+		转到第<input type="text" name="pageNum" id="gotoPage" value="1"/>页
+		<%-- <select onchange="goToPage(this.value)" id="_pn">
 			<s:iterator begin="1" end="%{pageCount}" var="num">
 				<option value="${num}">${num}</option>
 			</s:iterator>
-		</select>页
+		</select> --%>
 	</div>
 	<!--分页结束-->
-	<input type="button" value="go" style="float: left; margin-right: 50px"/>
+	<input type="button" value="go" style="float: left; margin-right: 50px" onclick="goPage()"/>
 </div>
 <script type="text/javascript">
+	function goPage() {
+		var pSize = document.getElementById("pageSize").value;
+		var page = document.getElementById("gotoPage").value;
+		window.location.href = "book_list.action?pageSize=" + pSize + "&pageNum=" + page;
+	}
 	
-	var pSize = document.getElementById("pageSize").value;
-	/*var goPage = document.getElementById("gotoPage").value; */
 	function goToPage( pageNum ){
 		/* pageNum为当前页，将被BaseAction中的成员变量接收 */
 		/* $(document.forms[0]).append("<input type='hidden' name='pageNum' value='" + pageNum +"'>");
 		document.forms[0].submit(); */
-		window.location.href = "book_list.action?pageSize=" + pSize + "&pageNum=" + pageNum;
+		window.location.href = "book_list.action?pageNum=" + pageNum;
 	}
 	function addBook() {
 		window.location.href = "book_addUI.action";
