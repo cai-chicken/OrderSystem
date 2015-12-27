@@ -12,6 +12,7 @@ import com.opensymphony.xwork2.ActionContext;
 public class BookAction extends ModelDrivenBaseAction<Book> {
 	/** 列表 */
 	public String list() throws Exception {
+		
 		// 不考虑分页
 		// 1、执行相关service的findAll()
 		// List<Book> books = bookService.findAll();
