@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.bookmanage.ssh.model">
+
+	<class name="Book" table="book">
+		<id name="id">
+            <generator class="native"/>
+		</id>
+		<property name="pubHome"/>
+		<property name="name" />
+		<property name="pubDate" type="date"/>
+		<property name="count"/>
+		<property name="author"/>
+		<property name="price" />
+		<property name="content" type="text" length="65536"/>
+	</class>
+	
+</hibernate-mapping>

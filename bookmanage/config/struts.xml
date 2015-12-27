@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 配置为开发模式 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 把扩展名配置为action -->
+	<constant name="struts.action.extension" value="action" />
+	<!-- 把主题配置为simple -->
+	<constant name="struts.ui.theme" value="simple" />
+
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- 配置拦截器 -->
+		<interceptors>
+			<interceptor name="checkPrivilege" class="com.bookmanage.ssh.util.CheckPrivilegeIterceptor"/>
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="checkPrivilege"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<!-- 配置全局结果 -->
+		<global-results>
+			<result name="login">/login.jsp</result>
+			<result name="logout">/WEB-INF/jsp/public/logout.jsp</result>
+		</global-results>
+	
+		<!-- 用户管理 -->
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="toBookList" type="redirectAction">book_list</result>
+		</action>
+		
+		<!-- 图书管理 -->
+		<action name="book_*" class="bookAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/bookAction/book_list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/bookAction/book_saveUI.jsp</result>
+			<result name="toList" type="redirectAction">book_list</result>
+		</action>
+	</package>
+</struts>

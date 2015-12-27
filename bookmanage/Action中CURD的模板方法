@@ -1,0 +1,50 @@
+	/** 列表 */
+	public String list() throws Exception {
+		//1、执行相关service的findAll()
+		//2、将其放入到ValueStack对象的Map中
+		return "list";
+	}
+
+	/** 删除 */
+	public String delete() throws Exception {
+		//1、执行相关service的delete(model.getId())
+		return "toList";
+	}
+
+	/** 添加页面 */
+	public String addUI() throws Exception {
+		//1、不需要回显数据，不做任何操作
+		//2、需要回显数据，准备数据
+			//2.1、从数据库中取出相应的数据
+			//2.2、放入到ValueStack对象的stack中
+		return "saveUI";
+	}
+
+	/** 添加 */
+	public String add() throws Exception {
+		//1、保存数据到数据库中,执行相关service的save(model)方法
+		return "toList";
+	}
+
+	/** 修改页面 */
+	public String editUI() throws Exception {
+		//1、找到对应的id的对象
+		//2、将其放入到ValueStack对象的stack中
+		return "saveUI";
+	}
+
+	/** 修改 */
+	public String edit() throws Exception {
+		//1、从数据库中找到对应的id的对象
+		//2、设置需要修改的属性
+		//3、更新到数据库中
+		return "toList";
+	}
+	
+	
+	
+	<%@include file="/WEB-INF/jsp/public/commons.jspf" %>
+	
+	//分页
+	<%@include file="/WEB-INF/jsp/public/pageView.jspf"%>
+<s:form action="user_list"></s:form>
