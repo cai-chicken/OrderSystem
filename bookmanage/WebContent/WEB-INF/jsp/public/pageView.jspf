@@ -7,7 +7,6 @@
 	<!--分页-->
 	<div style="float: left">
 		共${recordCount}条记录 
-		<!-- 每页<s:textfield name="pageSize" id="pageSize"/>条 -->
 		每页<input type="text" name="pageSize" id="pageSize" value="${pageSize }"/>条
 		第${currentPage}页/共${pageCount}页 
 		<a href="javascript:goToPage(1)">第一页</a> 
