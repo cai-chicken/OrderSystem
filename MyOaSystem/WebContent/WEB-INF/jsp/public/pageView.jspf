@@ -46,7 +46,6 @@
 <script type="text/javascript">
 	function gotoPage( pageNum ){
 		// window.location.href = "forum_show.action?id=${id}&pageNum=" + pageNum;
-		
 		$(document.forms[0]).append("<input type='hidden' name='pageNum' value='" + pageNum +"'>");
 		document.forms[0].submit();
 	}
