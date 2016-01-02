@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 配置为开发模式 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 把扩展名配置为action -->
+	<constant name="struts.action.extension" value="action" />
+
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- 配置拦截器 -->
+		
+		<!-- 配置全局结果 -->
+		<global-results>
+			<result name="login">/login.jsp</result>
+		</global-results>
+	
+		<!-- 用户管理 -->
+		<action name="chair_*" class="chairAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/role/list.jsp</result>
+			<!-- <result name="toBookList" type="redirectAction">book_list</result> -->
+		</action>
+	</package>
+</struts>
