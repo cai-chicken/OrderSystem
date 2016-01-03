@@ -8,11 +8,12 @@ import org.hibernate.Transaction;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.mythesis.ssh.base.ModelDrivenBaseAction;
 import com.mythesis.ssh.model.Chair;
 
 @Controller("chairAction")
 @Scope("prototype")
-public class ChairAction {
+public class ChairAction extends ModelDrivenBaseAction<Chair>{
 	
 	@Resource
 	SessionFactory sessionFactory;
