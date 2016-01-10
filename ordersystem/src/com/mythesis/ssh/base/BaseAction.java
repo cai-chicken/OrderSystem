@@ -5,8 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.annotation.Resource;
+
 import org.apache.struts2.ServletActionContext;
 
+import com.mythesis.ssh.service.EmployeeService;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -19,7 +22,8 @@ import com.opensymphony.xwork2.ActionSupport;
 public class BaseAction extends ActionSupport {
 
 	// ------------------------------Service提供-----------------------------------
-	
+	@Resource
+	protected EmployeeService employeeService;//员工Service
 
 	// ------------------------------获取当前登录-----------------------------------
 	/*protected User getCurrentUser() {

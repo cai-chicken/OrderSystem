@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../Css/bootstrap-responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../Css/style.css" />
+		<script type="text/javascript" src="../Js/jquery.js"></script>
+		<script type="text/javascript" src="../Js/jquery.sorted.js"></script>
+		<script type="text/javascript" src="../Js/bootstrap.js"></script>
+		<script type="text/javascript" src="../Js/ckform.js"></script>
+		<script type="text/javascript" src="../Js/common.js"></script>
+		<style type="text/css">
+			body {
+			            padding-bottom: 40px;
+			        }
+			        .sidebar-nav {
+			            padding: 9px 0;
+			        }
+			
+			        @media (max-width: 980px) {
+			            /* Enable use of floated navbar text */
+			            .navbar-text.pull-right {
+			                float: none;
+			                padding-left: 5px;
+			                padding-right: 5px;
+			            }
+			        }
+		</style>
+	</head>
+
+	<body>
+		<form class="form-inline definewidth m20" action="list.html" method="get">
+			<!--过滤条件-->
+			员工名称：
+			<input type="text" name="name" id="rolename" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+			家庭地址：
+			<input type="text" name="address" id="rolename" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+			性别：
+			<input type="radio" name="sex" id="rolename" class="abc input-default" placeholder="" value="男">&nbsp;男&nbsp;
+			<input type="radio" name="sex" id="rolename" class="abc input-default" placeholder="" value="女">&nbsp;女&nbsp;
+			<input type="radio" name="sex" id="rolename" class="abc input-default" placeholder="" value="">&nbsp;不选&nbsp;
+			
+			<button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
+			<button type="button" class="btn btn-success" id="addnew">新增员工</button>
+		</form>
+		<table class="table table-bordered table-hover definewidth m10">
+			<thead>
+				<tr>
+					<th>编码</th>
+					<th>姓名</th>
+					<th>登录名</th>
+					<th>性别</th>
+					<th>出生年月日</th>
+					<th>家庭地址</th>
+					<th>手机号码</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<!--列表数据-->
+			<tr>
+				<td>5</td>
+				<td>张三</td>
+				<td>zhangsan</td>
+				<td>男</td>
+				<td>1993-7-13</td>
+				<td>江西上饶广丰</td>
+				<td>13262527978</td>
+				<td>
+					<a href="saveUI.html">编辑</a>
+					<a href="#" onclick="del(1)">删除</a>
+				</td>
+			</tr>
+		</table>
+		<!--分页-->
+		<div class="inline pull-right page">
+			10122 条记录 1/507 页 <a href='#'>下一页</a> 
+			<span class='current'>1</span>
+			<a href='#'>2</a>
+			<a href='/chinapost/index.php?m=Label&a=index&p=3'>3</a>
+			<a href='#'>4</a>
+			<a href='#'>5</a>
+			<a href='#'>下5页</a>
+			<a href='#'>最后一页</a>
+		</div>
+	</body>
+
+</html>
+<script>
+	$(function() {
+		$('#addnew').click(function() {
+			window.location.href = "saveUI.html";
+		});
+	});
+	/*删除操作*/
+	function del(id) {
+		if (confirm("确定要删除吗？")) {
+			var url = "list.html";
+			window.location.href = url;
+		}
+	}
+</script>

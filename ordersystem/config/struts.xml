@@ -17,9 +17,10 @@
 			<result name="login">/login.jsp</result>
 		</global-results>
 	
-		<!-- 用户管理 -->
-		<action name="chair_*" class="chairAction" method="{1}">
-			<result name="list">/WEB-INF/jsp/role/list.jsp</result>
+	<!-- 系统管理 -->
+		<!-- 员工管理 -->
+		<action name="employee_*" class="employeeAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/employee/list.jsp</result>
 			<!-- <result name="toBookList" type="redirectAction">book_list</result> -->
 		</action>
 	</package>

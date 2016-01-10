@@ -17,6 +17,7 @@
 
 		<!-- 3，导入映射文件 -->
 		<mapping resource="com/mythesis/ssh/model/Chair.hbm.xml" />
+		<mapping resource="com/mythesis/ssh/model/Employee.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>
