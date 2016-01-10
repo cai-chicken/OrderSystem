@@ -14,7 +14,7 @@ public class Employee {
 	private String name;
 	private String loginName;
 	private String password;
-	private int num;// 编号
+	private String num;// 编号
 	private String sex;
 	private Date birthday;
 	private String address;
@@ -53,11 +53,11 @@ public class Employee {
 		this.password = password;
 	}
 
-	public int getNum() {
+	public String getNum() {
 		return num;
 	}
 
-	public void setNum(int num) {
+	public void setNum(String num) {
 		this.num = num;
 	}
 

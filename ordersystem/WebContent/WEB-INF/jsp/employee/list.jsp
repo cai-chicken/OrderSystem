@@ -9,7 +9,7 @@
 <%@ include file="/WEB-INF/jsp/public/headFile.jspf" %>
 </head>
 <body>
-	<form class="form-inline definewidth m20" action="list.jsp">
+	<form class="form-inline definewidth m20" action="employee_list.action" method="post">
 		<!--过滤条件-->
 		员工名称：
 		<input type="text" name="name" class="abc input-default" value="">&nbsp;&nbsp;
@@ -18,7 +18,7 @@
 		性别：
 		<input type="radio" name="sex" class="abc input-default"  value="男">&nbsp;男&nbsp;
 		<input type="radio" name="sex" class="abc input-default"  value="女">&nbsp;女&nbsp;
-		<input type="radio" name="sex" class="abc input-default"  value="">&nbsp;不选&nbsp;
+		<!-- <input type="radio" name="sex" class="abc input-default"  value="">&nbsp;不选&nbsp; -->
 		
 		<button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
 		<button type="button" class="btn btn-success" id="addnew">新增员工</button>
@@ -26,7 +26,7 @@
 	<table class="table table-bordered table-hover definewidth m10">
 		<thead>
 			<tr>
-				<th>编码</th>
+				<th>编号</th>
 				<th>姓名</th>
 				<th>登录名</th>
 				<th>性别</th>
@@ -37,7 +37,7 @@
 			</tr>
 		</thead>
 		<!--列表数据-->
-		<c:forEach items="${employeeList }" var="employee">
+		<c:forEach items="${pageBean.recordList }" var="employee">
 			<tr>
 				<td>${employee.num}</td>
 				<td>${employee.name }</td>
@@ -47,8 +47,8 @@
 				<td>${employee.address }</td>
 				<td>${employee.phoneNumber }</td>
 				<td>
-					<a href="saveUI.html">编辑</a>
-					<a href="#" onclick="del(1)">删除</a>
+					<a href="employee_editUI.action?id=${employee.id }">编辑</a>
+					<a href="employee_delete.action?id=${employee.id }" onclick="return confirm('确定要删除吗？')">删除</a>
 				</td>
 			</tr>
 		</c:forEach>
@@ -56,5 +56,11 @@
 	<!--分页-->
 	<%@include file="/WEB-INF/jsp/public/pageView.jspf" %>
 </body>
-<script type="text/javascript" src="${pageContext.request.contextPath}/WEB-INF/jsp/public/addAndDelete.js"></script>
+<script type="text/javascript" >
+	$(function() {
+		$('#addnew').click(function() {
+			window.location.href = "employee_addUI.action";
+		});
+	});
+</script>
 </html>

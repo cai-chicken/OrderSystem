@@ -92,6 +92,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	public PageBean getPageBean(int pageNum, int pageSize, QueryHelper queryHelper) {
 		// 参数列表
 		List<Object> paramList = queryHelper.getParamList();
+		System.out.println("过滤参数---------------->" + paramList.toString());
 		// 查询到的数据列表
 		Query listQuery = getSession().createQuery(queryHelper.getListQueryHql());
 		// 设置参数

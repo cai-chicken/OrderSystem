@@ -1,12 +1,12 @@
 package com.mythesis.ssh.action;
 
-import java.util.List;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.mythesis.ssh.base.ModelDrivenBaseAction;
 import com.mythesis.ssh.model.Employee;
+import com.mythesis.ssh.util.QueryHelper;
+import com.mythesis.ssh.util.StringUtil;
 import com.opensymphony.xwork2.ActionContext;
 
 /**
@@ -21,9 +21,16 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 	/** 列表 */
 	public String list() throws Exception {
 		// 1、执行相关service的findAll()
-		List<Employee> employees = employeeService.findAll();
+//		List<Employee> employees = employeeService.findAll();
 		// 2、将其放入到ValueStack对象的Map中
-		ActionContext.getContext().put("employeeList", employees);
+//		ActionContext.getContext().put("employeeList", employees);
+		// 考虑分页
+		new QueryHelper(Employee.class, "e")//
+			.addOrderProperty("e.id", false)//
+			.addWhereCondition(!StringUtil.isEmpty(model.getName()), "e.name like ?", model.getName())//员工名称过滤条件
+			.addWhereCondition(!StringUtil.isEmpty(model.getAddress()), "e.address like ?", model.getAddress())//家庭地址过滤条件
+			.addWhereCondition(!StringUtil.isEmpty(model.getSex()), "e.sex=?", model.getSex())//性别过滤条件
+			.preparePageBean(employeeService, pageNum, pageSize);
 		return "list";
 	}
 
@@ -54,8 +61,8 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 	public String editUI() throws Exception {
 		// 1、找到对应的id的对象
 		Employee employee = employeeService.getById(model.getId());
-		// 2、将其放入到ValueStack对象的stack中
-		ActionContext.getContext().getValueStack().push(employee);
+		// 2、将其放入到ValueStack对象的map中
+		ActionContext.getContext().put("employee", employee);
 		return "saveUI";
 	}
 

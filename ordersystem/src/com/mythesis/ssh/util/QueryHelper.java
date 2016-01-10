@@ -139,6 +139,6 @@ public class QueryHelper {
 	 */
 	public void preparePageBean(BaseDao<?> service, int pageNum, int pageSize) {
 		PageBean pageBean = service.getPageBean(pageNum, pageSize, this);
-		ActionContext.getContext().getValueStack().push(pageBean);
+		ActionContext.getContext().put("pageBean", pageBean);
 	}
 }

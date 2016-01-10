@@ -21,7 +21,8 @@
 		<!-- 员工管理 -->
 		<action name="employee_*" class="employeeAction" method="{1}">
 			<result name="list">/WEB-INF/jsp/employee/list.jsp</result>
-			<!-- <result name="toBookList" type="redirectAction">book_list</result> -->
+			<result name="saveUI">/WEB-INF/jsp/employee/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">employee_list</result>
 		</action>
 	</package>
 </struts>
