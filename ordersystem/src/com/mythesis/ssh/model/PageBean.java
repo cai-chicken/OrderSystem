@@ -34,24 +34,24 @@ public class PageBean {
 		pageCount = (recordCount + pageSize - 1) / pageSize;
 		
 		//计算beginPageIndex 和 endPageIndex
-		//总页数不多于10页，则全部显示
-		if (pageCount <= 10) {
+		//总页数不多于5页，则全部显示
+		if (pageCount <= 5) {
 			beginPageIndex = 1;
 			endPageIndex = pageCount;
 		}
-		//总页数多于10页，则显示当前页附近的10页码
+		//总页数多于5页，则显示当前页附近的5页码
 		else {
-			beginPageIndex = currentPage -4;
-			endPageIndex = currentPage + 5;
-			//当前页的页码不足4个时，则显示前面10个页码
+			beginPageIndex = currentPage -2;
+			endPageIndex = currentPage + 2;
+			//当前页的页码不足2个时，则显示前面5个页码
 			if (beginPageIndex < 1) {
 				beginPageIndex = 1;
-				endPageIndex = 10;
+				endPageIndex = 5;
 			}
-			//当后面的页码不足4个时，则显示后面10个页码
+			//当后面的页码不足2个时，则显示后面5个页码
 			if (endPageIndex > pageCount) {
 				endPageIndex = pageCount;
-				beginPageIndex = pageCount - 10 + 1;
+				beginPageIndex = pageCount - 5 + 1;
 			}
 		}
 	}

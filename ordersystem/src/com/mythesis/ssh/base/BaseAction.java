@@ -32,7 +32,7 @@ public class BaseAction extends ActionSupport {
 
 	// -----------------------------------------------------------------
 	protected int pageNum = 1;// 当前页，默认是第一页
-	protected int pageSize = 10;// 每页显示多少条，默认是第十页
+	protected int pageSize = 4;// 每页显示多少条，默认是第十页
 
 	public int getPageNum() {
 		return pageNum;
