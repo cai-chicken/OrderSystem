@@ -20,11 +20,8 @@ import com.opensymphony.xwork2.ActionContext;
 public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 	/** 列表 */
 	public String list() throws Exception {
-		// 1、执行相关service的findAll()
-//		List<Employee> employees = employeeService.findAll();
-		// 2、将其放入到ValueStack对象的Map中
-//		ActionContext.getContext().put("employeeList", employees);
-		// 考虑分页
+		// 考虑分页,没有进行模糊查询处理
+		// TODO
 		new QueryHelper(Employee.class, "e")//
 			.addOrderProperty("e.id", false)//
 			.addWhereCondition(!StringUtil.isEmpty(model.getName()), "e.name like ?", model.getName())//员工名称过滤条件
@@ -53,6 +50,7 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 	/** 添加 */
 	public String add() throws Exception {
 		// 1、保存数据到数据库中,执行相关service的save(model)方法
+		model.setPassword("1234");
 		employeeService.save(model);
 		return "toList";
 	}
