@@ -54,7 +54,9 @@
 		</c:forEach>
 	</table>
 	<!--分页-->
-	<%@include file="/WEB-INF/jsp/public/pageView.jspf" %>
+	<c:if test="${pageBean.recordCount > 0 }">
+		<%@include file="/WEB-INF/jsp/public/pageView.jspf" %>
+	</c:if>
 </body>
 <script type="text/javascript" >
 	$(function() {

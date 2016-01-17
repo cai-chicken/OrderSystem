@@ -1,0 +1,359 @@
+[INFO][2016-01-16 14:58:44,139][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@32e4445e: startup date [Sat Jan 16 14:58:44 CST 2016]; root of context hierarchy
+[INFO][2016-01-16 14:58:44,437][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+[INFO][2016-01-16 14:58:46,223][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[INFO][2016-01-16 14:58:46,378][org.springframework.beans.factory.support.DefaultListableBeanFactory]Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3744bd3: defining beans [chairAction,employeeAction,employeeService,installPrivilege,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sessionFactory,txManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+[INFO][2016-01-16 14:58:46,738][com.mchange.v2.log.MLog]MLog clients using log4j logging.
+[INFO][2016-01-16 14:58:47,216][com.mchange.v2.c3p0.C3P0Registry]Initializing c3p0-0.9.1 [built 16-January-2007 14:46:42; debug? true; trace: 10]
+[INFO][2016-01-16 14:58:47,895][org.hibernate.annotations.common.Version]Hibernate Commons Annotations 3.2.0.Final
+[INFO][2016-01-16 14:58:47,966][org.hibernate.cfg.Environment]Hibernate 3.6.0.Final
+[INFO][2016-01-16 14:58:47,974][org.hibernate.cfg.Environment]hibernate.properties not found
+[INFO][2016-01-16 14:58:47,984][org.hibernate.cfg.Environment]Bytecode provider name : javassist
+[INFO][2016-01-16 14:58:48,001][org.hibernate.cfg.Environment]using JDK 1.4 java.sql.Timestamp handling
+[INFO][2016-01-16 14:58:48,188][org.hibernate.cfg.Configuration]configuring from url: file:/J:/GitRepository/ordersystem/build/classes/hibernate.cfg.xml
+[WARN][2016-01-16 14:58:48,292][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 14:58:48,351][org.hibernate.cfg.Configuration]Reading mappings from resource : com/mythesis/ssh/model/Chair.hbm.xml
+[WARN][2016-01-16 14:58:48,355][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 14:58:48,475][org.hibernate.cfg.Configuration]Reading mappings from resource : com/mythesis/ssh/model/Employee.hbm.xml
+[WARN][2016-01-16 14:58:48,480][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 14:58:48,525][org.hibernate.cfg.Configuration]Reading mappings from resource : com/mythesis/ssh/model/Privilege.hbm.xml
+[WARN][2016-01-16 14:58:48,529][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 14:58:48,547][org.hibernate.cfg.Configuration]Configured SessionFactory: null
+[INFO][2016-01-16 14:58:48,701][org.hibernate.cfg.HbmBinder]Mapping class: com.mythesis.ssh.model.Chair -> chair
+[INFO][2016-01-16 14:58:48,747][org.hibernate.cfg.HbmBinder]Mapping class: com.mythesis.ssh.model.Employee -> employee
+[INFO][2016-01-16 14:58:48,748][org.hibernate.cfg.HbmBinder]Mapping class: com.mythesis.ssh.model.Privilege -> privilege
+[INFO][2016-01-16 14:58:48,755][org.hibernate.cfg.HbmBinder]Mapping collection: com.mythesis.ssh.model.Privilege.children -> privilege
+[INFO][2016-01-16 14:58:48,756][org.hibernate.cfg.Configuration]Hibernate Validator not found: ignoring
+[INFO][2016-01-16 14:58:48,757][org.springframework.orm.hibernate3.LocalSessionFactoryBean]Building new Hibernate SessionFactory
+[INFO][2016-01-16 14:58:48,760][org.hibernate.cfg.search.HibernateSearchEventListenerRegister]Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+[INFO][2016-01-16 14:58:48,779][org.hibernate.connection.ConnectionProviderFactory]Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+[INFO][2016-01-16 14:58:48,977][com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource]Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hgeqdd9ekbgr3kjidsyc|6ca8f4d4, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hgeqdd9ekbgr3kjidsyc|6ca8f4d4, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql:///ordersystem, lastAcquisitionFailureDefaultUser -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 1800, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 8, maxStatementsPerConnection -> 5, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+[INFO][2016-01-16 14:58:49,598][org.hibernate.cfg.SettingsFactory]Database ->
+       name : MySQL
+    version : 5.1.52-community
+      major : 5
+      minor : 1
+[INFO][2016-01-16 14:58:49,598][org.hibernate.cfg.SettingsFactory]Driver ->
+       name : MySQL-AB JDBC Driver
+    version : mysql-connector-java-5.1.5 ( Revision: ${svn.Revision} )
+      major : 5
+      minor : 1
+[INFO][2016-01-16 14:58:49,783][org.hibernate.dialect.Dialect]Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+[INFO][2016-01-16 14:58:49,878][org.hibernate.engine.jdbc.JdbcSupportLoader]Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+[INFO][2016-01-16 14:58:49,913][org.hibernate.transaction.TransactionFactoryFactory]Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory
+[INFO][2016-01-16 14:58:49,916][org.hibernate.transaction.TransactionManagerLookupFactory]No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+[INFO][2016-01-16 14:58:49,916][org.hibernate.cfg.SettingsFactory]Automatic flush during beforeCompletion(): disabled
+[INFO][2016-01-16 14:58:49,916][org.hibernate.cfg.SettingsFactory]Automatic session close at end of transaction: disabled
+[INFO][2016-01-16 14:58:49,916][org.hibernate.cfg.SettingsFactory]JDBC batch size: 15
+[INFO][2016-01-16 14:58:49,918][org.hibernate.cfg.SettingsFactory]JDBC batch updates for versioned data: disabled
+[INFO][2016-01-16 14:58:49,927][org.hibernate.cfg.SettingsFactory]Scrollable result sets: enabled
+[INFO][2016-01-16 14:58:49,927][org.hibernate.cfg.SettingsFactory]JDBC3 getGeneratedKeys(): enabled
+[INFO][2016-01-16 14:58:49,927][org.hibernate.cfg.SettingsFactory]Connection release mode: auto
+[INFO][2016-01-16 14:58:49,928][org.hibernate.cfg.SettingsFactory]Maximum outer join fetch depth: 2
+[INFO][2016-01-16 14:58:49,929][org.hibernate.cfg.SettingsFactory]Default batch fetch size: 1
+[INFO][2016-01-16 14:58:49,929][org.hibernate.cfg.SettingsFactory]Generate SQL with comments: disabled
+[INFO][2016-01-16 14:58:49,929][org.hibernate.cfg.SettingsFactory]Order SQL updates by primary key: disabled
+[INFO][2016-01-16 14:58:49,929][org.hibernate.cfg.SettingsFactory]Order SQL inserts for batching: disabled
+[INFO][2016-01-16 14:58:49,929][org.hibernate.cfg.SettingsFactory]Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+[INFO][2016-01-16 14:58:49,958][org.hibernate.hql.ast.ASTQueryTranslatorFactory]Using ASTQueryTranslatorFactory
+[INFO][2016-01-16 14:58:49,958][org.hibernate.cfg.SettingsFactory]Query language substitutions: {}
+[INFO][2016-01-16 14:58:49,958][org.hibernate.cfg.SettingsFactory]JPA-QL strict compliance: disabled
+[INFO][2016-01-16 14:58:49,958][org.hibernate.cfg.SettingsFactory]Second-level cache: enabled
+[INFO][2016-01-16 14:58:49,959][org.hibernate.cfg.SettingsFactory]Query cache: disabled
+[INFO][2016-01-16 14:58:49,959][org.hibernate.cfg.SettingsFactory]Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+[INFO][2016-01-16 14:58:49,963][org.hibernate.cfg.SettingsFactory]Optimize cache for minimal puts: disabled
+[INFO][2016-01-16 14:58:49,964][org.hibernate.cfg.SettingsFactory]Structured second-level cache entries: disabled
+[INFO][2016-01-16 14:58:49,972][org.hibernate.cfg.SettingsFactory]Echoing all SQL to stdout
+[INFO][2016-01-16 14:58:49,974][org.hibernate.cfg.SettingsFactory]Statistics: disabled
+[INFO][2016-01-16 14:58:49,974][org.hibernate.cfg.SettingsFactory]Deleted entity synthetic identifier rollback: disabled
+[INFO][2016-01-16 14:58:49,975][org.hibernate.cfg.SettingsFactory]Default entity-mode: pojo
+[INFO][2016-01-16 14:58:49,975][org.hibernate.cfg.SettingsFactory]Named query checking : enabled
+[INFO][2016-01-16 14:58:49,975][org.hibernate.cfg.SettingsFactory]Check Nullability in Core (should be disabled when Bean Validation is on): enabled
+[INFO][2016-01-16 14:58:50,080][org.hibernate.impl.SessionFactoryImpl]building session factory
+[INFO][2016-01-16 14:58:50,739][org.hibernate.impl.SessionFactoryObjectFactory]Not binding factory to JNDI, no JNDI name configured
+[INFO][2016-01-16 14:58:50,768][org.hibernate.tool.hbm2ddl.SchemaUpdate]Running hbm2ddl schema update
+[INFO][2016-01-16 14:58:50,768][org.hibernate.tool.hbm2ddl.SchemaUpdate]fetching database metadata
+[INFO][2016-01-16 14:58:50,787][org.hibernate.tool.hbm2ddl.SchemaUpdate]updating schema
+[INFO][2016-01-16 14:58:50,882][org.hibernate.tool.hbm2ddl.TableMetadata]table found: ordersystem.chair
+[INFO][2016-01-16 14:58:50,882][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, num, isgood]
+[INFO][2016-01-16 14:58:50,882][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: []
+[INFO][2016-01-16 14:58:50,882][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [primary]
+[INFO][2016-01-16 14:58:50,891][org.hibernate.tool.hbm2ddl.TableMetadata]table found: ordersystem.employee
+[INFO][2016-01-16 14:58:50,892][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, phonenumber, birthday, loginname, sex, num, address, name, password]
+[INFO][2016-01-16 14:58:50,892][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: []
+[INFO][2016-01-16 14:58:50,892][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [loginname, primary]
+[INFO][2016-01-16 14:58:51,196][org.hibernate.tool.hbm2ddl.TableMetadata]table found: ordersystem.privilege
+[INFO][2016-01-16 14:58:51,197][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, name, parentid, url]
+[INFO][2016-01-16 14:58:51,197][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fka1faf6b14ab79f42]
+[INFO][2016-01-16 14:58:51,197][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [primary, fka1faf6b14ab79f42]
+[INFO][2016-01-16 14:58:51,198][org.hibernate.tool.hbm2ddl.SchemaUpdate]schema update complete
+[INFO][2016-01-16 14:58:51,622][org.springframework.orm.hibernate3.HibernateTransactionManager]Using DataSource [com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hgeqdd9ekbgr3kjidsyc|6ca8f4d4, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hgeqdd9ekbgr3kjidsyc|6ca8f4d4, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql:///ordersystem, lastAcquisitionFailureDefaultUser -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 1800, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 8, maxStatementsPerConnection -> 5, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2016-01-16 15:01:41,705][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@257218c4: startup date [Sat Jan 16 15:01:41 CST 2016]; root of context hierarchy
+[INFO][2016-01-16 15:01:41,787][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+[INFO][2016-01-16 15:01:42,236][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[INFO][2016-01-16 15:01:42,284][org.springframework.beans.factory.support.DefaultListableBeanFactory]Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@17144a84: defining beans [chairAction,employeeAction,employeeService,installPrivilege,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sessionFactory,txManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+[INFO][2016-01-16 15:01:42,330][com.mchange.v2.log.MLog]MLog clients using log4j logging.
+[INFO][2016-01-16 15:01:42,476][com.mchange.v2.c3p0.C3P0Registry]Initializing c3p0-0.9.1 [built 16-January-2007 14:46:42; debug? true; trace: 10]
+[INFO][2016-01-16 15:01:42,654][org.hibernate.annotations.common.Version]Hibernate Commons Annotations 3.2.0.Final
+[INFO][2016-01-16 15:01:42,660][org.hibernate.cfg.Environment]Hibernate 3.6.0.Final
+[INFO][2016-01-16 15:01:42,661][org.hibernate.cfg.Environment]hibernate.properties not found
+[INFO][2016-01-16 15:01:42,663][org.hibernate.cfg.Environment]Bytecode provider name : javassist
+[INFO][2016-01-16 15:01:42,665][org.hibernate.cfg.Environment]using JDK 1.4 java.sql.Timestamp handling
+[INFO][2016-01-16 15:01:42,714][org.hibernate.cfg.Configuration]configuring from url: file:/J:/GitRepository/ordersystem/build/classes/hibernate.cfg.xml
+[WARN][2016-01-16 15:01:42,753][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 15:01:42,777][org.hibernate.cfg.Configuration]Reading mappings from resource : com/mythesis/ssh/model/Chair.hbm.xml
+[WARN][2016-01-16 15:01:42,781][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 15:01:42,826][org.hibernate.cfg.Configuration]Reading mappings from resource : com/mythesis/ssh/model/Employee.hbm.xml
+[WARN][2016-01-16 15:01:42,841][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 15:01:42,868][org.hibernate.cfg.Configuration]Reading mappings from resource : com/mythesis/ssh/model/Privilege.hbm.xml
+[WARN][2016-01-16 15:01:42,895][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 15:01:42,912][org.hibernate.cfg.Configuration]Configured SessionFactory: null
+[INFO][2016-01-16 15:01:42,971][org.hibernate.cfg.HbmBinder]Mapping class: com.mythesis.ssh.model.Chair -> chair
+[INFO][2016-01-16 15:01:42,992][org.hibernate.cfg.HbmBinder]Mapping class: com.mythesis.ssh.model.Employee -> employee
+[INFO][2016-01-16 15:01:42,994][org.hibernate.cfg.HbmBinder]Mapping class: com.mythesis.ssh.model.Privilege -> privilege
+[INFO][2016-01-16 15:01:43,004][org.hibernate.cfg.HbmBinder]Mapping collection: com.mythesis.ssh.model.Privilege.children -> privilege
+[INFO][2016-01-16 15:01:43,004][org.hibernate.cfg.Configuration]Hibernate Validator not found: ignoring
+[INFO][2016-01-16 15:01:43,006][org.springframework.orm.hibernate3.LocalSessionFactoryBean]Building new Hibernate SessionFactory
+[INFO][2016-01-16 15:01:43,009][org.hibernate.cfg.search.HibernateSearchEventListenerRegister]Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+[INFO][2016-01-16 15:01:43,013][org.hibernate.connection.ConnectionProviderFactory]Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+[INFO][2016-01-16 15:01:43,070][com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource]Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hgeqdd9ekbkig89klk90|66c677a7, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hgeqdd9ekbkig89klk90|66c677a7, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql:///ordersystem, lastAcquisitionFailureDefaultUser -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 1800, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 8, maxStatementsPerConnection -> 5, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+[INFO][2016-01-16 15:01:43,263][org.hibernate.cfg.SettingsFactory]Database ->
+       name : MySQL
+    version : 5.1.52-community
+      major : 5
+      minor : 1
+[INFO][2016-01-16 15:01:43,263][org.hibernate.cfg.SettingsFactory]Driver ->
+       name : MySQL-AB JDBC Driver
+    version : mysql-connector-java-5.1.5 ( Revision: ${svn.Revision} )
+      major : 5
+      minor : 1
+[INFO][2016-01-16 15:01:43,280][org.hibernate.dialect.Dialect]Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+[INFO][2016-01-16 15:01:43,288][org.hibernate.engine.jdbc.JdbcSupportLoader]Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+[INFO][2016-01-16 15:01:43,291][org.hibernate.transaction.TransactionFactoryFactory]Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory
+[INFO][2016-01-16 15:01:43,292][org.hibernate.transaction.TransactionManagerLookupFactory]No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+[INFO][2016-01-16 15:01:43,292][org.hibernate.cfg.SettingsFactory]Automatic flush during beforeCompletion(): disabled
+[INFO][2016-01-16 15:01:43,292][org.hibernate.cfg.SettingsFactory]Automatic session close at end of transaction: disabled
+[INFO][2016-01-16 15:01:43,293][org.hibernate.cfg.SettingsFactory]JDBC batch size: 15
+[INFO][2016-01-16 15:01:43,293][org.hibernate.cfg.SettingsFactory]JDBC batch updates for versioned data: disabled
+[INFO][2016-01-16 15:01:43,293][org.hibernate.cfg.SettingsFactory]Scrollable result sets: enabled
+[INFO][2016-01-16 15:01:43,293][org.hibernate.cfg.SettingsFactory]JDBC3 getGeneratedKeys(): enabled
+[INFO][2016-01-16 15:01:43,293][org.hibernate.cfg.SettingsFactory]Connection release mode: auto
+[INFO][2016-01-16 15:01:43,294][org.hibernate.cfg.SettingsFactory]Maximum outer join fetch depth: 2
+[INFO][2016-01-16 15:01:43,294][org.hibernate.cfg.SettingsFactory]Default batch fetch size: 1
+[INFO][2016-01-16 15:01:43,294][org.hibernate.cfg.SettingsFactory]Generate SQL with comments: disabled
+[INFO][2016-01-16 15:01:43,294][org.hibernate.cfg.SettingsFactory]Order SQL updates by primary key: disabled
+[INFO][2016-01-16 15:01:43,294][org.hibernate.cfg.SettingsFactory]Order SQL inserts for batching: disabled
+[INFO][2016-01-16 15:01:43,294][org.hibernate.cfg.SettingsFactory]Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+[INFO][2016-01-16 15:01:43,295][org.hibernate.hql.ast.ASTQueryTranslatorFactory]Using ASTQueryTranslatorFactory
+[INFO][2016-01-16 15:01:43,295][org.hibernate.cfg.SettingsFactory]Query language substitutions: {}
+[INFO][2016-01-16 15:01:43,296][org.hibernate.cfg.SettingsFactory]JPA-QL strict compliance: disabled
+[INFO][2016-01-16 15:01:43,296][org.hibernate.cfg.SettingsFactory]Second-level cache: enabled
+[INFO][2016-01-16 15:01:43,296][org.hibernate.cfg.SettingsFactory]Query cache: disabled
+[INFO][2016-01-16 15:01:43,296][org.hibernate.cfg.SettingsFactory]Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+[INFO][2016-01-16 15:01:43,297][org.hibernate.cfg.SettingsFactory]Optimize cache for minimal puts: disabled
+[INFO][2016-01-16 15:01:43,297][org.hibernate.cfg.SettingsFactory]Structured second-level cache entries: disabled
+[INFO][2016-01-16 15:01:43,300][org.hibernate.cfg.SettingsFactory]Echoing all SQL to stdout
+[INFO][2016-01-16 15:01:43,300][org.hibernate.cfg.SettingsFactory]Statistics: disabled
+[INFO][2016-01-16 15:01:43,301][org.hibernate.cfg.SettingsFactory]Deleted entity synthetic identifier rollback: disabled
+[INFO][2016-01-16 15:01:43,301][org.hibernate.cfg.SettingsFactory]Default entity-mode: pojo
+[INFO][2016-01-16 15:01:43,301][org.hibernate.cfg.SettingsFactory]Named query checking : enabled
+[INFO][2016-01-16 15:01:43,301][org.hibernate.cfg.SettingsFactory]Check Nullability in Core (should be disabled when Bean Validation is on): enabled
+[INFO][2016-01-16 15:01:43,316][org.hibernate.impl.SessionFactoryImpl]building session factory
+[INFO][2016-01-16 15:01:43,479][org.hibernate.impl.SessionFactoryObjectFactory]Not binding factory to JNDI, no JNDI name configured
+[INFO][2016-01-16 15:01:43,484][org.hibernate.tool.hbm2ddl.SchemaUpdate]Running hbm2ddl schema update
+[INFO][2016-01-16 15:01:43,484][org.hibernate.tool.hbm2ddl.SchemaUpdate]fetching database metadata
+[INFO][2016-01-16 15:01:43,487][org.hibernate.tool.hbm2ddl.SchemaUpdate]updating schema
+[INFO][2016-01-16 15:01:43,508][org.hibernate.tool.hbm2ddl.TableMetadata]table found: ordersystem.chair
+[INFO][2016-01-16 15:01:43,508][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, num, isgood]
+[INFO][2016-01-16 15:01:43,508][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: []
+[INFO][2016-01-16 15:01:43,508][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [primary]
+[INFO][2016-01-16 15:01:43,515][org.hibernate.tool.hbm2ddl.TableMetadata]table found: ordersystem.employee
+[INFO][2016-01-16 15:01:43,515][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, phonenumber, birthday, loginname, sex, num, address, name, password]
+[INFO][2016-01-16 15:01:43,515][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: []
+[INFO][2016-01-16 15:01:43,515][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [loginname, primary]
+[INFO][2016-01-16 15:01:43,522][org.hibernate.tool.hbm2ddl.TableMetadata]table found: ordersystem.privilege
+[INFO][2016-01-16 15:01:43,522][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, name, parentid, url]
+[INFO][2016-01-16 15:01:43,522][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fka1faf6b14ab79f42]
+[INFO][2016-01-16 15:01:43,522][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [primary, fka1faf6b14ab79f42]
+[INFO][2016-01-16 15:01:43,523][org.hibernate.tool.hbm2ddl.SchemaUpdate]schema update complete
+[INFO][2016-01-16 15:01:43,668][org.springframework.orm.hibernate3.HibernateTransactionManager]Using DataSource [com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hgeqdd9ekbkig89klk90|66c677a7, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hgeqdd9ekbkig89klk90|66c677a7, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql:///ordersystem, lastAcquisitionFailureDefaultUser -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 1800, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 8, maxStatementsPerConnection -> 5, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2016-01-16 15:02:59,338][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@65b7ff10: startup date [Sat Jan 16 15:02:59 CST 2016]; root of context hierarchy
+[INFO][2016-01-16 15:02:59,411][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+[INFO][2016-01-16 15:03:00,038][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[INFO][2016-01-16 15:03:00,079][org.springframework.beans.factory.support.DefaultListableBeanFactory]Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3f375021: defining beans [chairAction,employeeAction,employeeService,installPrivilege,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sessionFactory,txManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+[INFO][2016-01-16 15:03:00,131][com.mchange.v2.log.MLog]MLog clients using log4j logging.
+[INFO][2016-01-16 15:03:00,277][com.mchange.v2.c3p0.C3P0Registry]Initializing c3p0-0.9.1 [built 16-January-2007 14:46:42; debug? true; trace: 10]
+[INFO][2016-01-16 15:03:00,466][org.hibernate.annotations.common.Version]Hibernate Commons Annotations 3.2.0.Final
+[INFO][2016-01-16 15:03:00,471][org.hibernate.cfg.Environment]Hibernate 3.6.0.Final
+[INFO][2016-01-16 15:03:00,472][org.hibernate.cfg.Environment]hibernate.properties not found
+[INFO][2016-01-16 15:03:00,474][org.hibernate.cfg.Environment]Bytecode provider name : javassist
+[INFO][2016-01-16 15:03:00,477][org.hibernate.cfg.Environment]using JDK 1.4 java.sql.Timestamp handling
+[INFO][2016-01-16 15:03:00,523][org.hibernate.cfg.Configuration]configuring from url: file:/J:/GitRepository/ordersystem/build/classes/hibernate.cfg.xml
+[WARN][2016-01-16 15:03:00,607][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 15:03:00,626][org.hibernate.cfg.Configuration]Reading mappings from resource : com/mythesis/ssh/model/Chair.hbm.xml
+[WARN][2016-01-16 15:03:00,630][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 15:03:00,671][org.hibernate.cfg.Configuration]Reading mappings from resource : com/mythesis/ssh/model/Employee.hbm.xml
+[WARN][2016-01-16 15:03:00,695][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 15:03:00,717][org.hibernate.cfg.Configuration]Reading mappings from resource : com/mythesis/ssh/model/Privilege.hbm.xml
+[WARN][2016-01-16 15:03:00,720][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 15:03:00,738][org.hibernate.cfg.Configuration]Configured SessionFactory: null
+[INFO][2016-01-16 15:03:00,799][org.hibernate.cfg.HbmBinder]Mapping class: com.mythesis.ssh.model.Chair -> chair
+[INFO][2016-01-16 15:03:00,823][org.hibernate.cfg.HbmBinder]Mapping class: com.mythesis.ssh.model.Employee -> employee
+[INFO][2016-01-16 15:03:00,825][org.hibernate.cfg.HbmBinder]Mapping class: com.mythesis.ssh.model.Privilege -> privilege
+[INFO][2016-01-16 15:03:00,836][org.hibernate.cfg.HbmBinder]Mapping collection: com.mythesis.ssh.model.Privilege.children -> privilege
+[INFO][2016-01-16 15:03:00,837][org.hibernate.cfg.Configuration]Hibernate Validator not found: ignoring
+[INFO][2016-01-16 15:03:00,839][org.springframework.orm.hibernate3.LocalSessionFactoryBean]Building new Hibernate SessionFactory
+[INFO][2016-01-16 15:03:00,842][org.hibernate.cfg.search.HibernateSearchEventListenerRegister]Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+[INFO][2016-01-16 15:03:00,846][org.hibernate.connection.ConnectionProviderFactory]Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+[INFO][2016-01-16 15:03:00,900][com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource]Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hgeqdd9ekbm6hd1ncp6v5|29298c7d, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hgeqdd9ekbm6hd1ncp6v5|29298c7d, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql:///ordersystem, lastAcquisitionFailureDefaultUser -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 1800, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 8, maxStatementsPerConnection -> 5, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+[INFO][2016-01-16 15:03:01,099][org.hibernate.cfg.SettingsFactory]Database ->
+       name : MySQL
+    version : 5.1.52-community
+      major : 5
+      minor : 1
+[INFO][2016-01-16 15:03:01,100][org.hibernate.cfg.SettingsFactory]Driver ->
+       name : MySQL-AB JDBC Driver
+    version : mysql-connector-java-5.1.5 ( Revision: ${svn.Revision} )
+      major : 5
+      minor : 1
+[INFO][2016-01-16 15:03:01,115][org.hibernate.dialect.Dialect]Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+[INFO][2016-01-16 15:03:01,123][org.hibernate.engine.jdbc.JdbcSupportLoader]Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+[INFO][2016-01-16 15:03:01,127][org.hibernate.transaction.TransactionFactoryFactory]Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory
+[INFO][2016-01-16 15:03:01,128][org.hibernate.transaction.TransactionManagerLookupFactory]No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+[INFO][2016-01-16 15:03:01,128][org.hibernate.cfg.SettingsFactory]Automatic flush during beforeCompletion(): disabled
+[INFO][2016-01-16 15:03:01,129][org.hibernate.cfg.SettingsFactory]Automatic session close at end of transaction: disabled
+[INFO][2016-01-16 15:03:01,129][org.hibernate.cfg.SettingsFactory]JDBC batch size: 15
+[INFO][2016-01-16 15:03:01,129][org.hibernate.cfg.SettingsFactory]JDBC batch updates for versioned data: disabled
+[INFO][2016-01-16 15:03:01,129][org.hibernate.cfg.SettingsFactory]Scrollable result sets: enabled
+[INFO][2016-01-16 15:03:01,129][org.hibernate.cfg.SettingsFactory]JDBC3 getGeneratedKeys(): enabled
+[INFO][2016-01-16 15:03:01,129][org.hibernate.cfg.SettingsFactory]Connection release mode: auto
+[INFO][2016-01-16 15:03:01,130][org.hibernate.cfg.SettingsFactory]Maximum outer join fetch depth: 2
+[INFO][2016-01-16 15:03:01,130][org.hibernate.cfg.SettingsFactory]Default batch fetch size: 1
+[INFO][2016-01-16 15:03:01,130][org.hibernate.cfg.SettingsFactory]Generate SQL with comments: disabled
+[INFO][2016-01-16 15:03:01,130][org.hibernate.cfg.SettingsFactory]Order SQL updates by primary key: disabled
+[INFO][2016-01-16 15:03:01,130][org.hibernate.cfg.SettingsFactory]Order SQL inserts for batching: disabled
+[INFO][2016-01-16 15:03:01,130][org.hibernate.cfg.SettingsFactory]Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+[INFO][2016-01-16 15:03:01,131][org.hibernate.hql.ast.ASTQueryTranslatorFactory]Using ASTQueryTranslatorFactory
+[INFO][2016-01-16 15:03:01,132][org.hibernate.cfg.SettingsFactory]Query language substitutions: {}
+[INFO][2016-01-16 15:03:01,132][org.hibernate.cfg.SettingsFactory]JPA-QL strict compliance: disabled
+[INFO][2016-01-16 15:03:01,132][org.hibernate.cfg.SettingsFactory]Second-level cache: enabled
+[INFO][2016-01-16 15:03:01,132][org.hibernate.cfg.SettingsFactory]Query cache: disabled
+[INFO][2016-01-16 15:03:01,132][org.hibernate.cfg.SettingsFactory]Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+[INFO][2016-01-16 15:03:01,132][org.hibernate.cfg.SettingsFactory]Optimize cache for minimal puts: disabled
+[INFO][2016-01-16 15:03:01,133][org.hibernate.cfg.SettingsFactory]Structured second-level cache entries: disabled
+[INFO][2016-01-16 15:03:01,136][org.hibernate.cfg.SettingsFactory]Echoing all SQL to stdout
+[INFO][2016-01-16 15:03:01,136][org.hibernate.cfg.SettingsFactory]Statistics: disabled
+[INFO][2016-01-16 15:03:01,136][org.hibernate.cfg.SettingsFactory]Deleted entity synthetic identifier rollback: disabled
+[INFO][2016-01-16 15:03:01,136][org.hibernate.cfg.SettingsFactory]Default entity-mode: pojo
+[INFO][2016-01-16 15:03:01,136][org.hibernate.cfg.SettingsFactory]Named query checking : enabled
+[INFO][2016-01-16 15:03:01,136][org.hibernate.cfg.SettingsFactory]Check Nullability in Core (should be disabled when Bean Validation is on): enabled
+[INFO][2016-01-16 15:03:01,151][org.hibernate.impl.SessionFactoryImpl]building session factory
+[INFO][2016-01-16 15:03:01,316][org.hibernate.impl.SessionFactoryObjectFactory]Not binding factory to JNDI, no JNDI name configured
+[INFO][2016-01-16 15:03:01,320][org.hibernate.tool.hbm2ddl.SchemaUpdate]Running hbm2ddl schema update
+[INFO][2016-01-16 15:03:01,320][org.hibernate.tool.hbm2ddl.SchemaUpdate]fetching database metadata
+[INFO][2016-01-16 15:03:01,322][org.hibernate.tool.hbm2ddl.SchemaUpdate]updating schema
+[INFO][2016-01-16 15:03:01,425][org.hibernate.tool.hbm2ddl.TableMetadata]table found: ordersystem.chair
+[INFO][2016-01-16 15:03:01,425][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, num, isgood]
+[INFO][2016-01-16 15:03:01,425][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: []
+[INFO][2016-01-16 15:03:01,425][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [primary]
+[INFO][2016-01-16 15:03:01,432][org.hibernate.tool.hbm2ddl.TableMetadata]table found: ordersystem.employee
+[INFO][2016-01-16 15:03:01,432][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, phonenumber, birthday, loginname, sex, num, address, name, password]
+[INFO][2016-01-16 15:03:01,433][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: []
+[INFO][2016-01-16 15:03:01,433][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [loginname, primary]
+[INFO][2016-01-16 15:03:01,440][org.hibernate.tool.hbm2ddl.TableMetadata]table found: ordersystem.privilege
+[INFO][2016-01-16 15:03:01,440][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, name, parentid, url]
+[INFO][2016-01-16 15:03:01,440][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fka1faf6b14ab79f42]
+[INFO][2016-01-16 15:03:01,440][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [primary, fka1faf6b14ab79f42]
+[INFO][2016-01-16 15:03:01,440][org.hibernate.tool.hbm2ddl.SchemaUpdate]schema update complete
+[INFO][2016-01-16 15:03:01,591][org.springframework.orm.hibernate3.HibernateTransactionManager]Using DataSource [com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hgeqdd9ekbm6hd1ncp6v5|29298c7d, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hgeqdd9ekbm6hd1ncp6v5|29298c7d, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql:///ordersystem, lastAcquisitionFailureDefaultUser -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 1800, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 8, maxStatementsPerConnection -> 5, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]] of Hibernate SessionFactory for HibernateTransactionManager
+[WARN][2016-01-16 15:03:01,890][org.hibernate.util.JDBCExceptionReporter]SQL Error: 1048, SQLState: 23000
+[ERROR][2016-01-16 15:03:01,891][org.hibernate.util.JDBCExceptionReporter]Column 'url' cannot be null
+[INFO][2016-01-16 15:12:49,025][org.springframework.context.support.ClassPathXmlApplicationContext]Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@12caa79c: startup date [Sat Jan 16 15:12:49 CST 2016]; root of context hierarchy
+[INFO][2016-01-16 15:12:49,085][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+[INFO][2016-01-16 15:12:49,537][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [config.properties]
+[INFO][2016-01-16 15:12:49,579][org.springframework.beans.factory.support.DefaultListableBeanFactory]Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@605d3821: defining beans [chairAction,employeeAction,employeeService,installPrivilege,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sessionFactory,txManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+[INFO][2016-01-16 15:12:49,624][com.mchange.v2.log.MLog]MLog clients using log4j logging.
+[INFO][2016-01-16 15:12:49,778][com.mchange.v2.c3p0.C3P0Registry]Initializing c3p0-0.9.1 [built 16-January-2007 14:46:42; debug? true; trace: 10]
+[INFO][2016-01-16 15:12:49,966][org.hibernate.annotations.common.Version]Hibernate Commons Annotations 3.2.0.Final
+[INFO][2016-01-16 15:12:49,971][org.hibernate.cfg.Environment]Hibernate 3.6.0.Final
+[INFO][2016-01-16 15:12:49,972][org.hibernate.cfg.Environment]hibernate.properties not found
+[INFO][2016-01-16 15:12:49,975][org.hibernate.cfg.Environment]Bytecode provider name : javassist
+[INFO][2016-01-16 15:12:49,977][org.hibernate.cfg.Environment]using JDK 1.4 java.sql.Timestamp handling
+[INFO][2016-01-16 15:12:50,028][org.hibernate.cfg.Configuration]configuring from url: file:/J:/GitRepository/ordersystem/build/classes/hibernate.cfg.xml
+[WARN][2016-01-16 15:12:50,053][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 15:12:50,075][org.hibernate.cfg.Configuration]Reading mappings from resource : com/mythesis/ssh/model/Chair.hbm.xml
+[WARN][2016-01-16 15:12:50,079][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 15:12:50,124][org.hibernate.cfg.Configuration]Reading mappings from resource : com/mythesis/ssh/model/Employee.hbm.xml
+[WARN][2016-01-16 15:12:50,127][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 15:12:50,153][org.hibernate.cfg.Configuration]Reading mappings from resource : com/mythesis/ssh/model/Privilege.hbm.xml
+[WARN][2016-01-16 15:12:50,157][org.hibernate.util.DTDEntityResolver]recognized obsolete hibernate namespace http://hibernate.sourceforge.net/. Use namespace http://www.hibernate.org/dtd/ instead. Refer to Hibernate 3.6 Migration Guide!
+[INFO][2016-01-16 15:12:50,174][org.hibernate.cfg.Configuration]Configured SessionFactory: null
+[INFO][2016-01-16 15:12:50,227][org.hibernate.cfg.HbmBinder]Mapping class: com.mythesis.ssh.model.Chair -> chair
+[INFO][2016-01-16 15:12:50,246][org.hibernate.cfg.HbmBinder]Mapping class: com.mythesis.ssh.model.Employee -> employee
+[INFO][2016-01-16 15:12:50,249][org.hibernate.cfg.HbmBinder]Mapping class: com.mythesis.ssh.model.Privilege -> privilege
+[INFO][2016-01-16 15:12:50,260][org.hibernate.cfg.HbmBinder]Mapping collection: com.mythesis.ssh.model.Privilege.children -> privilege
+[INFO][2016-01-16 15:12:50,261][org.hibernate.cfg.Configuration]Hibernate Validator not found: ignoring
+[INFO][2016-01-16 15:12:50,264][org.springframework.orm.hibernate3.LocalSessionFactoryBean]Building new Hibernate SessionFactory
+[INFO][2016-01-16 15:12:50,268][org.hibernate.cfg.search.HibernateSearchEventListenerRegister]Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+[INFO][2016-01-16 15:12:50,273][org.hibernate.connection.ConnectionProviderFactory]Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+[INFO][2016-01-16 15:12:50,327][com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource]Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hgeqdd9ekbytcb70mnqf|3b114c4f, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hgeqdd9ekbytcb70mnqf|3b114c4f, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql:///ordersystem, lastAcquisitionFailureDefaultUser -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 1800, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 8, maxStatementsPerConnection -> 5, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+[INFO][2016-01-16 15:12:50,525][org.hibernate.cfg.SettingsFactory]Database ->
+       name : MySQL
+    version : 5.1.52-community
+      major : 5
+      minor : 1
+[INFO][2016-01-16 15:12:50,525][org.hibernate.cfg.SettingsFactory]Driver ->
+       name : MySQL-AB JDBC Driver
+    version : mysql-connector-java-5.1.5 ( Revision: ${svn.Revision} )
+      major : 5
+      minor : 1
+[INFO][2016-01-16 15:12:50,541][org.hibernate.dialect.Dialect]Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+[INFO][2016-01-16 15:12:50,550][org.hibernate.engine.jdbc.JdbcSupportLoader]Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+[INFO][2016-01-16 15:12:50,554][org.hibernate.transaction.TransactionFactoryFactory]Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory
+[INFO][2016-01-16 15:12:50,554][org.hibernate.transaction.TransactionManagerLookupFactory]No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+[INFO][2016-01-16 15:12:50,555][org.hibernate.cfg.SettingsFactory]Automatic flush during beforeCompletion(): disabled
+[INFO][2016-01-16 15:12:50,555][org.hibernate.cfg.SettingsFactory]Automatic session close at end of transaction: disabled
+[INFO][2016-01-16 15:12:50,555][org.hibernate.cfg.SettingsFactory]JDBC batch size: 15
+[INFO][2016-01-16 15:12:50,555][org.hibernate.cfg.SettingsFactory]JDBC batch updates for versioned data: disabled
+[INFO][2016-01-16 15:12:50,555][org.hibernate.cfg.SettingsFactory]Scrollable result sets: enabled
+[INFO][2016-01-16 15:12:50,555][org.hibernate.cfg.SettingsFactory]JDBC3 getGeneratedKeys(): enabled
+[INFO][2016-01-16 15:12:50,555][org.hibernate.cfg.SettingsFactory]Connection release mode: auto
+[INFO][2016-01-16 15:12:50,556][org.hibernate.cfg.SettingsFactory]Maximum outer join fetch depth: 2
+[INFO][2016-01-16 15:12:50,556][org.hibernate.cfg.SettingsFactory]Default batch fetch size: 1
+[INFO][2016-01-16 15:12:50,556][org.hibernate.cfg.SettingsFactory]Generate SQL with comments: disabled
+[INFO][2016-01-16 15:12:50,556][org.hibernate.cfg.SettingsFactory]Order SQL updates by primary key: disabled
+[INFO][2016-01-16 15:12:50,556][org.hibernate.cfg.SettingsFactory]Order SQL inserts for batching: disabled
+[INFO][2016-01-16 15:12:50,556][org.hibernate.cfg.SettingsFactory]Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+[INFO][2016-01-16 15:12:50,557][org.hibernate.hql.ast.ASTQueryTranslatorFactory]Using ASTQueryTranslatorFactory
+[INFO][2016-01-16 15:12:50,558][org.hibernate.cfg.SettingsFactory]Query language substitutions: {}
+[INFO][2016-01-16 15:12:50,558][org.hibernate.cfg.SettingsFactory]JPA-QL strict compliance: disabled
+[INFO][2016-01-16 15:12:50,558][org.hibernate.cfg.SettingsFactory]Second-level cache: enabled
+[INFO][2016-01-16 15:12:50,558][org.hibernate.cfg.SettingsFactory]Query cache: disabled
+[INFO][2016-01-16 15:12:50,558][org.hibernate.cfg.SettingsFactory]Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+[INFO][2016-01-16 15:12:50,559][org.hibernate.cfg.SettingsFactory]Optimize cache for minimal puts: disabled
+[INFO][2016-01-16 15:12:50,559][org.hibernate.cfg.SettingsFactory]Structured second-level cache entries: disabled
+[INFO][2016-01-16 15:12:50,563][org.hibernate.cfg.SettingsFactory]Echoing all SQL to stdout
+[INFO][2016-01-16 15:12:50,564][org.hibernate.cfg.SettingsFactory]Statistics: disabled
+[INFO][2016-01-16 15:12:50,564][org.hibernate.cfg.SettingsFactory]Deleted entity synthetic identifier rollback: disabled
+[INFO][2016-01-16 15:12:50,564][org.hibernate.cfg.SettingsFactory]Default entity-mode: pojo
+[INFO][2016-01-16 15:12:50,564][org.hibernate.cfg.SettingsFactory]Named query checking : enabled
+[INFO][2016-01-16 15:12:50,564][org.hibernate.cfg.SettingsFactory]Check Nullability in Core (should be disabled when Bean Validation is on): enabled
+[INFO][2016-01-16 15:12:50,578][org.hibernate.impl.SessionFactoryImpl]building session factory
+[INFO][2016-01-16 15:12:50,754][org.hibernate.impl.SessionFactoryObjectFactory]Not binding factory to JNDI, no JNDI name configured
+[INFO][2016-01-16 15:12:50,758][org.hibernate.tool.hbm2ddl.SchemaUpdate]Running hbm2ddl schema update
+[INFO][2016-01-16 15:12:50,758][org.hibernate.tool.hbm2ddl.SchemaUpdate]fetching database metadata
+[INFO][2016-01-16 15:12:50,761][org.hibernate.tool.hbm2ddl.SchemaUpdate]updating schema
+[INFO][2016-01-16 15:12:50,782][org.hibernate.tool.hbm2ddl.TableMetadata]table found: ordersystem.chair
+[INFO][2016-01-16 15:12:50,782][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, num, isgood]
+[INFO][2016-01-16 15:12:50,782][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: []
+[INFO][2016-01-16 15:12:50,783][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [primary]
+[INFO][2016-01-16 15:12:50,789][org.hibernate.tool.hbm2ddl.TableMetadata]table found: ordersystem.employee
+[INFO][2016-01-16 15:12:50,789][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, phonenumber, birthday, loginname, sex, num, address, name, password]
+[INFO][2016-01-16 15:12:50,789][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: []
+[INFO][2016-01-16 15:12:50,789][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [loginname, primary]
+[INFO][2016-01-16 15:12:50,797][org.hibernate.tool.hbm2ddl.TableMetadata]table found: ordersystem.privilege
+[INFO][2016-01-16 15:12:50,797][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, name, parentid, url]
+[INFO][2016-01-16 15:12:50,797][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fka1faf6b14ab79f42]
+[INFO][2016-01-16 15:12:50,797][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [primary, fka1faf6b14ab79f42]
+[INFO][2016-01-16 15:12:50,798][org.hibernate.tool.hbm2ddl.SchemaUpdate]schema update complete
+[INFO][2016-01-16 15:12:50,947][org.springframework.orm.hibernate3.HibernateTransactionManager]Using DataSource [com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 3, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hgeqdd9ekbytcb70mnqf|3b114c4f, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hgeqdd9ekbytcb70mnqf|3b114c4f, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql:///ordersystem, lastAcquisitionFailureDefaultUser -> null, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 1800, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 5, maxStatements -> 8, maxStatementsPerConnection -> 5, minPoolSize -> 3, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2016-01-16 15:12:51,229][com.mythesis.ssh.util.InstallPrivilege]权限数据安装成功

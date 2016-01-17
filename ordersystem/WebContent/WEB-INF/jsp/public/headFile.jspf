@@ -7,6 +7,7 @@
 	href="${pageContext.request.contextPath}/style/Css/bootstrap-responsive.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/Css/style.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/style/Js/jquery.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/style/Js/jquery.validate.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/style/Js/jquery.sorted.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/style/Js/bootstrap.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/style/Js/ckform.js"></script>

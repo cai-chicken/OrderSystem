@@ -16,25 +16,25 @@
 		<input type="hidden" name="id" value="${employee.id }">
 		<table class="table table-bordered table-hover definewidth m10">
 			<tr>
-				<td width="10%" class="tableleft">编号</td>
+				<td width="10%" class="tableleft">编号<span style="color: red;">*</span></td>
 				<td>
 					<input type="text" name="num" value=${employee.num }>
 				</td>
 			</tr>
 			<tr>
-				<td width="10%" class="tableleft">姓名</td>
+				<td width="10%" class="tableleft">姓名<span style="color: red;">*</span></td>
 				<td>
 					<input type="text" name="name" value=${employee.name }>
 				</td>
 			</tr>
 			<tr>
-				<td class="tableleft">登录名</td>
+				<td class="tableleft">登录名<span style="color: red;">*</span></td>
 				<td>
 					<input type="text" name="loginName" value=${employee.loginName }>
 				</td>
 			</tr>
 			<tr>
-				<td class="tableleft">性别</td>
+				<td class="tableleft">性别<span style="color: red;">*</span></td>
 				<td>
 					<c:if test="${employee.sex == '男' || employee.sex == null}">
 						<input type="radio" name="sex" value="男" checked> &nbsp;男&nbsp;&nbsp;
@@ -59,7 +59,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="tableleft">手机号码</td>
+				<td class="tableleft">手机号码<span style="color: red;">*</span></td>
 				<td>
 					<input type="text" name="phoneNumber" value=${employee.phoneNumber }>
 				</td>

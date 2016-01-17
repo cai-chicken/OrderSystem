@@ -3,10 +3,48 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>角色管理</title>
+<title>角色列表</title>
+<%@ include file="/WEB-INF/jsp/public/headFile.jspf" %>
 </head>
 <body>
-角色列表
+	<form class="form-inline definewidth m20" action="role_list.action" method="post">
+		角色名称：
+		<input type="text" name="name" class="abc input-default" value="">&nbsp;&nbsp;
+		<button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
+		<button type="button" class="btn btn-success" id="addnew">新增角色</button>
+	</form>
+	<table class="table table-bordered table-hover definewidth m10">
+		<thead>
+			<tr>
+				<th>角色名称</th>
+				<th>角色描述</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<!-- 列表数据 -->
+		<c:forEach items="${pageBean.recordList }" var="role">
+		<tr>
+			<td>${role.name }</td>
+			<td>${role.description}</td>
+			<td>
+				<a href="role_editUI.action?id=${role.id }">编辑</a>
+				<a href="role_delete.action?id=${role.id }" onclick="return confirm('确定要删除吗？')">删除</a>
+			</td>
+		</tr>
+		</c:forEach>
+	</table>
+	<!--分页-->
+	<c:if test="${pageBean.recordCount > 0 }">
+		<%@include file="/WEB-INF/jsp/public/pageView.jspf" %>
+	</c:if>
 </body>
+	<script>
+		$(function () {
+			$('#addnew').click(function(){
+				window.location.href = "role_addUI.action";
+			});
+	    });
+	</script>
+
 </html>
+

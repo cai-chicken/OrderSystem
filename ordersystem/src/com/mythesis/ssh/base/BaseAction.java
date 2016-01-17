@@ -9,7 +9,10 @@ import javax.annotation.Resource;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.mythesis.ssh.model.Role;
 import com.mythesis.ssh.service.EmployeeService;
+import com.mythesis.ssh.service.PrivilegeService;
+import com.mythesis.ssh.service.RoleService;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -24,6 +27,12 @@ public class BaseAction extends ActionSupport {
 	// ------------------------------Service提供-----------------------------------
 	@Resource
 	protected EmployeeService employeeService;//员工Service
+	
+	@Resource
+	protected RoleService roleService;//角色Service
+	
+	@Resource
+	protected PrivilegeService privilegeService;//权限Service
 
 	// ------------------------------获取当前登录-----------------------------------
 	/*protected User getCurrentUser() {

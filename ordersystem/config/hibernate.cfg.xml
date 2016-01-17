@@ -16,9 +16,10 @@
 		<property name="hbm2ddl.auto">update</property>
 
 		<!-- 3，导入映射文件 -->
-		<mapping resource="com/mythesis/ssh/model/Chair.hbm.xml" />
 		<mapping resource="com/mythesis/ssh/model/Employee.hbm.xml" />
+		<mapping resource="com/mythesis/ssh/model/Role.hbm.xml" />
 		<mapping resource="com/mythesis/ssh/model/Privilege.hbm.xml" />
+		<mapping resource="com/mythesis/ssh/model/Chair.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>

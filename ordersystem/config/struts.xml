@@ -24,5 +24,11 @@
 			<result name="saveUI">/WEB-INF/jsp/employee/saveUI.jsp</result>
 			<result name="toList" type="redirectAction">employee_list</result>
 		</action>
+		<!-- 角色管理 -->
+		<action name="role_*" class="roleAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/role/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/role/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">role_list</result>
+		</action>
 	</package>
 </struts>
