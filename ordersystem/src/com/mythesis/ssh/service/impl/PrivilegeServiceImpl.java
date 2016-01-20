@@ -1,5 +1,8 @@
 package com.mythesis.ssh.service.impl;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,6 +12,21 @@ import com.mythesis.ssh.service.PrivilegeService;
 
 @Service("privilegeService")
 @Transactional
+@SuppressWarnings("unchecked")
 public class PrivilegeServiceImpl extends BaseDaoImpl<Privilege> implements PrivilegeService {
+
+	@Override
+	public List<Privilege> getTopPrivileges() {
+		return getSession().createQuery(//
+				"FROM Privilege p WHERE p.parent IS NULL")//
+				.list();
+	}
+
+	@Override
+	public Collection<String> getAllPrivilegeUrls() {
+		return getSession().createQuery(//
+				"SELECT DISTINCT p.url FROM Privilege p WHERE p.url IS NOT NULL")//
+				.list();
+	}
 
 }

@@ -15,6 +15,10 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:applicationContext*.xml</param-value>
 	</context-param>
+	<!-- 用来初始化左侧权限列表，一定要放在ContextLoaderListener之后，因为需要用到spring的容器 -->
+	<listener>
+		<listener-class>com.mythesis.ssh.util.InitAllPrivilegesListener</listener-class>
+	</listener>
 	
 	<filter>
 		<filter-name>struts2</filter-name>

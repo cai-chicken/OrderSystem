@@ -48,13 +48,16 @@ public class RoleAction extends ModelDrivenBaseAction<Role> {
 	/** 添加 */
 	public String add() throws Exception {
 		// 1、保存数据到数据库中,执行相关service的save(model)方法
+		roleService.save(model);
 		return "toList";
 	}
 
 	/** 修改页面 */
 	public String editUI() throws Exception {
 		// 1、找到对应的id的对象
+		Role role = roleService.getById(model.getId());
 		// 2、将其放入到ValueStack对象的stack中
+		ActionContext.getContext().put("role", role);
 		return "saveUI";
 	}
 
@@ -63,6 +66,7 @@ public class RoleAction extends ModelDrivenBaseAction<Role> {
 		// 1、从数据库中找到对应的id的对象
 		// 2、设置需要修改的属性
 		// 3、更新到数据库中
+		roleService.update(model);
 		return "toList";
 	}
 }

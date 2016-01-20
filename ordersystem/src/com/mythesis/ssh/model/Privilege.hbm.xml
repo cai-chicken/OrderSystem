@@ -14,7 +14,7 @@
 		<!-- parent属性，是本类与Privilege类的多对一关系 -->
 		<many-to-one name="parent" class="Privilege" column="parentId"/>
 		<!-- children属性，是本类与Privilege类的一对多关系 -->
-		<set name="children">
+		<set name="children" lazy="false">
 			<key column="parentId"></key>
 			<one-to-many class="Privilege"/>
 		</set>

@@ -5,63 +5,65 @@
 <head>
 <title></title>
 <%@ include file="/WEB-INF/jsp/public/headFile.jspf" %>
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/style/Js/jquery_treeview/jquery.treeview.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/style/Js/jquery_treeview/jquery.treeview.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("#tree").treeview();
+});
+</script>
 </head>
 <body>
-	<form action="role_${role.id == null ? add:edit }.action" method="post" class="definewidth m20">
+	<c:if test="${role.id == null }">
+		<form action="role_add.action" method="post" class="definewidth m20">
+	</c:if>
+	<c:if test="${role.id != null }">
+		<form action="role_edit.action" method="post" class="definewidth m20">
+	</c:if>
 		<input type="hidden" name="id" value="${role.id }">
 		<table class="table table-bordered table-hover definewidth m10">
 			<tr>
 				<td width="10%" class="tableleft">角色名称</td>
 				<td>
-					<input type="text" name="name" />
+					<input type="text" name="name" value="${role.name }"/>
 				</td>
 			</tr>
 			<tr>
 				<td class="tableleft">角色描述</td>
 				<td>
-					<textarea name="description"></textarea>
+					<textarea name="description"><c:out value="${role.description }"></c:out></textarea>
 				</td>
 			</tr>
 			<tr>
 				<td class="tableleft">权限</td>
 				<td>
-					<ul>
-						<li>
-							<label class='checkbox inline'>
-							<input type='checkbox' name='group[]' value='' />菜单管理</label>
-							<ul>
-								<li>
-									<label class='checkbox inline'>
-									<input type='checkbox' name='node[]' value='13' />菜单列表</label>
-									<li>
+					<ul id="tree">
+						<!-- 父级权限 -->
+						<c:forEach items="${topPrivilegeList }" var="parentPrivilege">
+							<li style="display: inline-block;width: 800px;">
+								<label class='checkbox inline'>
+								<input type='checkbox' name='privilegeIds' value='${parentPrivilege.id }' />${parentPrivilege.name }</label>
+								<ul style="list-style: none;">
+								<!-- 子级权限 -->
+								<c:forEach items="${parentPrivilege.children }" var="childrenPrivilege">
+									<li >
 										<label class='checkbox inline'>
-										<input type='checkbox' name='node[]' value='14' />菜单新增</label>
-										<li>
-											<label class='checkbox inline'>
-											<input type='checkbox' name='node[]' value='15' />菜单编辑</label>
+										<input type='checkbox' name='privilegeIds' value='${childrenPrivilege.id }' />${childrenPrivilege.name }</label>
+										<ul style="list-style: none;">
+										<!-- 第三极权限 -->
+										<c:forEach items="${childrenPrivilege.children }" var="children">
 											<li>
 												<label class='checkbox inline'>
-												<input type='checkbox' name='node[]' value='16' />菜单删除</label>
-							</ul>
-						</li>
-						<li>
-							<label class='checkbox inline'>
-							<input type='checkbox' name='group[]' value='' />角色</label>
-							<ul>
-								<li>
-									<label class='checkbox inline'>
-									<input type='checkbox' name='node[]' value='5' />角色列表</label>
-									<li>
-										<label class='checkbox inline'>
-										<input type='checkbox' name='node[]' value='6' />角色添加</label>
-										<li>
-											<label class='checkbox inline'>
-											<input type='checkbox' name='node[]' value='7' />角色编辑</label>
-											<li>
-												<label class='checkbox inline'>
-												<input type='checkbox' name='node[]' value='8' />角色删除</label>
-							</ul>
-						</li>
+												<input type='checkbox' name='privilegeIds' value='${children.id }' />${children.name }</label>
+											</li>
+										</c:forEach>
+										</ul>
+									</li>
+								</c:forEach>
+								</ul>
+							</li>
+						</c:forEach>
+						
 					</ul>
 				</td>
 			</tr>
