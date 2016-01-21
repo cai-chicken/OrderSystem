@@ -21,3 +21,4 @@ SELECT employee0_.id AS id1_, employee0_.num AS num1_, employee0_.name AS name1_
 SHOW VARIABLES LIKE 'character%';
 SELECT * FROM role
 SELECT * FROM privilege_role
+SELECT * FROM employee

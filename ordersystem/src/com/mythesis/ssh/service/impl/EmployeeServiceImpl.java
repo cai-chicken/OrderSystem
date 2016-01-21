@@ -16,5 +16,14 @@ import com.mythesis.ssh.service.EmployeeService;
 @Transactional
 public class EmployeeServiceImpl extends BaseDaoImpl<Employee> implements EmployeeService {
 
+	@Override
+	public Employee findByLoginNameAndPwd(String loginName, String password) {
+		return (Employee) getSession().createQuery(//
+				"FROM Employee e WHERE e.loginName = ? AND e.password = ?")//
+				.setParameter(0, loginName)//
+				.setParameter(1, password)//
+				.uniqueResult();
+	}
+
 
 }

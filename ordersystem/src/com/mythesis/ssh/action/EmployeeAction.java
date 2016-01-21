@@ -72,4 +72,18 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 		employeeService.update(model);
 		return "toList";
 	}
+	
+	/** 登录*/
+	public String login() throws Exception {
+		String loginName = model.getLoginName();
+		String password = model.getPassword();
+		Employee employee = employeeService.findByLoginNameAndPwd(loginName, password);
+		if (employee == null) {
+			ActionContext.getContext().put("errorInfo", "用户名或密码错误");
+			return "loginUI";
+		} else {
+			ActionContext.getContext().getSession().put("employee", employee);
+			return "toList";
+		}
+	}
 }

@@ -10,4 +10,12 @@ import com.mythesis.ssh.model.Employee;
  */
 public interface EmployeeService extends BaseDao<Employee> {
 
+	/**
+	 * 通过登录名和密码找到用户
+	 * @param loginName
+	 * @param password
+	 * @return
+	 */
+	Employee findByLoginNameAndPwd(String loginName, String password);
+
 }
