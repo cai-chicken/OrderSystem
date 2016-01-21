@@ -8,9 +8,9 @@
 <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/style/Js/jquery_treeview/jquery.treeview.css">
 <script type="text/javascript" src="${pageContext.request.contextPath}/style/Js/jquery_treeview/jquery.treeview.js"></script>
 <script type="text/javascript">
-$(function() {
-	$("#tree").treeview();
-});
+	$(function() {
+		$("#tree").treeview();
+	});
 </script>
 </head>
 <body>
@@ -42,19 +42,37 @@ $(function() {
 						<c:forEach items="${topPrivilegeList }" var="parentPrivilege">
 							<li style="display: inline-block;width: 800px;">
 								<label class='checkbox inline'>
-								<input type='checkbox' name='privilegeIds' value='${parentPrivilege.id }' />${parentPrivilege.name }</label>
+								<input type='checkbox' name='privilegeIds' value='${parentPrivilege.id }' 
+									<c:forEach items="${privilegeIds }" var="privilegeId">
+										<c:if test="${parentPrivilege.id == privilegeId }">
+										checked="checked"
+										</c:if>
+									</c:forEach> 
+								/>${parentPrivilege.name }</label>
 								<ul style="list-style: none;">
 								<!-- 子级权限 -->
 								<c:forEach items="${parentPrivilege.children }" var="childrenPrivilege">
 									<li >
 										<label class='checkbox inline'>
-										<input type='checkbox' name='privilegeIds' value='${childrenPrivilege.id }' />${childrenPrivilege.name }</label>
+										<input type='checkbox' name='privilegeIds' value='${childrenPrivilege.id }' 
+											<c:forEach items="${privilegeIds }" var="privilegeId">
+												<c:if test="${childrenPrivilege.id == privilegeId }">
+												checked="checked"
+												</c:if>
+											</c:forEach>
+										/>${childrenPrivilege.name }</label>
 										<ul style="list-style: none;">
 										<!-- 第三极权限 -->
 										<c:forEach items="${childrenPrivilege.children }" var="children">
 											<li>
 												<label class='checkbox inline'>
-												<input type='checkbox' name='privilegeIds' value='${children.id }' />${children.name }</label>
+												<input type='checkbox' name='privilegeIds' value='${children.id }' 
+													<c:forEach items="${privilegeIds }" var="privilegeId">
+														<c:if test="${children.id == privilegeId }">
+														checked="checked"
+														</c:if>
+													</c:forEach>
+												/>${children.name }</label>
 											</li>
 										</c:forEach>
 										</ul>
@@ -79,8 +97,12 @@ $(function() {
 </body>
 	<script>
 		$(function() {
-			$(':checkbox[name="group[]"]').click(function() {
+			$(':checkbox[name="privilegeIds"]').click(function() {
 				$(':checkbox', $(this).closest('li')).prop('checked', this.checked);
+				// 当选中一个权限时，也要选中所有的直接上级权限
+				if(this.checked == true){
+					$(this).parents("li").children("input").attr("checked", true);
+				}
 			});
 			$('#backid').click(function() {
 				window.location.href = "role_list.action";

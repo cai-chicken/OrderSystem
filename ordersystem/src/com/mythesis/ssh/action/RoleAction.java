@@ -1,5 +1,6 @@
 package com.mythesis.ssh.action;
 
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.context.annotation.Scope;
@@ -20,6 +21,7 @@ import com.opensymphony.xwork2.ActionContext;
 @Controller("roleAction")
 @Scope("prototype")
 public class RoleAction extends ModelDrivenBaseAction<Role> {
+	private Long[] privilegeIds;
 	/** 列表 */
 	public String list() throws Exception {
 		//准备分页数据
@@ -48,6 +50,7 @@ public class RoleAction extends ModelDrivenBaseAction<Role> {
 	/** 添加 */
 	public String add() throws Exception {
 		// 1、保存数据到数据库中,执行相关service的save(model)方法
+		model.setPrivileges(new HashSet<>(privilegeService.getByIds(privilegeIds)));
 		roleService.save(model);
 		return "toList";
 	}
@@ -58,6 +61,16 @@ public class RoleAction extends ModelDrivenBaseAction<Role> {
 		Role role = roleService.getById(model.getId());
 		// 2、将其放入到ValueStack对象的stack中
 		ActionContext.getContext().put("role", role);
+		
+		//给privilegeIds赋值
+		if (role.getPrivileges() != null) {
+			privilegeIds = new Long[role.getPrivileges().size()];
+			int index = 0;
+			for(Privilege privilege : role.getPrivileges()) {
+				privilegeIds[index ++] = privilege.getId();
+			}
+		}
+		ActionContext.getContext().put("privilegeIds", privilegeIds);
 		return "saveUI";
 	}
 
@@ -66,7 +79,17 @@ public class RoleAction extends ModelDrivenBaseAction<Role> {
 		// 1、从数据库中找到对应的id的对象
 		// 2、设置需要修改的属性
 		// 3、更新到数据库中
+		model.setPrivileges(new HashSet<>(privilegeService.getByIds(privilegeIds)));
 		roleService.update(model);
 		return "toList";
 	}
+
+	public Long[] getPrivilegeIds() {
+		return privilegeIds;
+	}
+
+	public void setPrivilegeIds(Long[] privilegeIds) {
+		this.privilegeIds = privilegeIds;
+	}
+	
 }

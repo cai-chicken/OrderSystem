@@ -17,7 +17,7 @@
 			<many-to-many class="Employee" column="employeeId"></many-to-many>
 		</set>
 		<!-- privileges属性，是本类与Privilege类的多对多关系 -->
-		<set name="privileges" table="privilege_role">
+		<set name="privileges" table="privilege_role" lazy="false">
 			<key column="roleId"></key>
 			<many-to-many class="Privilege" column="privilegeId"></many-to-many>
 		</set>

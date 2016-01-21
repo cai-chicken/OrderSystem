@@ -19,7 +19,7 @@
 			<one-to-many class="Privilege"/>
 		</set>
 		<!-- roles属性，是本类与Role类的多对多关系 -->
-		<set name="roles" table="privilege_role">
+		<set name="roles" table="privilege_role" lazy="false">
 			<key column="privilegeId"></key>
 			<many-to-many class="Role" column="roleId"></many-to-many>
 		</set>

@@ -19,3 +19,5 @@ SELECT * FROM employee;
 #模糊查询测试
 SELECT employee0_.id AS id1_, employee0_.num AS num1_, employee0_.name AS name1_, employee0_.loginName AS loginName1_, employee0_.sex AS sex1_, employee0_.birthday AS birthday1_, employee0_.address AS address1_, employee0_.phoneNumber AS phoneNum8_1_ FROM employee employee0_ WHERE employee0_.name LIKE '%三%' ORDER BY employee0_.id DESC
 SHOW VARIABLES LIKE 'character%';
+SELECT * FROM role
+SELECT * FROM privilege_role
