@@ -1,5 +1,6 @@
 package com.mythesis.ssh.action;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -7,12 +8,14 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.mysql.jdbc.Util;
 import com.mythesis.ssh.base.ModelDrivenBaseAction;
 import com.mythesis.ssh.model.Employee;
 import com.mythesis.ssh.model.Privilege;
 import com.mythesis.ssh.model.Role;
 import com.mythesis.ssh.util.QueryHelper;
 import com.mythesis.ssh.util.StringUtil;
+import com.mythesis.ssh.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
 
 /**
@@ -25,6 +28,7 @@ import com.opensymphony.xwork2.ActionContext;
 @Scope("prototype")
 public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 	private Long[] roleIds;
+	private String oldPwd;//旧密码
 	/** 列表 */
 	public String list() throws Exception {
 		// 考虑分页,没有进行模糊查询处理
@@ -58,11 +62,7 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 	/** 添加 */
 	public String add() throws Exception {
 		// 1、保存数据到数据库中,执行相关service的save(model)方法
-		if ("admin".equals(model.getLoginName())) {
-			model.setPassword(DigestUtils.md5Hex("admin"));
-		} else {
-			model.setPassword(DigestUtils.md5Hex("1234"));//密码使用MD5加密
-		}
+		model.setPassword(DigestUtils.md5Hex("1234"));//密码使用MD5加密
 		model.setRoles(new HashSet<Role>(roleService.getByIds(roleIds)));//设置角色
 		employeeService.save(model);
 		return "toList";
@@ -102,10 +102,10 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 	/** 登录*/
 	public String login() throws Exception {
 		String loginName = model.getLoginName();
-		String password = model.getPassword();
+		String password = DigestUtils.md5Hex(model.getPassword());
 		Employee employee = employeeService.findByLoginNameAndPwd(loginName, password);
 		if (employee == null) {
-			ActionContext.getContext().put("errorInfo", "用户名或密码错误");
+			Utils.displayErrorInfo("errorInfo", "用户名或密码错误");
 			return "loginUI";
 		} else {
 			//将用户数据保存到Session中
@@ -121,8 +121,56 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 	 * 退出
 	 */
 	public String logout() throws Exception {
-		ActionContext.getContext().getSession().remove("employeeLogin");
+		Utils.removeCurrentEmployee();
 		return "loginUI";
+	}
+	
+	/**
+	 * 显示个人信息
+	 */
+	public String showInfo() throws Exception{
+		Employee employee = Utils.getCurrentEmployee();
+		if (employee == null) {
+			Utils.displayErrorInfo("errorInfo", "登录信息过期，请重新登录。");
+			return "loginUI";
+		} else {
+			List<Role> roles = new ArrayList<Role>(employee.getRoles());
+			ActionContext.getContext().put("roleList", roles);
+			return "showInfo";
+		}
+	}
+	
+	/**
+	 * 修改密码
+	 */
+	public String modifyPwd() throws Exception{
+		//检测旧密码是否输入正确
+		String oldPwdMd5 = DigestUtils.md5Hex(oldPwd);
+		if (Utils.isExistsCurrentEmployee()) {
+			Employee employee = employeeService.getById(model.getId());
+			if (oldPwdMd5.equals(employeeService.getOldPwd(employee.getId()))) {
+				String newPwdMd5 = DigestUtils.md5Hex(model.getPassword());
+				employee.setPassword(newPwdMd5);
+				System.out.println("当前对象的信息--------------》》》》》》"+employee);
+				employeeService.update(employee);
+				return "toShowInfo";
+			} else {
+				Utils.displayErrorInfo("errorPwd", "您输入的旧密码不正确，请重新输入!");
+				return "toModifyPwdUI";
+			} 
+		} else {
+			Utils.displayErrorInfo("errorIngo", "登录信息过期，请重新登录！");
+			return "loginUI";
+		}
+	}
+	/**修改密码页面*/
+	public String modifyPwdUI() throws Exception{
+		if (Utils.isExistsCurrentEmployee()) {
+			return "modifyPwdUI";
+		} else {
+			Utils.displayErrorInfo("errorInfo", "登录信息过期，请重新登录。");
+			return "loginUI";
+		}
 	}
 
 	public Long[] getRoleIds() {
@@ -131,6 +179,14 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 
 	public void setRoleIds(Long[] roleIds) {
 		this.roleIds = roleIds;
+	}
+
+	public String getOldPwd() {
+		return oldPwd;
+	}
+
+	public void setOldPwd(String oldPwd) {
+		this.oldPwd = oldPwd;
 	}
 	
 }

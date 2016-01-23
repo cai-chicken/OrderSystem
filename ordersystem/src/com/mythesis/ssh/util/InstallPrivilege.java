@@ -29,11 +29,11 @@ public class InstallPrivilege {
 	public void install() {
 		Session session = sessionFactory.getCurrentSession();
 		//1、保存一个管理员的账号
-		/*Employee user = new Employee();
+		Employee user = new Employee();
 		user.setName("超级管理员");
 		user.setPassword(DigestUtils.md5Hex("admin"));
 		user.setLoginName("admin");
-		session.save(user);*/
+		session.save(user);
 		//2、生成本系统所有的权限数据
 		Privilege parent, children1, children2, children3, children4;
 		//对于"系统管理"

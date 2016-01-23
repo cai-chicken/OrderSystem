@@ -24,8 +24,12 @@
 		<action name="employee_*" class="employeeAction" method="{1}">
 			<result name="list">/WEB-INF/jsp/employee/list.jsp</result>
 			<result name="saveUI">/WEB-INF/jsp/employee/saveUI.jsp</result>
+			<result name="showInfo">/WEB-INF/jsp/employee/showInfo.jsp</result>
+			<result name="modifyPwdUI">/WEB-INF/jsp/employee/modifyPwd.jsp</result>
 			<result name="index">/WEB-INF/jsp/public/index.jsp</result>
 			<result name="toList" type="redirectAction">employee_list</result>
+			<result name="toShowInfo" type="redirectAction">employee_showInfo</result>
+			<result name="toModifyPwdUI" type="redirectAction">employee_modifyPwd</result>
 		</action>
 		<!-- 角色管理 -->
 		<action name="role_*" class="roleAction" method="{1}">

@@ -17,5 +17,17 @@ public interface EmployeeService extends BaseDao<Employee> {
 	 * @return
 	 */
 	Employee findByLoginNameAndPwd(String loginName, String password);
+	
+	/**
+	 * 通过用户id找到用户的密码，返回是已经加过密的密码
+	 */
+	String getOldPwd(Long id);
+
+	/**
+	 * 更新指定用户的密码信息
+	 * @param id
+	 * @param newPwdMd5
+	 */
+	void updatePwd(Long id, String newPwdMd5);
 
 }

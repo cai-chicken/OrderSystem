@@ -25,5 +25,17 @@ public class EmployeeServiceImpl extends BaseDaoImpl<Employee> implements Employ
 				.uniqueResult();
 	}
 
+	@Override
+	public String getOldPwd(Long id) {
+		return (String) getSession().createQuery(//
+				"SELECT e.password FROM Employee e WHERE e.id = ?")//
+				.setParameter(0, id)//
+				.uniqueResult();
+	}
+
+	@Override
+	public void updatePwd(Long id, String newPwdMd5) {
+	}
+
 
 }

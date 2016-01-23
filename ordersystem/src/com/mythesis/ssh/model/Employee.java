@@ -130,4 +130,11 @@ public class Employee {
 		this.roles = roles;
 	}
 
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", loginName=" + loginName + ", password=" + password
+				+ ", num=" + num + ", sex=" + sex + ", birthday=" + birthday + ", address=" + address + ", phoneNumber="
+				+ phoneNumber + ", roles=" + roles + "]";
+	}
+
 }

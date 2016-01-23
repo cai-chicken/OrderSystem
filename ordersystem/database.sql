@@ -15,12 +15,14 @@ INSERT INTO employee VALUES(NULL,'0007','九九','jiujiu','男','1996-11-16','�
 INSERT INTO employee VALUES(NULL,'0008','老王','laowang','女','1997-11-16','西雅图','13289227978');
 INSERT INTO employee VALUES(NULL,'0009','老程','laocheng','女','1998-11-16','澳大利亚','13262521978');
 INSERT INTO employee VALUES(NULL,'0010','老徐','laoxu','男','1999-11-16','加拿大','13267892378');
-#查看表中插入的数据
-SELECT * FROM employee;
+
 #模糊查询测试
 SELECT employee0_.id AS id1_, employee0_.num AS num1_, employee0_.name AS name1_, employee0_.loginName AS loginName1_, employee0_.sex AS sex1_, employee0_.birthday AS birthday1_, employee0_.address AS address1_, employee0_.phoneNumber AS phoneNum8_1_ FROM employee employee0_ WHERE employee0_.name LIKE '%三%' ORDER BY employee0_.id DESC
 SHOW VARIABLES LIKE 'character%';
+#查看表中插入的数据
+SELECT * FROM employee;
 SELECT * FROM role
 SELECT * FROM privilege_role
 SELECT * FROM employee
 SELECT * FROM employee_role
+SELECT * FROM privilege
