@@ -1,10 +1,16 @@
 package com.mythesis.ssh.action;
 
+import java.util.HashSet;
+import java.util.List;
+
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.mythesis.ssh.base.ModelDrivenBaseAction;
 import com.mythesis.ssh.model.Employee;
+import com.mythesis.ssh.model.Privilege;
+import com.mythesis.ssh.model.Role;
 import com.mythesis.ssh.util.QueryHelper;
 import com.mythesis.ssh.util.StringUtil;
 import com.opensymphony.xwork2.ActionContext;
@@ -18,6 +24,7 @@ import com.opensymphony.xwork2.ActionContext;
 @Controller("employeeAction")
 @Scope("prototype")
 public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
+	private Long[] roleIds;
 	/** 列表 */
 	public String list() throws Exception {
 		// 考虑分页,没有进行模糊查询处理
@@ -40,17 +47,23 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 
 	/** 添加页面 */
 	public String addUI() throws Exception {
-		// TODO
 		// 1、准备所有的角色数据
 		// 1.1、从数据库中取出相应的数据
+		List<Role> roles = roleService.findAll();
 		// 1.2、放入到ValueStack对象的stack中
+		ActionContext.getContext().put("roleList", roles);
 		return "saveUI";
 	}
 
 	/** 添加 */
 	public String add() throws Exception {
 		// 1、保存数据到数据库中,执行相关service的save(model)方法
-		model.setPassword("1234");
+		if ("admin".equals(model.getLoginName())) {
+			model.setPassword(DigestUtils.md5Hex("admin"));
+		} else {
+			model.setPassword(DigestUtils.md5Hex("1234"));//密码使用MD5加密
+		}
+		model.setRoles(new HashSet<Role>(roleService.getByIds(roleIds)));//设置角色
 		employeeService.save(model);
 		return "toList";
 	}
@@ -61,6 +74,18 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 		Employee employee = employeeService.getById(model.getId());
 		// 2、将其放入到ValueStack对象的map中
 		ActionContext.getContext().put("employee", employee);
+		
+		List<Role> roles = roleService.findAll();
+		ActionContext.getContext().put("roleList", roles);
+		
+		if (employee.getRoles() != null) {
+			roleIds = new Long[employee.getRoles().size()];
+			int index = 0;
+			for(Role role:employee.getRoles()){
+				roleIds[index++] = role.getId();
+			}
+		}
+		ActionContext.getContext().put("roleIds", roleIds);
 		return "saveUI";
 	}
 
@@ -69,6 +94,7 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 		// 1、从数据库中找到对应的id的对象
 		// 2、设置需要修改的属性
 		// 3、更新到数据库中
+		model.setRoles(new HashSet<Role>(roleService.getByIds(roleIds)));//设置角色
 		employeeService.update(model);
 		return "toList";
 	}
@@ -82,8 +108,29 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 			ActionContext.getContext().put("errorInfo", "用户名或密码错误");
 			return "loginUI";
 		} else {
-			ActionContext.getContext().getSession().put("employee", employee);
-			return "toList";
+			//将用户数据保存到Session中
+			ActionContext.getContext().getSession().put("employeeLogin", employee);
+			//将用户拥有的权限数据保存
+			List<Privilege> privileges = employee.getAllPrivilege();
+			ActionContext.getContext().getSession().put("privilegeList", privileges);
+			return "index";
 		}
 	}
+	
+	/**
+	 * 退出
+	 */
+	public String logout() throws Exception {
+		ActionContext.getContext().getSession().remove("employeeLogin");
+		return "loginUI";
+	}
+
+	public Long[] getRoleIds() {
+		return roleIds;
+	}
+
+	public void setRoleIds(Long[] roleIds) {
+		this.roleIds = roleIds;
+	}
+	
 }

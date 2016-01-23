@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import com.mythesis.ssh.base.BaseDao;
+import com.mythesis.ssh.model.Employee;
 import com.mythesis.ssh.model.Privilege;
 
 public interface PrivilegeService extends BaseDao<Privilege> {

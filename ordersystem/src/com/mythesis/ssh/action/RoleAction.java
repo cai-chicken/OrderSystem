@@ -50,7 +50,7 @@ public class RoleAction extends ModelDrivenBaseAction<Role> {
 	/** 添加 */
 	public String add() throws Exception {
 		// 1、保存数据到数据库中,执行相关service的save(model)方法
-		model.setPrivileges(new HashSet<>(privilegeService.getByIds(privilegeIds)));
+		model.setPrivileges(new HashSet<Privilege>(privilegeService.getByIds(privilegeIds)));
 		roleService.save(model);
 		return "toList";
 	}
@@ -79,7 +79,7 @@ public class RoleAction extends ModelDrivenBaseAction<Role> {
 		// 1、从数据库中找到对应的id的对象
 		// 2、设置需要修改的属性
 		// 3、更新到数据库中
-		model.setPrivileges(new HashSet<>(privilegeService.getByIds(privilegeIds)));
+		model.setPrivileges(new HashSet<Privilege>(privilegeService.getByIds(privilegeIds)));
 		roleService.update(model);
 		return "toList";
 	}

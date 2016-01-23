@@ -1,6 +1,7 @@
 #创建数据库
 CREATE DATABASE ordersystem
 
+
 #查看员工表结构
 DESC employee
 #向员工表中插入数据
@@ -22,3 +23,4 @@ SHOW VARIABLES LIKE 'character%';
 SELECT * FROM role
 SELECT * FROM privilege_role
 SELECT * FROM employee
+SELECT * FROM employee_role

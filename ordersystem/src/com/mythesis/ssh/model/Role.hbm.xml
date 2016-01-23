@@ -12,7 +12,7 @@
 		<property name="name" />
 		<property name="description"/>
 		<!-- employees属性，是本类与Employee类的多对多关系 -->
-		<set name="employees" table="employee_role">
+		<set name="employees" table="employee_role" lazy="false">
 			<key column="roleId"></key>
 			<many-to-many class="Employee" column="employeeId"></many-to-many>
 		</set>

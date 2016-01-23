@@ -1,7 +1,9 @@
 package com.mythesis.ssh.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -20,6 +22,33 @@ public class Employee {
 	private String address;
 	private String phoneNumber;
 	private Set<Role> roles = new HashSet<Role>();// 拥有的角色
+	
+	public boolean hasPrivilegeName(String name) {
+		//超级管理员拥有所有的权限
+		if ("admin".equals(loginName)) {
+			return true;
+		}
+		//对于普通用户
+		for(Role role : roles) {
+			for(Privilege privilege:role.getPrivileges()){
+				if (privilege.getName().equals(name)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	public List<Privilege> getAllPrivilege(){
+		Set<Privilege> setPrivilege = new HashSet<>();
+		for(Role role:roles){
+			for(Privilege privilege:role.getPrivileges()){
+				setPrivilege.add(privilege);
+			}
+		}
+		List<Privilege> privileges = new ArrayList<>(setPrivilege);
+		return privileges;
+	}
 
 	public Long getId() {
 		return id;

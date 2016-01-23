@@ -12,13 +12,13 @@
 		<property name="num" not-null="true"/>
 		<property name="name" not-null="true"/>
 		<property name="loginName" not-null="true" unique="true"/>
-		<property name="password" not-null="true"/>
+		<property name="password"/>
 		<property name="sex" not-null="true"/>
 		<property name="birthday" type="date" />
 		<property name="address"/>
 		<property name="phoneNumber" not-null="true"/>
 		<!-- roles属性是本类与Role类的多对多关系 -->
-		<set name="roles" table="employee_role">
+		<set name="roles" table="employee_role" lazy="false">
 			<key column="employeeId"></key>
 			<many-to-many class="Role" column="roleId"></many-to-many>
 		</set>

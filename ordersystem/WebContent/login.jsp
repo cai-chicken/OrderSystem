@@ -185,12 +185,12 @@ a {
 		<form id="myForm" action="employee_login.action" method="post">
 			<P style="padding: 30px 0px 10px; position: relative;">
 				<SPAN class="u_logo"></SPAN> 
-				<INPUT class="ipt" type="text" name="loginName"
+				<INPUT class="ipt" type="text" name="loginName" id="loginName"
 					placeholder="请输入用户名或邮箱" value="">
 			</P>
 			<P style="position: relative;">
 				<SPAN class="p_logo"></SPAN> 
-				<INPUT class="ipt" id="password" name="password"
+				<INPUT class="ipt" id="password" name="password" id="password"
 					type="password" placeholder="请输入密码" value="">
 			</P>
 			<DIV

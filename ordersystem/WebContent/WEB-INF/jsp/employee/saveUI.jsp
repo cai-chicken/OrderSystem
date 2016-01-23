@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Insert title here</title>
+<title>编辑员工信息</title>
 <%@ include file="/WEB-INF/jsp/public/headFile.jspf" %>
 </head>
 <body>
@@ -18,19 +18,19 @@
 			<tr>
 				<td width="10%" class="tableleft">编号<span style="color: red;">*</span></td>
 				<td>
-					<input type="text" name="num" value=${employee.num }>
+					<input type="text" name="num" value="${employee.num }">
 				</td>
 			</tr>
 			<tr>
 				<td width="10%" class="tableleft">姓名<span style="color: red;">*</span></td>
 				<td>
-					<input type="text" name="name" value=${employee.name }>
+					<input type="text" name="name" value="${employee.name }">
 				</td>
 			</tr>
 			<tr>
 				<td class="tableleft">登录名<span style="color: red;">*</span></td>
 				<td>
-					<input type="text" name="loginName" value=${employee.loginName }>
+					<input type="text" name="loginName" value="${employee.loginName }">
 				</td>
 			</tr>
 			<tr>
@@ -49,26 +49,37 @@
 			<tr>
 				<td class="tableleft">出生年月日</td>
 				<td>
-					<input type="text" name="birthday" value=${employee.birthday }>
+					<input type="text" name="birthday" value="${employee.birthday }">
 				</td>
 			</tr>
 			<tr>
 				<td class="tableleft">家庭地址</td>
 				<td>
-					<input type="text" name="address" value=${employee.address }>
+					<input type="text" name="address" value="${employee.address }">
 				</td>
 			</tr>
 			<tr>
 				<td class="tableleft">手机号码<span style="color: red;">*</span></td>
 				<td>
-					<input type="text" name="phoneNumber" value=${employee.phoneNumber }>
+					<input type="text" name="phoneNumber" value="${employee.phoneNumber }">
 				</td>
 			</tr>
 			<tr>
 				<!--要做些修改，使用复选框列出所有的角色-->
 				<td class="tableleft">所属角色</td>
 				<td>
-					<input type="text" name="roles" />
+					<c:forEach items="${roleList }" var="role">
+						<div>
+							<input type="checkbox" name="roleIds" value="${role.id }" id="role_${role.id }" style="float: left;" 
+								<c:forEach items="${roleIds }" var="roleId">
+									<c:if test="${role.id == roleId }">
+									checked="checked"
+									</c:if>
+								</c:forEach>
+							/>
+							<label for="role_${role.id }" style="float: left;">${role.name }</label>
+						</div>
+					</c:forEach>
 				</td>
 			</tr>
 			<tr>
