@@ -1,6 +1,10 @@
 package com.mythesis.ssh.util;
 
+import java.util.Collection;
+
 import com.mythesis.ssh.model.Employee;
+import com.mythesis.ssh.model.Privilege;
+import com.mythesis.ssh.model.Role;
 import com.opensymphony.xwork2.ActionContext;
 
 public class Utils {
@@ -38,5 +42,44 @@ public class Utils {
 			return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * 当前登录用户是否有权限访问某个url资源
+	 * @param url
+	 * @return
+	 */
+	public static boolean isCurrentEmployeeHasPrivilegeByUrl(Employee employee, String url) {
+		if (employee == null) {
+			return false;
+		}
+		// 针对超级管理员，超级管理员拥有所有的权限
+		if ("admin".equals(employee.getLoginName())) {
+			return true;
+		}
+		int index = url.indexOf("?");
+		//去掉后面的参数
+		if (index > -1) {
+			url = url.substring(0, index);
+		}
+		// 去掉UI后缀
+		if (url.endsWith("UI")) {
+			url = url.substring(0, url.length() - 2);
+		}
+		// 不需要控制的权限，则只要是登录用户就可以使用
+		Collection<String> allPrivilegeUrls = (Collection<String>) ActionContext.getContext().getApplication().get("allPrivilegeUrls");
+		if (!allPrivilegeUrls.contains(url)) {
+			return true;
+		} else {
+			// 针对普通用户
+			for(Role role : employee.getRoles()) {
+				for(Privilege privilege : role.getPrivileges()){
+					if (url.equals(privilege.getUrl())) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 }

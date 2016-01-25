@@ -11,12 +11,20 @@
 
 	<package name="default" namespace="/" extends="struts-default">
 		<!-- 配置拦截器 -->
+		<interceptors>
+			<interceptor name="checkPrivilege" class="com.mythesis.ssh.util.CheckPrivilegeInterceptor"></interceptor>
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="checkPrivilege"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
 		
 		<!-- 配置全局结果 -->
 		<global-results>
-			<result name="loginUI">/login.jsp</result>
+			<result name="loginUI">/WEB-INF/jsp/employee/loginUI.jsp</result>
 			<!-- 当程序遇上No result defined for action，就会返回input --> 
 			<result name="input">/error.jsp</result>
+			<result name="noPrivilege">/noPrivilege.jsp</result>
 		</global-results>
 	
 	<!-- 系统管理 -->

@@ -13,6 +13,7 @@ import com.mythesis.ssh.base.ModelDrivenBaseAction;
 import com.mythesis.ssh.model.Employee;
 import com.mythesis.ssh.model.Privilege;
 import com.mythesis.ssh.model.Role;
+import com.mythesis.ssh.util.LoggerManager;
 import com.mythesis.ssh.util.QueryHelper;
 import com.mythesis.ssh.util.StringUtil;
 import com.mythesis.ssh.util.Utils;
@@ -70,14 +71,13 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 
 	/** 修改页面 */
 	public String editUI() throws Exception {
-		// 1、找到对应的id的对象
+		// 1、找到要修改的员工对象
 		Employee employee = employeeService.getById(model.getId());
-		// 2、将其放入到ValueStack对象的map中
 		ActionContext.getContext().put("employee", employee);
-		
+		// 2、准备权限数据
 		List<Role> roles = roleService.findAll();
 		ActionContext.getContext().put("roleList", roles);
-		
+		// 3、回显用户的角色信息
 		if (employee.getRoles() != null) {
 			roleIds = new Long[employee.getRoles().size()];
 			int index = 0;
@@ -99,6 +99,10 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 		return "toList";
 	}
 	
+	public String loginUI() throws Exception {
+		return "loginUI";
+	}
+	
 	/** 登录*/
 	public String login() throws Exception {
 		String loginName = model.getLoginName();
@@ -106,6 +110,7 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 		Employee employee = employeeService.findByLoginNameAndPwd(loginName, password);
 		if (employee == null) {
 			Utils.displayErrorInfo("errorInfo", "用户名或密码错误");
+			LoggerManager.printInfo(getClass(), "用户名或密码错误");
 			return "loginUI";
 		} else {
 			//将用户数据保存到Session中
