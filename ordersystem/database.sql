@@ -20,9 +20,24 @@ INSERT INTO employee VALUES(NULL,'0010','老徐','laoxu','男','1999-11-16','加
 SELECT employee0_.id AS id1_, employee0_.num AS num1_, employee0_.name AS name1_, employee0_.loginName AS loginName1_, employee0_.sex AS sex1_, employee0_.birthday AS birthday1_, employee0_.address AS address1_, employee0_.phoneNumber AS phoneNum8_1_ FROM employee employee0_ WHERE employee0_.name LIKE '%三%' ORDER BY employee0_.id DESC
 SHOW VARIABLES LIKE 'character%';
 #查看表中插入的数据
+DESC employee
 SELECT * FROM employee;
 SELECT * FROM role
 SELECT * FROM privilege_role
 SELECT * FROM employee
 SELECT * FROM employee_role
 SELECT * FROM privilege
+#查找用户id为21所拥有的所有顶级权限
+SELECT * FROM privilege p WHERE p.parentId IS NULL AND p.id IN (
+	SELECT DISTINCT privilegeId FROM privilege_role t1 WHERE t1.roleId IN (
+		SELECT roleId FROM employee_role WHERE employeeId=21
+	)
+)
+
+SELECT DISTINCT privilegeId FROM privilege_role t1 WHERE t1.roleId IN (
+	SELECT roleId FROM employee_role WHERE employeeId=21
+)
+
+SELECT roleId FROM employee_role WHERE employeeId=19
+
+SELECT privilegeId FROM privilege_role WHERE roleId=3

@@ -26,7 +26,7 @@ public class RoleAction extends ModelDrivenBaseAction<Role> {
 	public String list() throws Exception {
 		//准备分页数据
 		new QueryHelper(Role.class, "r")//
-			.addWhereCondition(!StringUtil.isEmpty(model.getName()), "r.name like ?", model.getName())//角色名称过滤条件
+			.addWhereCondition(!StringUtil.isEmpty(model.getName()), "r.name like ?", "%"+model.getName()+"%")//角色名称过滤条件
 			.preparePageBean(roleService, pageNum, pageSize);
 		return "list";
 	}

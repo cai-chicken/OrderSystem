@@ -1,11 +1,14 @@
 package com.mythesis.ssh.util;
 
 import java.util.Collection;
+import java.util.List;
 
 import com.mythesis.ssh.model.Employee;
 import com.mythesis.ssh.model.Privilege;
 import com.mythesis.ssh.model.Role;
 import com.opensymphony.xwork2.ActionContext;
+
+import net.sf.json.JSONArray;
 
 public class Utils {
 	private static final String currentEmployee = "employeeLogin";
@@ -25,7 +28,7 @@ public class Utils {
 	}
 	
 	/**
-	 * 提示错误信息
+	 * 向jsp页面提示错误信息
 	 * @param errMask 错误信息关键字
 	 * @param errInfo 错误信息内容
 	 */
@@ -81,5 +84,10 @@ public class Utils {
 			}
 		}
 		return false;
+	}
+	
+	public JSONArray getJsonPrivilege(List<Privilege> privilegeList){
+		JSONArray array1 = new JSONArray();
+		return array1;
 	}
 }

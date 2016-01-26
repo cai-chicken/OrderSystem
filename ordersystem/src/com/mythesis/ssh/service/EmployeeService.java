@@ -1,7 +1,10 @@
 package com.mythesis.ssh.service;
 
+import java.util.List;
+
 import com.mythesis.ssh.base.BaseDao;
 import com.mythesis.ssh.model.Employee;
+import com.mythesis.ssh.model.Privilege;
 
 /**
  * @author anbang
@@ -29,5 +32,12 @@ public interface EmployeeService extends BaseDao<Employee> {
 	 * @param newPwdMd5
 	 */
 	void updatePwd(Long id, String newPwdMd5);
+
+	/**
+	 * 得到用户的顶级权限列表
+	 * @param employee
+	 * @return
+	 */
+	List<Privilege> getTopPrivilegesByEmployee(Employee employee);
 
 }

@@ -36,8 +36,8 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 		// TODO
 		new QueryHelper(Employee.class, "e")//
 			.addOrderProperty("e.id", false)//
-			.addWhereCondition(!StringUtil.isEmpty(model.getName()), "e.name like ?", model.getName())//员工名称过滤条件
-			.addWhereCondition(!StringUtil.isEmpty(model.getAddress()), "e.address like ?", model.getAddress())//家庭地址过滤条件
+			.addWhereCondition(!StringUtil.isEmpty(model.getName()), "e.name like ?", "%"+model.getName()+"%")//员工名称过滤条件
+			.addWhereCondition(!StringUtil.isEmpty(model.getAddress()), "e.address like ?", "%"+model.getAddress()+"%")//家庭地址过滤条件
 			.addWhereCondition(!StringUtil.isEmpty(model.getSex()), "e.sex=?", model.getSex())//性别过滤条件
 			.preparePageBean(employeeService, pageNum, pageSize);
 		return "list";
@@ -92,10 +92,18 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 	/** 修改 */
 	public String edit() throws Exception {
 		// 1、从数据库中找到对应的id的对象
+		Employee employee = employeeService.getById(model.getId());
 		// 2、设置需要修改的属性
+		employee.setNum(model.getNum());
+		employee.setName(model.getName());
+		employee.setLoginName(model.getLoginName());
+		employee.setSex(model.getSex());
+		employee.setBirthday(model.getBirthday());
+		employee.setAddress(model.getAddress());
+		employee.setPhoneNumber(model.getPhoneNumber());
 		// 3、更新到数据库中
-		model.setRoles(new HashSet<Role>(roleService.getByIds(roleIds)));//设置角色
-		employeeService.update(model);
+		employee.setRoles(new HashSet<Role>(roleService.getByIds(roleIds)));//设置角色
+		employeeService.update(employee);
 		return "toList";
 	}
 	
@@ -110,14 +118,17 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 		Employee employee = employeeService.findByLoginNameAndPwd(loginName, password);
 		if (employee == null) {
 			Utils.displayErrorInfo("errorInfo", "用户名或密码错误");
-			LoggerManager.printInfo(getClass(), "用户名或密码错误");
 			return "loginUI";
 		} else {
 			//将用户数据保存到Session中
 			ActionContext.getContext().getSession().put("employeeLogin", employee);
-			//将用户拥有的权限数据保存
-			List<Privilege> privileges = employee.getAllPrivilege();
+			//得到当前登录用户的顶级权限
+			List<Privilege> privileges = employeeService.getTopPrivilegesByEmployee(employee);
+			for(Privilege privilege:privileges){
+				System.out.println("顶级权限id:"+privilege.getId()+",顶级权限name:"+privilege.getName());
+			}
 			ActionContext.getContext().getSession().put("privilegeList", privileges);
+			//组成一定格式的json数据
 			return "index";
 		}
 	}

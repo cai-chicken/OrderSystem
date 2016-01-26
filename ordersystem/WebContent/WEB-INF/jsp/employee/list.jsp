@@ -12,9 +12,9 @@
 	<form class="form-inline definewidth m20" action="employee_list.action" method="post">
 		<!--过滤条件-->
 		员工名称：
-		<input type="text" name="name" class="abc input-default" value="">&nbsp;&nbsp;
+		<input type="text" name="name" class="abc input-default">&nbsp;&nbsp;
 		家庭地址：
-		<input type="text" name="address" class="abc input-default" value="">&nbsp;&nbsp;
+		<input type="text" name="address" class="abc input-default">&nbsp;&nbsp;
 		性别：
 		<input type="radio" name="sex" class="abc input-default"  value="男">&nbsp;男&nbsp;
 		<input type="radio" name="sex" class="abc input-default"  value="女">&nbsp;女&nbsp;

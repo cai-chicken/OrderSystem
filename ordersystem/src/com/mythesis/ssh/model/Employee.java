@@ -40,7 +40,7 @@ public class Employee {
 	}
 	
 	public List<Privilege> getAllPrivilege(){
-		Set<Privilege> setPrivilege = new HashSet<>();
+		Set<Privilege> setPrivilege = new HashSet<Privilege>();
 		for(Role role:roles){
 			for(Privilege privilege:role.getPrivileges()){
 				setPrivilege.add(privilege);
