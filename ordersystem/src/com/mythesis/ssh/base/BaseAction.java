@@ -9,10 +9,10 @@ import javax.annotation.Resource;
 
 import org.apache.struts2.ServletActionContext;
 
-import com.mythesis.ssh.model.Role;
 import com.mythesis.ssh.service.EmployeeService;
 import com.mythesis.ssh.service.PrivilegeService;
 import com.mythesis.ssh.service.RoleService;
+import com.mythesis.ssh.service.StoreService;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -33,13 +33,11 @@ public class BaseAction extends ActionSupport {
 	
 	@Resource
 	protected PrivilegeService privilegeService;//权限Service
+	
+	@Resource
+	protected StoreService storeService;//本店信息Service
 
-	// ------------------------------获取当前登录-----------------------------------
-	/*protected User getCurrentUser() {
-		return (User) ActionContext.getContext().getSession().get("user");
-	}*/
-
-	// -----------------------------------------------------------------
+	// ---------------------------------------------------------------------------
 	protected int pageNum = 1;// 当前页，默认是第一页
 	protected int pageSize = 4;// 每页显示多少条，默认是第十页
 
@@ -59,7 +57,7 @@ public class BaseAction extends ActionSupport {
 		this.pageSize = pageSize;
 	}
 
-	// -----------------------------------------------------------------
+	// ---------------------------------------------------------------------------
 	/**
 	 * 保存上传的文件，并返回文件在服务端的真实存储路径
 	 * 

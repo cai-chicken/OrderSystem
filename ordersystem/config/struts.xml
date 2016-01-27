@@ -45,5 +45,12 @@
 			<result name="saveUI">/WEB-INF/jsp/role/saveUI.jsp</result>
 			<result name="toList" type="redirectAction">role_list</result>
 		</action>
+	<!-- 其它管理 -->
+		<!-- 本店信息管理 -->
+		<action name="store_*" class="storeAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/store/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/store/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">store_list</result>
+		</action>
 	</package>
 </struts>

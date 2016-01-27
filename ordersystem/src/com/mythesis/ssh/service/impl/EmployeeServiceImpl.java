@@ -17,6 +17,7 @@ import com.mythesis.ssh.service.EmployeeService;
  */
 @Service("employeeService")
 @Transactional
+@SuppressWarnings("unchecked")
 public class EmployeeServiceImpl extends BaseDaoImpl<Employee> implements EmployeeService {
 
 	@Override
@@ -47,12 +48,17 @@ public class EmployeeServiceImpl extends BaseDaoImpl<Employee> implements Employ
 				SELECT roleId FROM employee_role WHERE employeeId=21
 			)
 		)*/
-		return getSession().createQuery(//
+		return getSession().createSQLQuery(//
+				"SELECT * FROM privilege p WHERE p.parentId IS NULL AND p.id IN ("
+				+ "SELECT DISTINCT privilegeId FROM privilege_role t1 WHERE t1.roleId IN ("
+				+ "SELECT roleId FROM employee_role WHERE employeeId=21))")//
+				.list();
+		/*return getSession().createQuery(//
 				"FROM Privilege p WHERE p.parent.id IS NULL AND "
 				+ "p.id IN (SELECT DISTINCT r.privileges.id FROM Role r WHERE r.id IN("
 				+ "SELECT DISTINCT e.roles.id FROM Employee e WHERE e.id = ?))")//
 				.setParameter(0, employee.getId())//
-				.list();
+				.list();*/
 		// 	SELECT DISTINCT e.roles.id FROM Employee e WHERE e.id = 21;
 		//  SELECT DISTINCT r.privileges.id FROM Role r WHERE r.id IN
 	}
