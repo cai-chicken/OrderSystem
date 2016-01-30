@@ -1,5 +1,7 @@
 #创建数据库
 CREATE DATABASE ordersystem
+SHOW TABLES;
+SELECT * FROM privilege
 
 
 #查看员工表结构
@@ -23,9 +25,9 @@ SHOW VARIABLES LIKE 'character%';
 DESC employee
 SELECT * FROM employee;
 SELECT * FROM role
-SELECT * FROM privilege_role
+SELECT * FROM privilege_role WHERE roleId = 4
 SELECT * FROM employee
-SELECT * FROM employee_role
+SELECT * FROM employee_role WHERE employeeId = 21
 SELECT * FROM privilege
 #查找用户id为21所拥有的所有顶级权限
 SELECT * FROM privilege p WHERE p.parentId IS NULL AND p.id IN (

@@ -123,10 +123,11 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 			//将用户数据保存到Session中
 			ActionContext.getContext().getSession().put("employeeLogin", employee);
 			//得到当前登录用户的顶级权限
-			List<Privilege> privileges = employeeService.getTopPrivilegesByEmployee(employee);
-			for(Privilege privilege:privileges){
-				System.out.println("顶级权限id:"+privilege.getId()+",顶级权限name:"+privilege.getName());
-			}
+//			List<Privilege> privileges = employeeService.getTopPrivilegesByEmployee(employee);
+			List<Privilege> privileges = privilegeService.getTopPrivileges();
+//			for(Privilege privilege:privileges){
+//				System.out.println("顶级权限id:"+privilege.getId()+",顶级权限name:"+privilege.getName());
+//			}
 			ActionContext.getContext().getSession().put("privilegeList", privileges);
 			//组成一定格式的json数据
 			return "index";

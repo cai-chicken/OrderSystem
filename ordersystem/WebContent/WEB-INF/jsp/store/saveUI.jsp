@@ -8,10 +8,10 @@
 </head>
 <body>
 	<c:if test="${store.id == null }">
-		<form action="store_add.action" method="post" class="definewidth m20">
+		<form action="store_add.action" method="post" enctype="multipart/form-data" class="definewidth m20">
 	</c:if>
 	<c:if test="${store.id != null }">
-		<form action="store_edit.action" method="post" class="definewidth m20">
+		<form action="store_edit.action" method="post" enctype="multipart/form-data" class="definewidth m20">
 	</c:if>
 	<input type="hidden" name="id" value="${store.id }">
 		<table class="table table-bordered table-hover definewidth m10">
@@ -24,7 +24,7 @@
 			<tr>
 				<td width="10%" class="tableleft">宣传图片</td>
 				<td>
-					<input type="file" name="image" />
+					<input type="file" name="upload" />
 				</td>
 			</tr>
 			<tr>
@@ -36,8 +36,8 @@
 			<tr>
 				<td class="tableleft">是否启用</td>
 				<td>
-					<input type="radio" name="use" value="1" checked/> &nbsp;是&nbsp;&nbsp;
-					<input type="radio" name="use" value="0" /> &nbsp;否
+					<input type="radio" name="state" value="1" checked/> &nbsp;是&nbsp;&nbsp;
+					<input type="radio" name="state" value="0" /> &nbsp;否
 				</td>
 			</tr>
 			<tr>

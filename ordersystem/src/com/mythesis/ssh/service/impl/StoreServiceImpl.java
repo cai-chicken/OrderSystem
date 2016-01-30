@@ -17,9 +17,9 @@ import com.mythesis.ssh.service.StoreService;
 public class StoreServiceImpl extends BaseDaoImpl<Store> implements StoreService {
 
 	@Override
-	public Store findByUseState() {
+	public Store findByState() {
 		return (Store) getSession().createQuery(//
-				"FROM Store s WHERE s.use like '1'")//
+				"FROM Store s WHERE s.state like '1'")//
 				.uniqueResult();
 	}
 

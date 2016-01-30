@@ -14,7 +14,15 @@
 		<interceptors>
 			<interceptor name="checkPrivilege" class="com.mythesis.ssh.util.CheckPrivilegeInterceptor"></interceptor>
 			<interceptor-stack name="defaultStack">
+				<!-- 校验权限拦截器 -->
 				<interceptor-ref name="checkPrivilege"></interceptor-ref>
+				<!-- 文件上传拦截器 -->
+				<interceptor-ref name="fileUpload">
+					<!-- 配置允许上传的文件类型 -->
+					<param name="allowedTypes">image/png,image/jpeg,image/jpg</param>
+					<!-- 配置允许上传的文件大小 -->
+					<!-- <param name="maximumSize">5000</param> -->
+				</interceptor-ref>
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>

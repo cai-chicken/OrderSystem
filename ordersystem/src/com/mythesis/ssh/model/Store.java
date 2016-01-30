@@ -1,5 +1,7 @@
 package com.mythesis.ssh.model;
 
+import java.io.Serializable;
+
 /**
  * 本店信息实体
  * 
@@ -7,12 +9,12 @@ package com.mythesis.ssh.model;
  * @description
  * @date 2016年1月27日 下午8:03:40
  */
-public class Store {
+public class Store implements Serializable {
 	private Long id;
 	private String name;
 	private String image;// 保存的是图片的路径
 	private String description;
-	private String use;
+	private String state;
 
 	public Long getId() {
 		return id;
@@ -46,12 +48,12 @@ public class Store {
 		this.description = description;
 	}
 
-	public String getUse() {
-		return use;
+	public String getState() {
+		return state;
 	}
 
-	public void setUse(String use) {
-		this.use = use;
+	public void setState(String state) {
+		this.state = state;
 	}
 
 }

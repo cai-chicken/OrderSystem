@@ -21,18 +21,18 @@
 		<c:forEach items="${pageBean.recordList }" var="store">
 			<tr>
 				<td>${store.name }</td>
-				<td><img alt="${stroe.image }"/></td>
+				<td><img alt="${store.image }"/></td>
 				<td>${store.description }</td>
-				<c:if test="${store.use == 1 }">
+				<c:if test="${store.state == 1 }">
 					<td>是</td>
 				</c:if>
-				<c:if test="${store.use != 1 }">
+				<c:if test="${store.state != 1 }">
 					<td>否</td>
 				</c:if>
 				<td>
 					<a href="store_editUI.action?id=${store.id }">编辑</a>
 					<a href="store_delete.action?id=${store.id }" onclick="return confirm('确定要删除吗？')">删除</a>
-					<a href="store_changeUseState?id=${store.id }">启用</a>
+					<a href="store_changeState.action?id=${store.id }">启用</a>
 				</td>
 			</tr>
 		</c:forEach>

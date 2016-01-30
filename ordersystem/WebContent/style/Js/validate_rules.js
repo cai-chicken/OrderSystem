@@ -1,5 +1,5 @@
 /*****************************************************************
-                  表单校验工具类  (linjq)       
+                  表单校验工具类   
 *****************************************************************/
  
 /**
@@ -7,9 +7,8 @@
  * 
  * @param num
  * @return
- * @author jiqinlin
  */
-function isIntEqZero(num){ 
+function isEqZero(num){ 
      return num==0;
 }
 
@@ -18,9 +17,8 @@ function isIntEqZero(num){
  * 
  * @param num
  * @return
- * @author jiqinlin
  */
-function isIntGtZero(num){ 
+function isGtZero(num){ 
     return num>0;
 }
 
@@ -29,42 +27,8 @@ function isIntGtZero(num){
  * 
  * @param num
  * @return
- * @author jiqinlin
  */
-function isIntGteZero(num){ 
-    return num>=0;
-}
-
-/**
- * 判断浮点数num是否等于0
- * 
- * @param num 浮点数
- * @return
- * @author jiqinlin
- */
-function isFloatEqZero(num){ 
-    return num==0;
-}
-
-/**
- * 判断浮点数num是否大于0
- * 
- * @param num 浮点数
- * @return
- * @author jiqinlin
- */
-function isFloatGtZero(num){ 
-    return num>0;
-}
-
-/**
- * 判断浮点数num是否大于或等于0
- * 
- * @param num 浮点数
- * @return
- * @author jiqinlin
- */
-function isFloatGteZero(num){ 
+function isGteZero(num){ 
     return num>=0;
 }
 

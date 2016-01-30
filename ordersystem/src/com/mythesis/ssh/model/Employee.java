@@ -1,5 +1,6 @@
 package com.mythesis.ssh.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -11,7 +12,7 @@ import java.util.Set;
  * @description 员工实体
  * @date 2016年1月10日 上午11:09:20
  */
-public class Employee {
+public class Employee implements Serializable {
 	private Long id;
 	private String name;
 	private String loginName;

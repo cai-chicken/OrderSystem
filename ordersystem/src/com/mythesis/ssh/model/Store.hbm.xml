@@ -12,7 +12,7 @@
 		<property name="name" />
 		<property name="description"/>
 		<property name="image"/>
-		<property name="use"/>
+		<property name="state"/>
 	</class>
 	
 </hibernate-mapping>

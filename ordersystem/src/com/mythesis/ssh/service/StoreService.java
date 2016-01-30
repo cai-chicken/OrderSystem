@@ -9,6 +9,6 @@ public interface StoreService extends BaseDao<Store> {
 	 * 找到当前启用状体的本店信息记录
 	 * @return
 	 */
-	Store findByUseState();
+	Store findByState();
 
 }
