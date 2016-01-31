@@ -1,3 +1,8 @@
 1、Hibernate不能自动建表的原因之一：
 	可能字段名是数据库的关键字。
 2、文件上传
+3、java.lang.ClassNotFoundException: org.apache.commons.lang.exception.NestableRuntimeException
+	JsonArray使用到的是common-lang包
+4、java.lang.ClassCastException: [Ljava.lang.Object; cannot be cast to com.mythesis.ssh.model.Pivilege]
+	根本原因：因为在查找当前用户的顶级权限时，使用的是Sql语句查询，而查询出来的是Object[]，所以不能映射到Privilege中
+	解决办法：见EmployeeAction中的login()方法

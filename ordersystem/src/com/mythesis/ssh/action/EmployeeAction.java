@@ -1,5 +1,6 @@
 package com.mythesis.ssh.action;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -8,12 +9,10 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.mysql.jdbc.Util;
 import com.mythesis.ssh.base.ModelDrivenBaseAction;
 import com.mythesis.ssh.model.Employee;
 import com.mythesis.ssh.model.Privilege;
 import com.mythesis.ssh.model.Role;
-import com.mythesis.ssh.util.LoggerManager;
 import com.mythesis.ssh.util.QueryHelper;
 import com.mythesis.ssh.util.StringUtil;
 import com.mythesis.ssh.util.Utils;
@@ -123,13 +122,20 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 			//将用户数据保存到Session中
 			ActionContext.getContext().getSession().put("employeeLogin", employee);
 			//得到当前登录用户的顶级权限
-//			List<Privilege> privileges = employeeService.getTopPrivilegesByEmployee(employee);
-			List<Privilege> privileges = privilegeService.getTopPrivileges();
-//			for(Privilege privilege:privileges){
-//				System.out.println("顶级权限id:"+privilege.getId()+",顶级权限name:"+privilege.getName());
-//			}
+			List<Object[]> objects = privilegeService.getTopPrivilegesByEmployee(employee);
+			List<Privilege> privileges = new ArrayList<Privilege>();
+			for(int i=0; i<objects.size(); i++){
+				Object[] objects2 = objects.get(i);
+				Privilege privilege = new Privilege();
+				privilege.setId(Long.parseLong((objects2[0].toString())));
+				privilege.setName((String)objects2[1]);
+				privileges.add(privilege);
+			}
+//			List<Privilege> privileges = privilegeService.getTopPrivileges();
 			ActionContext.getContext().getSession().put("privilegeList", privileges);
 			//组成一定格式的json数据
+			String privilegeStr = Utils.getJsonPrivilege(privileges, privilegeService);
+			ActionContext.getContext().getSession().put("privilegeStr", privilegeStr);
 			return "index";
 		}
 	}

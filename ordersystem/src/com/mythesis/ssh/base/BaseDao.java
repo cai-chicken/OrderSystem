@@ -48,10 +48,10 @@ public interface BaseDao<T> {
 	/**
 	 * 根据id数组得到一个实体数组
 	 * 
-	 * @param ids 
+	 * @param privilegeIds 
 	 * @return 返回得到的实体数组
 	 */
-	List<T> getByIds(Long[] ids);
+	List<T> getByIds(Long[] privilegeIds);
 
 	/**
 	 * 查找所有实体

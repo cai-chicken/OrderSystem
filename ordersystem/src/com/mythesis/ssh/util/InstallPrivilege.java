@@ -78,6 +78,10 @@ public class InstallPrivilege {
 		session.save(new Privilege("菜系列表", "/cuisine_list", children2));
 		//对于"下单成功"
 		session.save(new Privilege("修改烹饪状态", "/order_status", children4));
+		//对于"统计管理" --------------------------------------------------------------------
+		//TODO
+//		parent = new Privilege("统计管理", null, null);
+//		session.save(parent);
 		//对于"其它管理" --------------------------------------------------------------------
 		parent = new Privilege("其它管理", null, null);
 		children1 = new Privilege("本店信息", "/store_list", parent);

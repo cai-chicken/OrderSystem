@@ -1,14 +1,17 @@
 package com.mythesis.ssh.util;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import com.mythesis.ssh.model.Employee;
 import com.mythesis.ssh.model.Privilege;
 import com.mythesis.ssh.model.Role;
+import com.mythesis.ssh.service.PrivilegeService;
 import com.opensymphony.xwork2.ActionContext;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 public class Utils {
 	private static final String currentEmployee = "employeeLogin";
@@ -86,8 +89,34 @@ public class Utils {
 		return false;
 	}
 	
-	public JSONArray getJsonPrivilege(List<Privilege> privilegeList){
+	/**
+	 * 组成json格式传到jsp页面
+	 * @param privilegeList
+	 * @return
+	 */
+	public static String getJsonPrivilege(List<Privilege> topPrivilegeList, PrivilegeService privilegeService){
 		JSONArray array1 = new JSONArray();
-		return array1;
+		JSONObject object1 = new JSONObject();
+		for(Iterator<Privilege> iterator = topPrivilegeList.iterator();iterator.hasNext();){
+			Privilege topPrivilege = iterator.next();
+			object1.put("id", topPrivilege.getId());
+			JSONArray array2 = new JSONArray();
+			JSONObject object2 = new JSONObject();
+			object2.put("text", topPrivilege.getName());
+			JSONArray array3 = new JSONArray();
+			List<Privilege> childrenPrivileges = privilegeService.getChildrenByParentId(topPrivilege.getId());
+			for(Privilege children:childrenPrivileges){
+				JSONObject object = new JSONObject();
+				object.put("id", children.getId());
+				object.put("text", children.getName());
+				object.put("href", "/ordersystem"+children.getUrl()+".action");
+				array3.add(object);
+			}
+			object2.put("items", array3);
+			array2.add(object2);
+			object1.put("menu", array2);
+			array1.add(object1);
+		}
+		return array1.toString();
 	}
 }

@@ -15,12 +15,13 @@ public interface EmployeeService extends BaseDao<Employee> {
 
 	/**
 	 * 通过登录名和密码找到用户
+	 * 
 	 * @param loginName
 	 * @param password
 	 * @return
 	 */
 	Employee findByLoginNameAndPwd(String loginName, String password);
-	
+
 	/**
 	 * 通过用户id找到用户的密码，返回是已经加过密的密码
 	 */
@@ -28,16 +29,10 @@ public interface EmployeeService extends BaseDao<Employee> {
 
 	/**
 	 * 更新指定用户的密码信息
+	 * 
 	 * @param id
 	 * @param newPwdMd5
 	 */
 	void updatePwd(Long id, String newPwdMd5);
-
-	/**
-	 * 得到用户的顶级权限列表
-	 * @param employee
-	 * @return
-	 */
-	List<Privilege> getTopPrivilegesByEmployee(Employee employee);
 
 }

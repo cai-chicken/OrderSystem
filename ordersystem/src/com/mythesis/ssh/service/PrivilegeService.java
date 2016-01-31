@@ -18,5 +18,19 @@ public interface PrivilegeService extends BaseDao<Privilege> {
 	 * 得到所有的权限数据
 	 */
 	Collection<String> getAllPrivilegeUrls();
+	
+	/**
+	 * 得到用户的顶级权限列表
+	 * @param employee
+	 * @return
+	 */
+	List<Object[]> getTopPrivilegesByEmployee(Employee employee);
+
+	/**
+	 * 通过父权限id找到所有的子权限
+	 * @param long1
+	 * @return
+	 */
+	List<Privilege> getChildrenByParentId(Long long1);
 
 }

@@ -1,0 +1,64 @@
+[	//array1
+	{   //object1
+		id:'1',
+		menu:[	//array2
+			{	//object2
+				text:'系统管理',
+				items:[		//array3
+					{	//object
+						id:'12',
+						text:'员工管理',
+						href:'Node/index.html'
+					},
+					{
+						id:'3',
+						text:'角色管理',
+						href:'Role/index.html'
+					},
+					{
+						id:'4',
+						text:'个人资料',
+						href:'User/index.html'
+					},
+					{
+						id:'6',
+						text:'权限管理',
+						href:'Menu/index.html'
+					}
+				]
+			}
+		]
+	},
+	{
+		id:'6',
+		menu:[
+			{
+				text:'菜单管理',
+				items:[
+					{
+						id:'7',
+						text:'菜单管理',
+						href:'Node/index.html'
+					},
+					{
+						id:'8',
+						text:'评论管理',
+						href:'Node/index.html'
+					},
+					{
+						id:'9',
+						text:'菜系管理',
+						href:'Node/index.html'
+					},
+					{
+						id:'10',
+						text:'下单成功',
+						href:'Node/index.html'
+					}
+				]
+			}
+		]
+	}
+];
+
+{id:'1',menu:[{text:'系统管理',items:[{id:'12',text:'机构管理',href:'Node/index.html'},{id:'3',text:'角色管理',href:'Role/index.html'},{id:'4',text:'用户管理',href:'User/index.html'},{id:'6',text:'菜单管理',href:'Menu/index.html'}]}]},{id:'7',homePage : '9',menu:[{text:'业务管理',items:[{id:'9',text:'查询业务',href:'Node/index.html'}]}]}];

@@ -9,7 +9,7 @@ import java.util.Set;
  * @description 权限实体
  * @date 2016年1月16日 上午11:31:31
  */
-public class Privilege implements Serializable{
+public class Privilege implements Serializable {
 	private Long id;
 	private String name;
 	private String url;// 权限对应的url
