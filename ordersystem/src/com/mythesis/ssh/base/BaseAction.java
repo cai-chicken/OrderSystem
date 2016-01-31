@@ -13,6 +13,7 @@ import com.mythesis.ssh.service.ChairService;
 import com.mythesis.ssh.service.CuisineService;
 import com.mythesis.ssh.service.EmployeeService;
 import com.mythesis.ssh.service.KnowledgeService;
+import com.mythesis.ssh.service.MenuService;
 import com.mythesis.ssh.service.PrivilegeService;
 import com.mythesis.ssh.service.RoleService;
 import com.mythesis.ssh.service.StoreService;
@@ -53,6 +54,9 @@ public class BaseAction extends ActionSupport {
 	
 	@Resource
 	protected ChairService chairService;//桌椅Service
+	
+	@Resource
+	protected MenuService menuService;//菜单Service
 
 	// ---------------------------------------------------------------------------
 	protected int pageNum = 1;// 当前页，默认是第一页

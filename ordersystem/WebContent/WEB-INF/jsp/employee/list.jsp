@@ -12,9 +12,9 @@
 	<form class="form-inline definewidth m20" action="employee_list.action" method="post">
 		<!--过滤条件-->
 		员工名称：
-		<input type="text" name="name" class="abc input-default">&nbsp;&nbsp;
+		<input type="text" name="name" class="abc input-default" placeholder="请输入员工名称">&nbsp;&nbsp;
 		家庭地址：
-		<input type="text" name="address" class="abc input-default">&nbsp;&nbsp;
+		<input type="text" name="address" class="abc input-default" placeholder="请输入家庭地址">&nbsp;&nbsp;
 		性别：
 		<input type="radio" name="sex" class="abc input-default"  value="男">&nbsp;男&nbsp;
 		<input type="radio" name="sex" class="abc input-default"  value="女">&nbsp;女&nbsp;
@@ -62,5 +62,11 @@
 			window.location.href = "employee_addUI.action";
 		});
 	});
+	function goToPage( pageNum ){
+		/* pageNum为当前页，将被BaseAction中的成员变量接收 */
+		/* $(document.forms[0]).append("<input type='hidden' name='pageNum' value='" + pageNum +"'>");
+		document.forms[0].submit(); */
+		window.location.href = "/ordersystem/employee_list.action?pageNum=" + pageNum;
+	}
 </script>
 </html>

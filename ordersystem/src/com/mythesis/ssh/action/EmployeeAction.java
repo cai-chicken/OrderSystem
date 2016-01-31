@@ -110,6 +110,10 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 		return "loginUI";
 	}
 	
+	public String index() throws Exception {
+		return "index";
+	}
+	
 	/** 登录*/
 	public String login() throws Exception {
 		String loginName = model.getLoginName();
@@ -136,7 +140,7 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 			//组成一定格式的json数据
 			String privilegeStr = Utils.getJsonPrivilege(privileges, privilegeService);
 			ActionContext.getContext().getSession().put("privilegeStr", privilegeStr);
-			return "index";
+			return "toIndex";
 		}
 	}
 	

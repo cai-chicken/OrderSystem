@@ -44,6 +44,7 @@
 			<result name="modifyPwdUI">/WEB-INF/jsp/employee/modifyPwd.jsp</result>
 			<result name="index">/WEB-INF/jsp/public/index.jsp</result>
 			<result name="toList" type="redirectAction">employee_list</result>
+			<result name="toIndex" type="redirectAction">employee_index</result>
 			<result name="toShowInfo" type="redirectAction">employee_showInfo</result>
 			<result name="toModifyPwdUI" type="redirectAction">employee_modifyPwd</result>
 		</action>
@@ -52,6 +53,19 @@
 			<result name="list">/WEB-INF/jsp/role/list.jsp</result>
 			<result name="saveUI">/WEB-INF/jsp/role/saveUI.jsp</result>
 			<result name="toList" type="redirectAction">role_list</result>
+		</action>
+	<!-- 菜单管理 -->
+		<!-- 菜系管理 -->
+		<action name="cuisine_*" class="cuisineAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/cuisine/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/cuisine/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">cuisine_list</result>
+		</action>
+		<!-- 菜单管理 -->
+		<action name="menu_*" class="menuAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/menu/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/menu/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">menu_list</result>
 		</action>
 	<!-- 其它管理 -->
 		<!-- 本店信息管理 -->

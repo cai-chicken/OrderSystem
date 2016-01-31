@@ -17,7 +17,7 @@ public class Menu implements Serializable {
 	private String image;
 	private Double price;// 价格
 	private String description;// 描述
-	private Boolean isSpecial;// 是否是本店特色菜
+	private String isSpecial;// 是否是本店特色菜;1是，0不是
 	private Integer count;// 卖出的份数
 	private Date orderTime;// 下单时间
 	private String status;// 烹饪状态
@@ -73,11 +73,11 @@ public class Menu implements Serializable {
 		this.description = description;
 	}
 
-	public Boolean getIsSpecial() {
+	public String getIsSpecial() {
 		return isSpecial;
 	}
 
-	public void setIsSpecial(Boolean isSpecial) {
+	public void setIsSpecial(String isSpecial) {
 		this.isSpecial = isSpecial;
 	}
 

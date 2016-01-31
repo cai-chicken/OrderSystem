@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../Css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../Css/bootstrap-responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../Css/style.css" />
+		<script type="text/javascript" src="../Js/jquery.js"></script>
+		<script type="text/javascript" src="../Js/jquery.sorted.js"></script>
+		<script type="text/javascript" src="../Js/bootstrap.js"></script>
+		<script type="text/javascript" src="../Js/ckform.js"></script>
+		<script type="text/javascript" src="../Js/common.js"></script>
+
+		<style type="text/css">
+			body {
+				padding-bottom: 40px;
+			}
+			
+			.sidebar-nav {
+				padding: 9px 0;
+			}
+			
+			@media (max-width: 980px) {
+				/* Enable use of floated navbar text */
+				.navbar-text.pull-right {
+					float: none;
+					padding-left: 5px;
+					padding-right: 5px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<form class="form-inline definewidth m20" action="list.html" method="get">
+			菜名：
+			<input type="text" name="name" id="menuname" class="abc input-default" placeholder="" value="">&nbsp;&nbsp; 所属菜系：
+			<select name="cuisine">
+				<option>粤菜</option>
+			</select>&nbsp;&nbsp;
+			<!--<input type="text" name="name" id="menuname" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;-->
+			是否特色菜：
+			<input type="radio" name="isSpecial" id="rolename" class="abc input-default" placeholder="" value="是">&nbsp;是&nbsp;
+			<input type="radio" name="isSpecial" id="rolename" class="abc input-default" placeholder="" value="否">&nbsp;否&nbsp;
+			<input type="radio" name="isSpecial" id="rolename" class="abc input-default" placeholder="" value="">&nbsp;不选&nbsp;
+
+			<button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
+			<button type="button" class="btn btn-success" id="addnew">新增菜单</button>
+		</form>
+		<table class="table table-bordered table-hover definewidth m10">
+			<thead>
+				<tr>
+					<th>编码</th>
+					<th>菜名</th>
+					<th>价格</th>
+					<th>图片</th>
+					<th>简介</th>
+					<th>是否特色菜</th>
+					<th>所属菜系</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tr>
+				<td>menu101</td>
+				<td>肉沫茄子木桶饭</td>
+				<td>$12.00</td>
+				<td><img alt="菜样图片" /></td>
+				<td>什么都不用说了，好吃行不行？</td>
+				<td>是</td>
+				<td>粤菜</td>
+				<td>
+					<a href="saveUI.html">编辑</a>
+					<a href="#" onclick="del(1)">删除</a>
+				</td>
+			</tr>
+		</table>
+
+	</body>
+
+</html>
+<script>
+	$(function() {
+		$('#addnew').click(function() {
+			window.location.href = "saveUI.html";
+		});
+	});
+	/*删除操作*/
+	function del(id) {
+		if (confirm("确定要删除吗？")) {
+			var url = "list.html";
+			window.location.href = url;
+		}
+	}
+</script>
