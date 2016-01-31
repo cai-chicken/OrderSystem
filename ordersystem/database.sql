@@ -30,6 +30,7 @@ SELECT * FROM employee
 SELECT * FROM employee_role WHERE employeeId = 21
 SELECT * FROM privilege WHERE parentId IS NULL
 SELECT * FROM store;
+DESC Privilege
 #查找用户id为21所拥有的所有顶级权限
 SELECT * FROM privilege p WHERE p.parentId IS NULL AND p.id IN (
 	SELECT DISTINCT privilegeId FROM privilege_role t1 WHERE t1.roleId IN (

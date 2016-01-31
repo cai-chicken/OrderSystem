@@ -21,7 +21,7 @@
 		<c:forEach items="${pageBean.recordList }" var="store">
 			<tr>
 				<td>${store.name }</td>
-				<td><img alt="${store.image }"/></td>
+				<td><img alt="no image" style="width: 250px;height: 100px" src="${store.image }"/></td>
 				<td>${store.description }</td>
 				<c:if test="${store.state == 1 }">
 					<td>是</td>
@@ -46,5 +46,11 @@
 			window.location.href="store_addUI.action";
 		});
     });
+	function goToPage( pageNum ){
+		/* pageNum为当前页，将被BaseAction中的成员变量接收 */
+		/* $(document.forms[0]).append("<input type='hidden' name='pageNum' value='" + pageNum +"'>");
+		document.forms[0].submit(); */
+		window.location.href = "/ordersystem/store_list.action?pageNum=" + pageNum;
+	}
 </script>
 </html>

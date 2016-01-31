@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.mythesis.ssh.model">
+
+	<class name="Comment" table="comment">
+		<id name="id">
+            <generator class="native"/>
+		</id>
+		<property name="star" />
+		<property name="description"/>
+		<property name="commentTime" type="timestamp"/>
+		<!-- user属性，是本类与User类的多对一关系 -->
+		<many-to-one name="user" class="User" column="userId"></many-to-one>
+		<!-- menu属性，是本类与Menu类的多对一关系 -->
+		<many-to-one name="menu" class="Menu" column="menuId"></many-to-one>
+	</class>
+	
+</hibernate-mapping>

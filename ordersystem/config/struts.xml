@@ -60,5 +60,17 @@
 			<result name="saveUI">/WEB-INF/jsp/store/saveUI.jsp</result>
 			<result name="toList" type="redirectAction">store_list</result>
 		</action>
+		<!-- 小知识管理 -->
+		<action name="knowledge_*" class="knowledgeAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/knowledge/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/knowledge/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">knowledge_list</result>
+		</action>
+		<!-- 桌椅管理 -->
+		<action name="chair_*" class="chairAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/chair/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/chair/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">chair_list</result>
+		</action>
 	</package>
 </struts>

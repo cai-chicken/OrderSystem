@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.mythesis.ssh.model">
+
+	<class name="Menu" table="menu">
+		<id name="id">
+            <generator class="native"/>
+		</id>
+		<property name="num" />
+		<property name="name"/>
+		<property name="image" />
+		<property name="price"/>
+		<property name="description" />
+		<property name="isSpecial"/>
+		<property name="count" />
+		<property name="orderTime" type="timestamp"/>
+		<property name="status" />
+		<!-- table属性，是本类与Chair类的多对一关系 -->
+		<many-to-one name="chair" class="Chair" column="chairId"></many-to-one>
+		<!-- comments属性，是本类与Comment类的一对多关系 -->
+		<set name="comments">
+			<key column="menuId"></key>
+			<one-to-many class="Comment"/>
+		</set>
+		<!-- cuisine属性，是本类与Cuisine类的多对一关系 -->
+		<many-to-one name="cuisine" class="Cuisine" column="cuisineId"></many-to-one>
+	</class>
+	
+</hibernate-mapping>

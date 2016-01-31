@@ -21,6 +21,11 @@
 		<mapping resource="com/mythesis/ssh/model/Privilege.hbm.xml" />
 		<mapping resource="com/mythesis/ssh/model/Chair.hbm.xml" />
 		<mapping resource="com/mythesis/ssh/model/Store.hbm.xml" />
+		<mapping resource="com/mythesis/ssh/model/Knowledge.hbm.xml" />
+		<mapping resource="com/mythesis/ssh/model/User.hbm.xml" />
+		<mapping resource="com/mythesis/ssh/model/Comment.hbm.xml" />
+		<mapping resource="com/mythesis/ssh/model/Cuisine.hbm.xml" />
+		<mapping resource="com/mythesis/ssh/model/Menu.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>

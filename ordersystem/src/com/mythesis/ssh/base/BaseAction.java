@@ -3,16 +3,21 @@ package com.mythesis.ssh.base;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.UUID;
 
 import javax.annotation.Resource;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.mysql.jdbc.Field;
+import com.mythesis.ssh.service.ChairService;
+import com.mythesis.ssh.service.CuisineService;
 import com.mythesis.ssh.service.EmployeeService;
+import com.mythesis.ssh.service.KnowledgeService;
 import com.mythesis.ssh.service.PrivilegeService;
 import com.mythesis.ssh.service.RoleService;
 import com.mythesis.ssh.service.StoreService;
+import com.mythesis.ssh.service.UserService;
+import com.mythesis.ssh.util.LoggerManager;
 import com.opensymphony.xwork2.ActionSupport;
 
 
@@ -36,6 +41,18 @@ public class BaseAction extends ActionSupport {
 	
 	@Resource
 	protected StoreService storeService;//本店信息Service
+	
+	@Resource
+	protected KnowledgeService knowledgeService;//小知识Service
+	
+	@Resource
+	protected UserService userService;//顾客Service
+	
+	@Resource
+	protected CuisineService cuisineService;//菜系Service
+	
+	@Resource
+	protected ChairService chairService;//桌椅Service
 
 	// ---------------------------------------------------------------------------
 	protected int pageNum = 1;// 当前页，默认是第一页
@@ -64,12 +81,12 @@ public class BaseAction extends ActionSupport {
 	 * @param upload
 	 * @return
 	 */
-	protected String saveUploadFile(File upload) {
+	protected String saveUploadFile(File upload, String uploadFileName) {
 		if (upload == null) {
 			return "";
 		}
-		SimpleDateFormat sdf = new SimpleDateFormat("/yyyy/MM/dd/");
-		// >> 获取路径
+		SimpleDateFormat sdf = new SimpleDateFormat("/yyyy-MM-dd/");
+		// >> 获取服务器路径
 		String basePath = ServletActionContext.getServletContext().getRealPath("/WEB-INF/upload_files");
 		String subPath = sdf.format(new Date());// 避免一个文件夹下有大量的文件
 		// >> 如果文件夹不存在，就创建
@@ -78,10 +95,13 @@ public class BaseAction extends ActionSupport {
 			dir.mkdirs(); // 递归的创建不存在的文件夹
 		}
 		// >> 拼接路径，保证文件名不是中文引起的乱码
-		String path = basePath + subPath + UUID.randomUUID().toString();
-//		LoggerManager.printInfo(getClass(), path);
+//		String path = basePath + subPath + UUID.randomUUID().toString();
+		String path = basePath + subPath + uploadFileName;
+		LoggerManager.printInfo(getClass(), "图片服务器地址："+path);
 		// >> 移动文件
-		upload.renameTo(new File(path)); // 如果目标文件夹不存在，或是目标文件已存在，就会不成功，返回false，但不报错。
+		if (upload != null) {
+			upload.renameTo(new File(path)); // 如果目标文件夹不存在，或是目标文件已存在，就会不成功，返回false，但不报错。
+		}
 		return path;
 	}
 }

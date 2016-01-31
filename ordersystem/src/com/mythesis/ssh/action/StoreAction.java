@@ -48,7 +48,7 @@ public class StoreAction extends ModelDrivenBaseAction<Store> {
 	public String add() throws Exception {
 		// 1、保存数据到数据库中,执行相关service的save(model)方法
 		if (upload != null) {
-			String imagePath = saveUploadFile(upload);
+			String imagePath = saveUploadFile(upload, uploadFileName);
 			model.setImage(imagePath);
 		} else {
 			model.setImage("no image");
@@ -73,6 +73,17 @@ public class StoreAction extends ModelDrivenBaseAction<Store> {
 		// 2、设置需要修改的属性
 		store.setName(model.getName());
 		store.setDescription(model.getDescription());
+		String state = model.getState();
+		//如果是启用，则先把原来为启用状态的修改为不启用，因为自始至终，只有一个启用状态
+		if ("1".equals(state)) {
+			// 将原来状态为1的本店记录修改为0
+			Store oldStore = storeService.findByState();
+			if (oldStore != null) {
+				//如果找到了，则修改
+				oldStore.setState("0");
+				storeService.update(oldStore);
+			}
+		}
 		store.setState(model.getState());
 		// TODO
 		// 表示有重新上传文件
@@ -83,7 +94,7 @@ public class StoreAction extends ModelDrivenBaseAction<Store> {
 				file.delete();
 			}
 			// 使用新文件
-			String path = saveUploadFile(upload);
+			String path = saveUploadFile(upload, uploadFileName);
 			store.setImage(path);
 		}
 		// 3、更新到数据库中

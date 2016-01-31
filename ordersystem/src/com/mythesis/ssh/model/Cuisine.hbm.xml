@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.mythesis.ssh.model">
+
+	<class name="Cuisine" table="cuisine">
+		<id name="id">
+            <generator class="native"/>
+		</id>
+		<property name="name" />
+		<property name="description"/>
+		<property name="count"/>
+		<!-- menus属性，是本类与Menu类的一对多关系 -->
+		<set name="menus">
+			<key column="cuisineId"></key>
+			<one-to-many class="Menu"/>
+		</set>
+	</class>
+	
+</hibernate-mapping>
