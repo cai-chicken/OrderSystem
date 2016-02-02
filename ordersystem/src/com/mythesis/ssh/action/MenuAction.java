@@ -35,6 +35,7 @@ public class MenuAction extends ModelDrivenBaseAction<Menu> {
 				.addOrderProperty("m.id", false)//
 				.addWhereCondition(!StringUtil.isEmpty(model.getName()), "m.name like ?", "%" + model.getName() + "%")// 菜名过滤
 				.addWhereCondition(!StringUtil.isEmpty(model.getIsSpecial()), "m.isSpecial=?", model.getIsSpecial())// 是否特色菜过滤条件
+				.addWhereCondition((cuisineId != null && 0 != cuisineId), "m.cuisine.id = ?", cuisineId)//
 				.preparePageBean(menuService, pageNum, pageSize);
 		return "list";
 	}

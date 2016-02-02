@@ -10,6 +10,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.mysql.jdbc.Field;
 import com.mythesis.ssh.service.ChairService;
+import com.mythesis.ssh.service.CommentService;
 import com.mythesis.ssh.service.CuisineService;
 import com.mythesis.ssh.service.EmployeeService;
 import com.mythesis.ssh.service.KnowledgeService;
@@ -57,6 +58,9 @@ public class BaseAction extends ActionSupport {
 	
 	@Resource
 	protected MenuService menuService;//菜单Service
+	
+	@Resource
+	protected CommentService commentService;//评论Service
 
 	// ---------------------------------------------------------------------------
 	protected int pageNum = 1;// 当前页，默认是第一页

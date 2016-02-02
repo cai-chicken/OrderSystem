@@ -9,18 +9,18 @@
 <body>
 	<form class="form-inline definewidth m20" action="menu_list.action" method="post">
 		菜名：
-		<input type="text" name="name" id="name" class="abc input-default" placeholder="请输入菜名" value="">&nbsp;&nbsp; 
+		<input type="text" name="name" id="name" class="abc input-default" placeholder="请输入菜名">&nbsp;&nbsp; 
 		所属菜系：
 		<select name="cuisineId">
-			<option>请选择菜系</option>
+			<option value="0">请选择菜系</option>
 			<c:forEach items="${cuisineList }" var="cuisine">
 				<option value="${cuisine.id }">${cuisine.name }</option>
 			</c:forEach>
 		</select>&nbsp;&nbsp;
 		<!--<input type="text" name="name" id="menuname" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;-->
 		是否特色菜：
-		<input type="radio" name="isSpecial" id="rolename" class="abc input-default" value="1">&nbsp;是&nbsp;
-		<input type="radio" name="isSpecial" id="rolename" class="abc input-default" value="0">&nbsp;否&nbsp;
+		<input type="radio" name="isSpecial" class="abc input-default" value="1">&nbsp;是&nbsp;
+		<input type="radio" name="isSpecial" class="abc input-default" value="0">&nbsp;否&nbsp;
 
 		<button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
 		<button type="button" class="btn btn-success" id="addnew">新增菜单</button>
@@ -42,8 +42,8 @@
 			<tr>
 				<td>${menu.num }</td>
 				<td>${menu.name }</td>
-				<td>￥${menu.price }</td>
-				<td><img alt="no image" style="width: 250px;height: 100px" src="${menu.iamge }"/></td>
+				<td>${menu.price }</td>
+				<td><img alt="no image" style="width: 250px;height: 100px" src="${menu.image }"/></td>
 				<td>${menu.description }</td>
 				<c:if test="${menu.isSpecial == 1}">
 					<td>是</td>

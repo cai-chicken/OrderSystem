@@ -67,6 +67,10 @@
 			<result name="saveUI">/WEB-INF/jsp/menu/saveUI.jsp</result>
 			<result name="toList" type="redirectAction">menu_list</result>
 		</action>
+		<!-- 评论管理 -->
+		<action name="comment_*" class="commentAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/comment/list.jsp</result>
+		</action>
 	<!-- 其它管理 -->
 		<!-- 本店信息管理 -->
 		<action name="store_*" class="storeAction" method="{1}">

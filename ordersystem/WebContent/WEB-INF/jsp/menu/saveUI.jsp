@@ -57,6 +57,7 @@
 				<td class="tableleft">所属菜系</td>
 				<td>
 					<select name="cuisineId">
+						<option>请选择所属菜系</option>
 						<c:forEach items="${cuisineList }" var="cuisine">
 							<option value="${cuisine.id }">${cuisine.name }</option>
 						</c:forEach>

@@ -26,7 +26,7 @@
 			<one-to-many class="Comment"/>
 		</set>
 		<!-- cuisine属性，是本类与Cuisine类的多对一关系 -->
-		<many-to-one name="cuisine" class="Cuisine" column="cuisineId"></many-to-one>
+		<many-to-one name="cuisine" class="Cuisine" column="cuisineId" lazy="false"></many-to-one>
 	</class>
 	
 </hibernate-mapping>
