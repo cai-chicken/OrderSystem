@@ -65,6 +65,7 @@
 		<action name="menu_*" class="menuAction" method="{1}">
 			<result name="list">/WEB-INF/jsp/menu/list.jsp</result>
 			<result name="saveUI">/WEB-INF/jsp/menu/saveUI.jsp</result>
+			<result name="orderSuccessList">/WEB-INF/jsp/menu/orderSuccessList.jsp</result>
 			<result name="toList" type="redirectAction">menu_list</result>
 		</action>
 		<!-- 评论管理 -->

@@ -19,7 +19,7 @@
 		<property name="orderTime" type="timestamp"/>
 		<property name="status" />
 		<!-- table属性，是本类与Chair类的多对一关系 -->
-		<many-to-one name="chair" class="Chair" column="chairId"></many-to-one>
+		<many-to-one name="chair" class="Chair" column="chairId" lazy="false"></many-to-one>
 		<!-- comments属性，是本类与Comment类的一对多关系 -->
 		<set name="comments">
 			<key column="menuId"></key>

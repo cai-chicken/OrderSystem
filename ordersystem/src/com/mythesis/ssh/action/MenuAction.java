@@ -25,6 +25,9 @@ public class MenuAction extends ModelDrivenBaseAction<Menu> {
 	private File upload;// 文件上传
 	private String uploadContentType;// 文件类型
 	private String uploadFileName;// 文件名
+	// 下单成功的过滤条件
+	private String menuName;// 菜名
+	private String chairNum;// 桌号
 
 	/** 列表 */
 	public String list() throws Exception {
@@ -113,6 +116,23 @@ public class MenuAction extends ModelDrivenBaseAction<Menu> {
 	}
 
 	/**
+	 * 查看下单成功的列表
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public String orderSuccess() throws Exception {
+		new QueryHelper(Menu.class, "m")//
+			.addOrderProperty("m.orderTime", false)//下单时间降序
+			.addWhereCondition(!StringUtil.isEmpty(menuName), "m.name like ?", "%"+menuName+"%")//
+			.addWhereCondition(!StringUtil.isEmpty(chairNum), "m.chair.num = ?", chairNum)//
+			.addWhereCondition(!StringUtil.isEmpty(model.getStatus()), "m.status = ?", model.getStatus())//
+			//.addWhereCondition("m.count IS NOT NULL", "")
+			.preparePageBean(menuService, pageNum, pageSize);
+		return "orderSuccessList";
+	}
+
+	/**
 	 * 准备菜系数据
 	 */
 	private void prepareCuisine() {
@@ -150,6 +170,22 @@ public class MenuAction extends ModelDrivenBaseAction<Menu> {
 
 	public void setUploadFileName(String uploadFileName) {
 		this.uploadFileName = uploadFileName;
+	}
+
+	public String getMenuName() {
+		return menuName;
+	}
+
+	public void setMenuName(String menuName) {
+		this.menuName = menuName;
+	}
+
+	public String getChairNum() {
+		return chairNum;
+	}
+
+	public void setChairNum(String chairNum) {
+		this.chairNum = chairNum;
 	}
 
 }
