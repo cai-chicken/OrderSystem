@@ -40,8 +40,9 @@
 			<td>${menu.orderTime }</td>
 			<td>${menu.status }</td>
 			<td>
-				<button type="button" class="btn btn-primary">正在烧</button>&nbsp;&nbsp;
-				<button type="button" class="btn btn-success">上菜</button>
+				<button type="button" class="btn btn-primary" onclick="changeOrderState('${menu.id}','${menu.status }',1)">正在烧</button>&nbsp;&nbsp;
+				<button type="button" class="btn btn-success" onclick="changeOrderState('${menu.id}','${menu.status }',2)">上菜</button>
+				<button type="button" class="btn btn-danger" onclick="changeOrderState('${menu.id}','${menu.status }',3)">移除</button>
 			</td>
 		</tr>
 		</c:forEach>
@@ -52,7 +53,32 @@
 <script type="text/javascript">
 function goToPage( pageNum ){
 	/* pageNum为当前页，将被BaseAction中的成员变量接收 */
-	window.location.href = "/ordersystem/menu_orderSuccess.action?pageNum=" + pageNum;
+	window.location.href = "/ordersystem/menu_changeOrderState.action?pageNum=" + pageNum;
+}
+function changeOrderState(id, status, num){
+	/* 将状态更改为"正在烧" */
+	if(num == 1){
+		if(status == "正在烧" || status == "上菜"){
+			alert("当前状态已为正在烧的状态");
+		} else {
+			status = "正在烧";
+			window.location.href = "/ordersystem/menu_changeOrderState.action?id="+id+"&statusNum="+num;
+			alert("修改成功");
+		}
+	} else if(num == 2){
+		//将状态改为"上菜"
+		if(status == "上菜"){
+			alert("当前状态已为上菜的状态");
+		} else {
+			status = "上菜";
+			window.location.href = "/ordersystem/menu_changeOrderState.action?id="+id+"&statusNum="+num;
+			alert("修改成功");
+		}
+	} else if(num == 3){
+		if(confirm("确定移除该菜单吗？")){
+			window.location.href = "/ordersystem/menu_changeOrderState.action?id="+id+"&statusNum="+num;
+		}
+	}
 }
 </script>
 </html>

@@ -67,6 +67,7 @@
 			<result name="saveUI">/WEB-INF/jsp/menu/saveUI.jsp</result>
 			<result name="orderSuccessList">/WEB-INF/jsp/menu/orderSuccessList.jsp</result>
 			<result name="toList" type="redirectAction">menu_list</result>
+			<result name="toOrderSuccessList" type="redirectAction">menu_orderSuccess</result>
 		</action>
 		<!-- 评论管理 -->
 		<action name="comment_*" class="commentAction" method="{1}">
