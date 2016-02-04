@@ -53,7 +53,7 @@
 <script type="text/javascript">
 function goToPage( pageNum ){
 	/* pageNum为当前页，将被BaseAction中的成员变量接收 */
-	window.location.href = "/ordersystem/menu_changeOrderState.action?pageNum=" + pageNum;
+	window.location.href = "/ordersystem/menu_orderSuccess.action?pageNum=" + pageNum;
 }
 function changeOrderState(id, status, num){
 	/* 将状态更改为"正在烧" */
