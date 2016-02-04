@@ -8,33 +8,33 @@
 </head>
 <body>
 	<c:if test="${store.id == null }">
-		<form action="store_add.action" method="post" enctype="multipart/form-data" class="definewidth m20">
+		<form action="store_add.action" class="myForm" method="post" enctype="multipart/form-data" class="definewidth m20">
 	</c:if>
 	<c:if test="${store.id != null }">
-		<form action="store_edit.action" method="post" enctype="multipart/form-data" class="definewidth m20">
+		<form action="store_edit.action" class="myForm" method="post" enctype="multipart/form-data" class="definewidth m20">
 	</c:if>
 	<input type="hidden" name="id" value="${store.id }">
 		<table class="table table-bordered table-hover definewidth m10">
 			<tr>
-				<td width="10%" class="tableleft">店名</td>
+				<td width="10%" class="tableleft">店名<span style="color: red;">*</span></td>
 				<td>
-					<input type="text" name="name" value="${store.name }"/>
+					<input type="text" name="name" id="name" value="${store.name }" placeholder="请输入店名"/>
 				</td>
 			</tr>
 			<tr>
-				<td width="10%" class="tableleft">宣传图片</td>
+				<td width="10%" class="tableleft">宣传图片<span style="color: red;">*</span></td>
 				<td>
-					<input type="file" name="upload" />
+					<input type="file" name="upload" id="upload"/>
 				</td>
 			</tr>
 			<tr>
-				<td class="tableleft">简介</td>
+				<td class="tableleft">简介<span style="color: red;">*</span></td>
 				<td>
-					<textarea name="description"><c:out value="${store.description }"></c:out></textarea>
+					<textarea name="description" id="description" placeholder="请输入本店描述信息"><c:out value="${store.description }"></c:out></textarea>
 				</td>
 			</tr>
 			<tr>
-				<td class="tableleft">是否启用</td>
+				<td class="tableleft">是否启用<span style="color: red;">*</span></td>
 				<td>
 					<input type="radio" name="state" value="1" checked/> &nbsp;是&nbsp;&nbsp;
 					<input type="radio" name="state" value="0" /> &nbsp;否
@@ -43,7 +43,7 @@
 			<tr>
 				<td class="tableleft"></td>
 				<td>
-					<button type="submit" class="btn btn-primary" type="button">保存</button> &nbsp;&nbsp;
+					<button type="button" class="btn btn-primary" onclick="beforeSubmit()">保存</button> &nbsp;&nbsp;
 					<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
 				</td>
 			</tr>
@@ -56,5 +56,27 @@
 			window.location.href = "store_list.action";
 		});
 	});
+	function beforeSubmit(){
+		var name = $("#name").val();
+		var upload = $("#upload").val();
+		var description = $("#description").val();
+		if(name == null || name == ""){
+			alert("店名不能为空");
+			$("#name").focus();
+			return ;
+		}
+		
+		if(upload == null || upload == ""){
+			alert("请上传本店宣传片图片");
+			return ;
+		}
+		
+		if(description == null || description == ""){
+			alert("本店信息描述信息不能为空");
+			return ;
+		}
+		
+		$(".myForm").submit();
+	}
 </script>
 </html>

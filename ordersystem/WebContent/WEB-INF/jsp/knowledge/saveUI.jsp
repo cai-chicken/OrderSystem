@@ -8,29 +8,29 @@
 </head>
 <body>
 	<c:if test="${knowledge.id == null }">
-		<form action="knowledge_add.action" method="post" class="definewidth m20">
+		<form action="knowledge_add.action" id="myForm" method="post" class="definewidth m20">
 	</c:if>
 	<c:if test="${knowledge.id != null }">
-		<form action="knowledge_edit.action" method="post" class="definewidth m20">
+		<form action="knowledge_edit.action" id="myForm" method="post" class="definewidth m20">
 	</c:if>
 	<input type="hidden" name="id" value="${knowledge.id }">
 			<table class="table table-bordered table-hover definewidth m10">
 				<tr>
-					<td width="10%" class="tableleft">题目</td>
+					<td width="10%" class="tableleft">标题<span style="color: red;">*</span></td>
 					<td>
-						<input type="text" name="name" value="${knowledge.name }"/>
+						<input type="text" name="name" id="name" placeholder="请输入标题" value="${knowledge.name }"/>
 					</td>
 				</tr>
 				<tr>
-					<td class="tableleft">内容</td>
+					<td class="tableleft">内容<span style="color: red;">*</span></td>
 					<td>
-						<textarea name="description"><c:out value="${knowledge.description }"></c:out></textarea>
+						<textarea name="description" placeholder="请输入相关内容" id="description"><c:out value="${knowledge.description }"></c:out></textarea>
 					</td>
 				</tr>
 				<tr>
 					<td class="tableleft"></td>
 					<td>
-						<button type="submit" class="btn btn-primary" type="button">保存</button> &nbsp;&nbsp;
+						<button type="button" class="btn btn-primary" onclick="beforeSubmit()">保存</button> &nbsp;&nbsp;
 						<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
 					</td>
 				</tr>
@@ -43,5 +43,20 @@
 			window.location.href = "knowledge_list.action";
 		});
 	});
+	function beforeSubmit(){
+		var name = $("#name").val();
+		var description = $("#description").val();
+		if(name == null || name == ""){
+			alert("请输入标题");
+			$("#name").focus();
+			return;
+		}
+		if(description == null || description == ""){
+			alert("请输入相关内容");
+			return ;
+		}
+		
+		$("#myForm").submit();
+	}
 </script>
 </html>

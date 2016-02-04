@@ -11,7 +11,7 @@
 		<table class="table table-bordered table-hover definewidth m10">
 			<thead>
 				<tr>
-					<th>题目</th>
+					<th>标题</th>
 					<th>内容</th>
 					<th>操作</th>
 				</tr>

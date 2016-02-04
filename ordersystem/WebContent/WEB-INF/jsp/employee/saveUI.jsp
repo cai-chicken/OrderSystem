@@ -8,29 +8,29 @@
 </head>
 <body>
 	<c:if test="${employee.id == null }">
-		<form action="employee_add.action" method="post">
+		<form action="employee_add.action" id="myForm" method="post">
 	</c:if>
 	<c:if test="${employee.id != null }">
-		<form action="employee_edit.action" method="post">
+		<form action="employee_edit.action" id="myForm" method="post">
 	</c:if>
 		<input type="hidden" name="id" value="${employee.id }">
 		<table class="table table-bordered table-hover definewidth m10">
 			<tr>
 				<td width="10%" class="tableleft">编号<span style="color: red;">*</span></td>
 				<td>
-					<input type="text" name="num" value="${employee.num }">
+					<input type="text" name="num" id="num" placeholder="请输入员工编号" value="${employee.num }">
 				</td>
 			</tr>
 			<tr>
 				<td width="10%" class="tableleft">姓名<span style="color: red;">*</span></td>
 				<td>
-					<input type="text" name="name" value="${employee.name }">
+					<input type="text" name="name" id="name" placeholder="请输入员工姓名" value="${employee.name }">
 				</td>
 			</tr>
 			<tr>
 				<td class="tableleft">登录名<span style="color: red;">*</span></td>
 				<td>
-					<input type="text" name="loginName" value="${employee.loginName }">
+					<input type="text" name="loginName" id="loginName" placeholder="请输入登录名" value="${employee.loginName }">
 				</td>
 			</tr>
 			<tr>
@@ -61,7 +61,7 @@
 			<tr>
 				<td class="tableleft">手机号码<span style="color: red;">*</span></td>
 				<td>
-					<input type="text" name="phoneNumber" value="${employee.phoneNumber }">
+					<input type="text" name="phoneNumber" id="phoneNumber" placeholder="请输入手机号" value="${employee.phoneNumber }">
 				</td>
 			</tr>
 			<tr>
@@ -85,7 +85,7 @@
 			<tr>
 				<td class="tableleft"></td>
 				<td>
-					<button type="submit" class="btn btn-primary" >保存</button>&nbsp;&nbsp;
+					<button type="button" class="btn btn-primary" onclick="beforeSubmit()">保存</button>&nbsp;&nbsp;
 					<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
 				</td>
 			</tr>
@@ -98,5 +98,34 @@
 			window.location.href = "employee_list.action";
 		});
 	});
+	function beforeSubmit(){
+		var num = $("#num").val();
+		var name = $("#name").val();
+		var loginName = $("#loginName").val();
+		var phoneNumber = $("#phoneNumber").val();
+		
+		if(num == null || num == ""){
+			alert("请输入员工编号");
+			$("#num").focus();
+			return;
+		}
+		if(name == null || name == ""){
+			alert("请输入员工姓名");
+			$("#name").focus();
+			return;
+		}
+		if(loginName == null || loginName == ""){
+			alert("请输入登录名");
+			$("#loginName").focus();
+			return;
+		}
+		if(phoneNumber == null || phoneNumber == ""){
+			alert("请输入手机号");
+			$("#phoneNumber").focus();
+			return;
+		}
+		
+		$("#myForm").submit();
+	}
 </script>
 </html>
