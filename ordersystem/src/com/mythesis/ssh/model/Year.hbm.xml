@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.mythesis.ssh.model">
+
+	<class name="CurrentYear" table="t_year">
+		<id name="id">
+            <generator class="native"/>
+		</id>
+		<property name="cYear" />
+		<property name="january"/>
+		<property name="february" />
+		<property name="march"/>
+		<property name="april" />
+		<property name="may"/>
+		<property name="june" />
+		<property name="july"/>
+		<property name="auguest"/>
+		<property name="september" />
+		<property name="octorber"/>
+		<property name="november" />
+		<property name="december"/>
+		<property name="count"/>
+	</class>
+	
+</hibernate-mapping>

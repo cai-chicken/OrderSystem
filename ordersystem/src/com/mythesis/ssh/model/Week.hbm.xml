@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.mythesis.ssh.model">
+
+	<class name="CurrentWeek" table="t_week">
+		<id name="id">
+            <generator class="native"/>
+		</id>
+		<property name="cWeek" />
+		<property name="monday"/>
+		<property name="tuesday" />
+		<property name="wednesday"/>
+		<property name="thursday" />
+		<property name="friday"/>
+		<property name="staturday" />
+		<property name="sunday"/>
+		<property name="count"/>
+	</class>
+	
+</hibernate-mapping>

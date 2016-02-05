@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.mythesis.ssh.model">
+
+	<class name="CurrentMonth" table="t_month">
+		<id name="id">
+            <generator class="native"/>
+		</id>
+		<property name="cMonth" />
+		<property name="first"/>
+		<property name="five" />
+		<property name="ten"/>
+		<property name="fifteen" />
+		<property name="twenty"/>
+		<property name="twentyFive" />
+		<property name="thirty"/>
+		<property name="count"/>
+	</class>
+	
+</hibernate-mapping>

@@ -26,6 +26,11 @@
 		<mapping resource="com/mythesis/ssh/model/Comment.hbm.xml" />
 		<mapping resource="com/mythesis/ssh/model/Cuisine.hbm.xml" />
 		<mapping resource="com/mythesis/ssh/model/Menu.hbm.xml" />
+		
+		<mapping resource="com/mythesis/ssh/model/Today.hbm.xml" />
+		<mapping resource="com/mythesis/ssh/model/Week.hbm.xml" />
+		<mapping resource="com/mythesis/ssh/model/Month.hbm.xml" />
+		<mapping resource="com/mythesis/ssh/model/Year.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>
