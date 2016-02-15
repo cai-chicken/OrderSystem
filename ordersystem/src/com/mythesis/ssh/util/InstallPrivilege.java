@@ -40,7 +40,7 @@ public class InstallPrivilege {
 		parent = new Privilege("系统管理", null, null);
 		children1 = new Privilege("员工管理", "/employee_list", parent);
 		children2 = new Privilege("角色管理", "/role_list", parent);
-		children3 = new Privilege("个人资料", "/myInfo", parent);
+		children3 = new Privilege("个人资料", "/employee_showInfo", parent);
 		session.save(parent);
 		session.save(children1);
 		session.save(children2);
@@ -60,7 +60,7 @@ public class InstallPrivilege {
 		children1 = new Privilege("菜单管理", "/menu_list", parent);
 		children2 = new Privilege("菜系管理", "/cuisine_list", parent);
 		children3 = new Privilege("评论管理", "/comment_list", parent);
-		children4 = new Privilege("下单成功", "/order_list", parent);
+		children4 = new Privilege("下单成功", "/menu_orderSuccess", parent);
 		session.save(parent);
 		session.save(children1);
 		session.save(children2);
@@ -79,9 +79,14 @@ public class InstallPrivilege {
 		//对于"下单成功"
 		session.save(new Privilege("修改烹饪状态", "/order_status", children4));
 		//对于"统计管理" --------------------------------------------------------------------
-		//TODO
-//		parent = new Privilege("统计管理", null, null);
-//		session.save(parent);
+		parent = new Privilege("统计管理", null, null);
+		children1 = new Privilege("菜单销售情况", "/count_menuStatus", parent);
+		children2 = new Privilege("菜系销售情况", "/count_cuisineStatus", parent);
+		children3 = new Privilege("财产收入情况", "/count_ownershipIncome", parent);
+		session.save(parent);
+		session.save(children1);
+		session.save(children2);
+		session.save(children3);
 		//对于"其它管理" --------------------------------------------------------------------
 		parent = new Privilege("其它管理", null, null);
 		children1 = new Privilege("本店信息", "/store_list", parent);

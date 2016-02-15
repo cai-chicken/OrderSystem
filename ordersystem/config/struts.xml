@@ -92,5 +92,10 @@
 			<result name="saveUI">/WEB-INF/jsp/chair/saveUI.jsp</result>
 			<result name="toList" type="redirectAction">chair_list</result>
 		</action>
+	<!-- 统计管理 -->
+		<!-- 统计管理 -->
+		<action name="count_*" class="countAction" method="{1}">
+			<result name="{1}">/WEB-INF/jsp/count/{1}.jsp</result>
+		</action>
 	</package>
 </struts>
