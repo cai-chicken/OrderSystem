@@ -14,18 +14,42 @@
 		margin: 10px auto;
 		}
 	</style>
+	<script type="text/javascript">
+		/* $(document).ready(function(){
+			getDay();
+		}); */
+		function getDay(){
+			var myDate = new Date();
+			var year=$("#currentYear").val();
+			var month=$("#currentMonth").val();
+			
+			if(year == "0"){
+				year = myDate.getFullYear(); //获取当前年份(2位) 
+			} 
+			if(month == "0"){
+				month = parseInt(myDate.getMonth(), 10) + 1; //获取当前月份(0-11,0代表1月)
+			}
+	      	var  max = new Date(year,month,0).getDate(); 
+	      	//获取天数：
+	    	var con="<option value='0'>请选择日期</option>";
+	     	for(var i=1;i<=max;i++){
+	      		con=con+"<option value='"+i+"' onclick=''>"+i+"号</option>"; 
+	   		}
+	    	$("#currentDate").htmls(con);
+		}
+	</script>
 </head>
 <body>
 	<form class="form-inline definewidth m20" action="count_ownershipIncome.action" method="post">
 		年份：
-		<select name="currentYear">
+		<select name="currentYear" id="currentYear">
 			<option value="0">请选择年份</option>
 			<c:forEach items="${yearList }" var="y">
 				<option value="${y}">${y}</option>
 			</c:forEach>
 		</select>&nbsp;&nbsp;
 		月份：
-		<select name="currentMonth">
+		<select name="currentMonth" id="currentMonth">
 			<option value="0">请选择月份</option>
 			<option value="1">1月份</option>
 			<option value="2">2月份</option>
@@ -40,12 +64,46 @@
 			<option value="11">11月份</option>
 			<option value="12">12月份</option>
 		</select>&nbsp;&nbsp;
+		日期：
+		<select name="currentDate" id="currentDate">
+			<option value='0'>请选择日期</option>
+			<option value="1">1号</option>
+			<option value="2">2号</option>
+			<option value="3">3号</option>
+			<option value="4">4号</option>
+			<option value="5">5号</option>
+			<option value="6">6号</option>
+			<option value="7">7号</option>
+			<option value="8">8号</option>
+			<option value="9">9号</option>
+			<option value="10">10号</option>
+			<option value="11">11号</option>
+			<option value="12">12号</option>
+			<option value="13">13号</option>
+			<option value="14">14号</option>
+			<option value="15">15号</option>
+			<option value="16">16号</option>
+			<option value="17">17号</option>
+			<option value="18">18号</option>
+			<option value="19">19号</option>
+			<option value="20">20号</option>
+			<option value="21">21号</option>
+			<option value="22">22号</option>
+			<option value="23">23号</option>
+			<option value="24">24号</option>
+			<option value="25">25号</option>
+			<option value="26">26号</option>
+			<option value="27">27号</option>
+			<option value="28">28号</option>
+			<option value="29">29号</option>
+			<option value="30">30号</option>
+			<option value="31">31号</option>
+		</select>&nbsp;&nbsp;
 
 		<button type="submit" class="btn btn-primary">查询</button>
 	</form>
 	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div class="count" id="today"></div>
-    <div class="count" id="week" style="background-color: yellow"></div>
     <div class="count" id="month"></div>
     <div class="count" id="year"></div>
     
@@ -54,11 +112,14 @@
 	// 基于准备好的dom，初始化echarts实例
 	var today = echarts.init(document.getElementById('today'));
 	var todayData = ${today};
+	var cYear = ${currentYear};
+	var cMonth = ${currentMonth};
+	var cDate = ${currentDate};
 	
 	// 指定图表的配置项和数据
 	var option = {
 	    title: {
-	        text: '今日收入数据'
+	        text: cDate + '号的收入数据'
 	    },
 	    tooltip: {
 	    	trigger: 'axis'
@@ -94,7 +155,7 @@
 	var monthData = ${month};
 	var optionMonth = {
 	    title: {
-	        text: '该月收入数据'
+	        text: cMonth + '月的收入数据'
 	    },
 	    tooltip: {
 	    	trigger: 'axis'
@@ -129,7 +190,7 @@
 	var yearData = ${year};
 	var optionYear = {
 	    title: {
-	        text: '该年收入数据'
+	        text: cYear + '年的收入数据'
 	    },
 	    tooltip: {
 	    	trigger: 'axis'
