@@ -16,7 +16,8 @@
 		<property name="description" />
 		<property name="isSpecial"/>
 		<property name="count" />
-		<property name="orderTime" type="timestamp"/>
+		<property name="historyCount" />
+		<property name="orderTime"/>
 		<property name="status" />
 		<!-- table属性，是本类与Chair类的多对一关系 -->
 		<many-to-one name="chair" class="Chair" column="chairId" lazy="false"></many-to-one>

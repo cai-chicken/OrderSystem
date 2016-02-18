@@ -15,9 +15,10 @@
 		}
 	</style>
 	<script type="text/javascript">
-		/* $(document).ready(function(){
+		$(document).ready(function(){
 			getDay();
-		}); */
+		});
+		/* 根据年份和月份生成天数 */
 		function getDay(){
 			var myDate = new Date();
 			var year=$("#currentYear").val();
@@ -35,7 +36,7 @@
 	     	for(var i=1;i<=max;i++){
 	      		con=con+"<option value='"+i+"' onclick=''>"+i+"号</option>"; 
 	   		}
-	    	$("#currentDate").htmls(con);
+	    	$("#currentDate").html(con);
 		}
 	</script>
 </head>
@@ -49,7 +50,7 @@
 			</c:forEach>
 		</select>&nbsp;&nbsp;
 		月份：
-		<select name="currentMonth" id="currentMonth">
+		<select name="currentMonth" id="currentMonth" onchange="getDay()">
 			<option value="0">请选择月份</option>
 			<option value="1">1月份</option>
 			<option value="2">2月份</option>
@@ -66,8 +67,8 @@
 		</select>&nbsp;&nbsp;
 		日期：
 		<select name="currentDate" id="currentDate">
-			<option value='0'>请选择日期</option>
-			<option value="1">1号</option>
+			 <option value='0'>请选择日期</option>
+			<!--<option value="1">1号</option>
 			<option value="2">2号</option>
 			<option value="3">3号</option>
 			<option value="4">4号</option>
@@ -97,7 +98,7 @@
 			<option value="28">28号</option>
 			<option value="29">29号</option>
 			<option value="30">30号</option>
-			<option value="31">31号</option>
+			<option value="31">31号</option> -->
 		</select>&nbsp;&nbsp;
 
 		<button type="submit" class="btn btn-primary">查询</button>

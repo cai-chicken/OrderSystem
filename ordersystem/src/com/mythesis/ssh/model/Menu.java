@@ -1,7 +1,6 @@
 package com.mythesis.ssh.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,8 +17,9 @@ public class Menu implements Serializable {
 	private Double price;// 价格
 	private String description;// 描述
 	private String isSpecial;// 是否是本店特色菜;1是，0不是
-	private Integer count;// 卖出的份数
-	private Date orderTime;// 下单时间
+	private Integer count;// 今天卖出的份数
+	private Integer historyCount;//历史卖出的份数
+	private String orderTime;// 下单时间
 	private String status;// 烹饪状态
 	private Chair chair;// 几号桌下的单
 	private Set<Comment> comments = new HashSet<Comment>();// 评论列表
@@ -89,11 +89,11 @@ public class Menu implements Serializable {
 		this.count = count;
 	}
 
-	public Date getOrderTime() {
+	public String getOrderTime() {
 		return orderTime;
 	}
 
-	public void setOrderTime(Date orderTime) {
+	public void setOrderTime(String orderTime) {
 		this.orderTime = orderTime;
 	}
 
@@ -127,6 +127,14 @@ public class Menu implements Serializable {
 
 	public void setCuisine(Cuisine cuisine) {
 		this.cuisine = cuisine;
+	}
+
+	public Integer getHistoryCount() {
+		return historyCount;
+	}
+
+	public void setHistoryCount(Integer historyCount) {
+		this.historyCount = historyCount;
 	}
 
 }

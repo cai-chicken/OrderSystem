@@ -14,6 +14,8 @@ public class Cuisine implements Serializable {
 	private String name;
 	private String description;
 	private Integer count;// 份数
+	private Integer historyCount;//历史下单份数
+	private String orderTime;//下单时间
 	private Set<Menu> menus = new HashSet<Menu>();
 
 	public Long getId() {
@@ -54,6 +56,22 @@ public class Cuisine implements Serializable {
 
 	public void setMenus(Set<Menu> menus) {
 		this.menus = menus;
+	}
+
+	public Integer getHistoryCount() {
+		return historyCount;
+	}
+
+	public void setHistoryCount(Integer historyCount) {
+		this.historyCount = historyCount;
+	}
+
+	public String getOrderTime() {
+		return orderTime;
+	}
+
+	public void setOrderTime(String orderTime) {
+		this.orderTime = orderTime;
 	}
 
 }

@@ -13,7 +13,7 @@
 		几号桌：
 		<input type="text" name="chairNum" class="abc input-default" placeholder="请输入桌号">&nbsp;&nbsp;
 		烹饪状态：
-		<input type="radio" name="status" class="abc input-default" value="等待下锅">&nbsp;等待下锅&nbsp;
+		<input type="radio" name="status" class="abc input-default" value="等待上菜">&nbsp;等待上菜&nbsp;
 		<input type="radio" name="status" class="abc input-default" value="正在烧">&nbsp;正在烧&nbsp;
 		<input type="radio" name="status" class="abc input-default" value="上菜">&nbsp;上菜&nbsp;
 

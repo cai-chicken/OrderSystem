@@ -48,9 +48,30 @@ SELECT privilegeId FROM privilege_role WHERE roleId=3
 
 
 SELECT * FROM menu
+INSERT INTO menu VALUES(NULL,'0004','老厨白菜粉','',12,'多吃大白菜，好处多多。',0,2,'2016-01-30 18:23:34','等待上菜',3,4,13)
+INSERT INTO menu VALUES(NULL,'0005','焖肉龙','',14,'名字叫的那么好听，没口感。',1,NULL,NULL,NULL,NULL,3,4)
+INSERT INTO menu VALUES(NULL,'0006','红烧鱼尾巴','',16,'鱼汤好喝，好有营养。',1,1,'2016-01-31 12:28:34','等待上菜',4,7,7);
+INSERT INTO menu VALUES(NULL,'0007','八宝饭','',12,'你肯定喝过八宝粥，但你吃过八宝饭吗？',0,NULL,NULL,NULL,NULL,5,25);
+INSERT INTO menu VALUES(NULL,'0008','荷香福鸡','',20,'香饽饽的鸡老满足吃货的你。',1,NULL,NULL,NULL,NULL,6,36);
+INSERT INTO menu VALUES(NULL,'0009','如意蛋卷','',8,'如意蛋卷，祝您万事如意。',0,3,'2016-02-18 18:23:34','等待上菜',3,4,28);
+INSERT INTO menu VALUES(NULL,'0010','金玉满堂','',9,'满汉全席',1,NULL,NULL,NULL,NULL,5,13);
+INSERT INTO menu VALUES(NULL,'0011','上上签','',4,'并不是求签的上上签哦。',0,1,'2016-02-17 10:35:34','等待上菜',2,8,7);
+INSERT INTO menu VALUES(NULL,'0012','清淡营养家常饭卷','',12,'营养多多，口味多多。',0,NULL,NULL,NULL,NULL,5,21);
+INSERT INTO menu VALUES(NULL,'0013','蒜苗炒肉','',11,'你的家常，你的菜。',0,NULL,NULL,NULL,NULL,1,39);
+INSERT INTO menu VALUES(NULL,'0014','红烧排骨','',15,'排骨红烧才好吃。',0,NULL,NULL,NULL,NULL,3,15);
+INSERT INTO menu VALUES(NULL,'0015','虾油炒面','',12,'虾油炒面，让你油嘴滑舌。',1,NULL,NULL,NULL,NULL,5,39);
+INSERT INTO menu VALUES(NULL,'0016','红烧鲫鱼','',18,'最有营养的也是你最爱的红烧鲫鱼。',1,NULL,NULL,NULL,NULL,7,28);
+INSERT INTO menu VALUES(NULL,'0017','红烧牛肉','',18,'肉，我只爱牛肉。',1,2,'2016-02-18 18:23:34','等待上菜',2,3,48);
+INSERT INTO menu VALUES(NULL,'0018','南昌炒粉','',5,'看你的口味了。',0,1,'2016-02-18 19:43:34','等待上菜',3,4,27);
+INSERT INTO menu VALUES(NULL,'0019','油豆腐','',13,'你吃或不吃，它就在那里。',0,1,'2016-02-18 18:23:34','等待上菜',3,4,13);
+INSERT INTO menu VALUES(NULL,'0020','韭菜盒子','',10,'让韭菜洗洗你的胃吧。',1,NULL,NULL,NULL,NULL,2,20);
+INSERT INTO menu VALUES(NULL,'0021','银耳羹','',6,'清凉解渴',0,2,'2016-02-19 18:23:34','等待上菜',1,4,14);
+INSERT INTO menu VALUES(NULL,'0022','豆角炒肉','',12,'豆角和肉更配哦。',0,1,'2016-02-19 18:23:34','等待上菜',2,5,21);
+INSERT INTO menu VALUES(NULL,'0023','香肠','',17,'十里飘香',1,2,'2016-02-18 13:23:34','等待上菜',3,4,13);
 DESC menu
-ALTER TABLE menu MODIFY isSpecial VARCHAR(10)
+ALTER TABLE menu MODIFY orderTime VARCHAR(50)
 SELECT * FROM cuisine
+DESC cuisine
 SELECT * FROM COMMENT
 SELECT * FROM USER;
 INSERT INTO USER VALUES(NULL,'张三');
@@ -80,6 +101,7 @@ INSERT INTO t_today VALUES(NULL,'2016-2-9','52','89','102','106','426','302','25
 INSERT INTO t_today VALUES(NULL,'2016-2-10','99','156','132','248','261','320','120','1336');
 INSERT INTO t_today VALUES(NULL,'2016-2-11','99','156','132','248','261','','','896');
 INSERT INTO t_today VALUES(NULL,'2016-2-12','99','156','132','248','','','','635');
+INSERT INTO t_today VALUES(NULL,'2016-2-13','99','156','132','248','','200','','835');
 
 SELECT * FROM t_week
 SELECT * FROM t_month

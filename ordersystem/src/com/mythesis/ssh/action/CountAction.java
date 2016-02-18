@@ -1,15 +1,20 @@
 package com.mythesis.ssh.action;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.mythesis.ssh.base.BaseAction;
+import com.mythesis.ssh.model.Cuisine;
 import com.mythesis.ssh.model.CurrentMonth;
 import com.mythesis.ssh.model.CurrentWeek;
 import com.mythesis.ssh.model.CurrentYear;
+import com.mythesis.ssh.model.Menu;
 import com.mythesis.ssh.model.Today;
 import com.mythesis.ssh.util.Utils;
 import com.opensymphony.xwork2.ActionContext;
@@ -31,7 +36,64 @@ public class CountAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String menuStatus() throws Exception {
+		//准备今日销售前五的菜单数据
+		Format format = new SimpleDateFormat("yyyy-MM-dd");
+        String now = format.format(new Date());
+		List<Menu> fiveMenu = menuService.findFiveMenus(now);
+		//准备历史所有菜单的数据
+		List<Menu> allOrderMenu = menuService.findAllOrderMenu();
+		menuToString(fiveMenu, false);
+		menuToString(allOrderMenu, true);
 		return "menuStatus";
+	}
+	
+	/**
+	 * 请菜单销售情况转换成字符串
+	 * @param menuCount
+	 * @param isPie 是否转换成饼图的json结构
+	 */
+	private void menuToString(List<Menu> menuCount, boolean isPie) {
+		if (isPie) {
+			String historyCountData = "[";
+			/*{value:335, name:'直接访问'},
+            {value:310, name:'邮件营销'}*/
+			if (menuCount == null || menuCount.size() == 0) {
+				historyCountData = "[{value:0, name:'无数据'}]";
+			} else {
+				for(int i=0; i<menuCount.size(); i++){
+					Menu menu = menuCount.get(i);
+					if (i == (menuCount.size()-1)) {
+						historyCountData += ("{value:"+menu.getHistoryCount()+", name:'"+ menu.getName() +"'}]");
+					} else {
+						historyCountData += ("{value:"+menu.getHistoryCount()+", name:'"+ menu.getName() +"'},");
+					}
+				}
+			}
+			System.out.println("historyCountData---->" + historyCountData);
+			ActionContext.getContext().put("historyCountData", historyCountData);
+		} else {
+			String xAxisData = "[";
+			String seriesData = "[";
+			if (menuCount == null || menuCount.size() == 0) {
+				xAxisData += "\"无数据\",\"无数据\",\"无数据\",\"无数据\",\"无数据\"]";
+				seriesData += "0,0,0,0,0]";
+			} else {
+				for(int i=0; i<menuCount.size(); i++){
+					Menu menu = menuCount.get(i);
+					if (i == (menuCount.size()-1)) {
+						xAxisData += ("\""+menu.getName()+"\"" + "]");
+						seriesData += (menu.getCount() + "]");
+					} else {
+						xAxisData += ("\""+menu.getName()+"\"" + ",");
+						seriesData += (menu.getCount() + ",");
+					}
+				}
+			}
+			System.out.println("xAxisData----->"+xAxisData);
+			System.out.println("seriesData---->"+seriesData);
+			ActionContext.getContext().put("xAxisData", xAxisData);
+			ActionContext.getContext().put("seriesData", seriesData);
+		}
 	}
 	
 	/**
@@ -40,9 +102,66 @@ public class CountAction extends BaseAction {
 	 * @throws Exception
 	 */
 	public String cuisineStatus() throws Exception {
+		//准备今日销售前五的菜系数据
+		Format format = new SimpleDateFormat("yyyy-MM-dd");
+        String now = format.format(new Date());
+		List<Cuisine> fiveCuisine = cuisineService.findFiveCuisines(now);
+		//准备历史所有菜系的数据
+		List<Cuisine> allOrderCuisine = cuisineService.findAllOrderCuisines();
+		cuisineToString(fiveCuisine, false);
+		cuisineToString(allOrderCuisine, true);
 		return "cuisineStatus";
 	}
 	
+	/**
+	 * 将菜系数据转换为相应的String数据
+	 * @param fiveCuisine
+	 * @param isPie 
+	 */
+	private void cuisineToString(List<Cuisine> cuisineCount, boolean isPie) {
+		if (isPie) {
+			String historyCountData = "[";
+			/*{value:335, name:'直接访问'},
+            {value:310, name:'邮件营销'}*/
+			if (cuisineCount == null || cuisineCount.size() == 0) {
+				historyCountData = "[{value:0, name:'无数据'}]";
+			} else {
+				for(int i=0; i<cuisineCount.size(); i++){
+					Cuisine cuisine = cuisineCount.get(i);
+					if (i == (cuisineCount.size()-1)) {
+						historyCountData += ("{value:"+cuisine.getHistoryCount()+", name:'"+ cuisine.getName() +"'}]");
+					} else {
+						historyCountData += ("{value:"+cuisine.getHistoryCount()+", name:'"+ cuisine.getName() +"'},");
+					}
+				}
+			}
+			System.out.println("historyCountData---->" + historyCountData);
+			ActionContext.getContext().put("historyCountData", historyCountData);
+		} else {
+			String xAxisData = "[";
+			String seriesData = "[";
+			if (cuisineCount == null || cuisineCount.size() == 0) {
+				xAxisData += "\"无数据\",\"无数据\",\"无数据\",\"无数据\",\"无数据\"]";
+				seriesData += "0,0,0,0,0]";
+			} else {
+				for(int i=0; i<cuisineCount.size(); i++){
+					Cuisine cuisine = cuisineCount.get(i);
+					if (i == (cuisineCount.size()-1)) {
+						xAxisData += ("\""+cuisine.getName()+"\"" + "]");
+						seriesData += (cuisine.getCount() + "]");
+					} else {
+						xAxisData += ("\""+cuisine.getName()+"\"" + ",");
+						seriesData += (cuisine.getCount() + ",");
+					}
+				}
+			}
+			System.out.println("xAxisData----->"+xAxisData);
+			System.out.println("seriesData---->"+seriesData);
+			ActionContext.getContext().put("xAxisData", xAxisData);
+			ActionContext.getContext().put("seriesData", seriesData);
+		}
+	}
+
 	/**
 	 * 财产收入情况
 	 * @return
