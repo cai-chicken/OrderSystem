@@ -9,7 +9,7 @@
 <body>
 	<form class="form-inline definewidth m20" action="role_list.action" method="post">
 		角色名称：
-		<input type="text" name="name" class="abc input-default" value="" placeholder="请输入角色名称">&nbsp;&nbsp;
+		<input type="text" name="name" value="${r.name }" class="abc input-default" value="" placeholder="请输入角色名称">&nbsp;&nbsp;
 		<button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
 		<button type="button" class="btn btn-success" id="addnew">新增角色</button>
 	</form>

@@ -28,6 +28,7 @@ public class RoleAction extends ModelDrivenBaseAction<Role> {
 		new QueryHelper(Role.class, "r")//
 			.addWhereCondition(!StringUtil.isEmpty(model.getName()), "r.name like ?", "%"+model.getName()+"%")//角色名称过滤条件
 			.preparePageBean(roleService, pageNum, pageSize);
+		ActionContext.getContext().put("r", model);
 		return "list";
 	}
 

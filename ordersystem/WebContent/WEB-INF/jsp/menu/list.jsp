@@ -9,12 +9,19 @@
 <body>
 	<form class="form-inline definewidth m20" action="menu_list.action" method="post">
 		菜名：
-		<input type="text" name="name" id="name" class="abc input-default" placeholder="请输入菜名">&nbsp;&nbsp; 
+		<input type="text" name="name" id="name" value="${m.name }" class="abc input-default" placeholder="请输入菜名">&nbsp;&nbsp; 
 		所属菜系：
 		<select name="cuisineId">
 			<option value="0">请选择菜系</option>
 			<c:forEach items="${cuisineList }" var="cuisine">
-				<option value="${cuisine.id }">${cuisine.name }</option>
+				<c:choose>
+					<c:when test="${cId == cuisine.id }">
+						<option value="${cuisine.id }" selected="selected">${cuisine.name }</option>
+					</c:when>
+					<c:otherwise>
+						<option value="${cuisine.id }">${cuisine.name }</option>
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
 		</select>&nbsp;&nbsp;
 		<!--<input type="text" name="name" id="menuname" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;-->
@@ -43,7 +50,7 @@
 				<td>${menu.num }</td>
 				<td>${menu.name }</td>
 				<td>${menu.price }</td>
-				<td><img alt="no image" style="width: 250px;height: 100px" src="${menu.image }"/></td>
+				<td><img alt="no image" style="width: 250px;height: 120px" src="${menu.image }"/></td>
 				<td>${menu.description }</td>
 				<c:if test="${menu.isSpecial == 1}">
 					<td>是</td>
@@ -72,6 +79,8 @@
 		/* pageNum为当前页，将被BaseAction中的成员变量接收 */
 		/* $(document.forms[0]).append("<input type='hidden' name='pageNum' value='" + pageNum +"'>");
 		document.forms[0].submit(); */
+		var name = $("#name").val();
+		var cuisineId = $("#cuisineId").val();
 		window.location.href = "/ordersystem/menu_list.action?pageNum=" + pageNum;
 	}
 </script>

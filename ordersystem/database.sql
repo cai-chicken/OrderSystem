@@ -69,8 +69,9 @@ INSERT INTO menu VALUES(NULL,'0021','银耳羹','',6,'清凉解渴',0,2,'2016-02
 INSERT INTO menu VALUES(NULL,'0022','豆角炒肉','',12,'豆角和肉更配哦。',0,1,'2016-02-19 18:23:34','等待上菜',2,5,21);
 INSERT INTO menu VALUES(NULL,'0023','香肠','',17,'十里飘香',1,2,'2016-02-18 13:23:34','等待上菜',3,4,13);
 DESC menu
+SELECT * FROM menu m WHERE m.orderTime LIKE '%2016-02-18%' ORDER BY m.count DESC
 ALTER TABLE menu MODIFY orderTime VARCHAR(50)
-SELECT * FROM cuisine
+SELECT * FROM cuisine WHERE orderTime LIKE '2016-02-18';
 DESC cuisine
 SELECT * FROM COMMENT
 SELECT * FROM USER;

@@ -39,6 +39,7 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 			.addWhereCondition(!StringUtil.isEmpty(model.getAddress()), "e.address like ?", "%"+model.getAddress()+"%")//家庭地址过滤条件
 			.addWhereCondition(!StringUtil.isEmpty(model.getSex()), "e.sex=?", model.getSex())//性别过滤条件
 			.preparePageBean(employeeService, pageNum, pageSize);
+		ActionContext.getContext().put("emp", model);
 		return "list";
 	}
 

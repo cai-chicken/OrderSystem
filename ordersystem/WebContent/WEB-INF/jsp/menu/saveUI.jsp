@@ -5,6 +5,7 @@
 <head>
 <title>Insert title here</title>
 <%@ include file="/WEB-INF/jsp/public/headFile.jspf" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/style/Js/file_upload.js"></script>
 </head>
 <body>
 	<c:if test="${menu.id == null }">
@@ -36,7 +37,10 @@
 			<tr>
 				<td class="tableleft">图片<span style="color: red;">*</span></td>
 				<td>
-					<input type="file" name="upload" id="upload"/>
+					<input type="file" name="upload" id="upload" onchange="previewImage(this)"/><span style="color: red">图片名称不可以有中文</span>
+					<div id="preview">
+					    <img id="imghead" width=100 height=100 border=0 alt="no image" src="${menu.image }">
+					</div>
 				</td>
 			</tr>
 			<tr>
@@ -59,7 +63,14 @@
 					<select name="cuisineId">
 						<option>请选择所属菜系</option>
 						<c:forEach items="${cuisineList }" var="cuisine">
-							<option value="${cuisine.id }">${cuisine.name }</option>
+							<c:choose>
+								<c:when test="${menu.cuisine.name == cuisine.name }">
+									<option value="${cuisine.id }" selected="selected">${cuisine.name }</option>
+								</c:when>
+								<c:otherwise>
+									<option value="${cuisine.id }">${cuisine.name }</option>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 					</select>
 				</td>
@@ -101,11 +112,6 @@
 		if(price == null || price == ""){
 			alert("请输入菜单单价");
 			$("#price").focus();
-			return;
-		}
-		if(upload == null || upload == ""){
-			alert("请输入上传菜单图片");
-			$("#upload").focus();
 			return;
 		}
 		if(description == null || description == ""){

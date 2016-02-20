@@ -1,10 +1,17 @@
 package com.mythesis.ssh.base;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -92,13 +99,13 @@ public class BaseAction extends ActionSupport {
 	 * @param upload
 	 * @return
 	 */
-	protected String saveUploadFile(File upload, String uploadFileName) {
+	/*protected String saveUploadFile(File upload, String uploadFileName) {
 		if (upload == null) {
 			return "";
 		}
 		SimpleDateFormat sdf = new SimpleDateFormat("/yyyy-MM-dd/");
-		// >> 获取服务器路径
-		String basePath = ServletActionContext.getServletContext().getRealPath("/WEB-INF/upload_files");
+		// >> 获取服务器路径(项目根路径)
+		String basePath = ServletActionContext.getServletContext().getRealPath("/upload_files");
 		String subPath = sdf.format(new Date());// 避免一个文件夹下有大量的文件
 		// >> 如果文件夹不存在，就创建
 		File dir = new File(basePath + subPath);
@@ -113,6 +120,48 @@ public class BaseAction extends ActionSupport {
 		if (upload != null) {
 			upload.renameTo(new File(path)); // 如果目标文件夹不存在，或是目标文件已存在，就会不成功，返回false，但不报错。
 		}
+		String path1 = "/upload_files" + subPath + uploadFileName;
+		return path1;
+	}*/
+	/**
+	 * 保存上传的图片文件，并返回文件的相对路径
+	 * 
+	 * @param upload
+	 * @return
+	 */
+	protected String saveUploadFile(File upload, String uploadFileName) {
+		if (upload == null) {
+			return "";
+		}
+		// >> 获取服务器路径(项目根路径)
+		String basePath = ServletActionContext.getServletContext().getRealPath("/upload_files");
+		LoggerManager.printInfo(getClass(), "basePath----->" + basePath);
+		InputStream is = null;
+		OutputStream os = null;
+		try {
+			is = new FileInputStream(upload);
+			os = new FileOutputStream(new File(basePath + "/", uploadFileName));
+			byte[] buffer = new byte[1024];
+			int length = 0;
+			  
+		    while (-1 != (length = is.read(buffer))){
+		    	os.write(buffer,0,length);
+		    }
+		    if (os != null) {
+		    	os.close();
+		    	os = null;
+			}
+		    if (is != null) {
+		    	is.close();
+		    	is = null;
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//保存相对路径到数据库，而不是绝对路径
+		String path = "upload_files/" + uploadFileName;
 		return path;
 	}
 }

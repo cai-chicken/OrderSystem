@@ -5,6 +5,7 @@
 <head>
 <title>本店信息编辑</title>
 <%@ include file="/WEB-INF/jsp/public/headFile.jspf" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/style/Js/file_upload.js"></script>
 </head>
 <body>
 	<c:if test="${store.id == null }">
@@ -24,7 +25,10 @@
 			<tr>
 				<td width="10%" class="tableleft">宣传图片<span style="color: red;">*</span></td>
 				<td>
-					<input type="file" name="upload" id="upload"/>
+					<input type="file" name="upload" id="upload" onchange="previewImage(this)"/><span style="color: red">图片名称不可以有中文</span>
+					<div id="preview">
+					    <img id="imghead" width=100 height=100 border=0 alt="no image" src="${store.image }">
+					</div>
 				</td>
 			</tr>
 			<tr>
@@ -63,11 +67,6 @@
 		if(name == null || name == ""){
 			alert("店名不能为空");
 			$("#name").focus();
-			return ;
-		}
-		
-		if(upload == null || upload == ""){
-			alert("请上传本店宣传片图片");
 			return ;
 		}
 		

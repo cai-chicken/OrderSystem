@@ -40,6 +40,8 @@ public class MenuAction extends ModelDrivenBaseAction<Menu> {
 				.addWhereCondition(!StringUtil.isEmpty(model.getIsSpecial()), "m.isSpecial=?", model.getIsSpecial())// 是否特色菜过滤条件
 				.addWhereCondition((cuisineId != null && 0 != cuisineId), "m.cuisine.id = ?", cuisineId)//
 				.preparePageBean(menuService, pageNum, pageSize);
+		ActionContext.getContext().put("m", model);
+		ActionContext.getContext().put("cId", cuisineId);
 		return "list";
 	}
 

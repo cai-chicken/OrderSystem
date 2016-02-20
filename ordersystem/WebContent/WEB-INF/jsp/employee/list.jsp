@@ -12,13 +12,12 @@
 	<form class="form-inline definewidth m20" action="employee_list.action" method="post">
 		<!--过滤条件-->
 		员工名称：
-		<input type="text" name="name" class="abc input-default" placeholder="请输入员工名称">&nbsp;&nbsp;
+		<input type="text" name="name" value="${emp.name }" class="abc input-default" placeholder="请输入员工名称">&nbsp;&nbsp;
 		家庭地址：
-		<input type="text" name="address" class="abc input-default" placeholder="请输入家庭地址">&nbsp;&nbsp;
+		<input type="text" name="address" value="${emp.address }" class="abc input-default" placeholder="请输入家庭地址">&nbsp;&nbsp;
 		性别：
 		<input type="radio" name="sex" class="abc input-default"  value="男">&nbsp;男&nbsp;
 		<input type="radio" name="sex" class="abc input-default"  value="女">&nbsp;女&nbsp;
-		<!-- <input type="radio" name="sex" class="abc input-default"  value="">&nbsp;不选&nbsp; -->
 		
 		<button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
 		<button type="button" class="btn btn-success" id="addnew">新增员工</button>
