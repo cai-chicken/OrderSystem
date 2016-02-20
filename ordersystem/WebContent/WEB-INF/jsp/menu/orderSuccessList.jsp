@@ -9,13 +9,34 @@
 <body>
 	<form class="form-inline definewidth m20" action="menu_orderSuccess.action" method="post">
 		菜名：
-		<input type="text" name="menuName" class="abc input-default" placeholder="请输入菜名">&nbsp;&nbsp;
+		<input type="text" name="menuName" value="${menuName }" class="abc input-default" placeholder="请输入菜名">&nbsp;&nbsp;
 		几号桌：
-		<input type="text" name="chairNum" class="abc input-default" placeholder="请输入桌号">&nbsp;&nbsp;
+		<input type="text" name="chairNum" value="${chairNum }" class="abc input-default" placeholder="请输入桌号">&nbsp;&nbsp;
 		烹饪状态：
-		<input type="radio" name="status" class="abc input-default" value="等待上菜">&nbsp;等待上菜&nbsp;
-		<input type="radio" name="status" class="abc input-default" value="正在烧">&nbsp;正在烧&nbsp;
-		<input type="radio" name="status" class="abc input-default" value="上菜">&nbsp;上菜&nbsp;
+		<c:choose>
+			<c:when test="${menuStatus == '等待上菜'}">
+				<input type="radio" name="status" checked="checked" class="abc input-default" value="等待上菜">&nbsp;等待上菜&nbsp;
+			</c:when>
+			<c:otherwise>
+				<input type="radio" name="status" class="abc input-default" value="等待上菜">&nbsp;等待上菜&nbsp;
+			</c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${menuStatus == '正在烧'}">
+				<input type="radio" name="status" checked="checked" class="abc input-default" value="正在烧">&nbsp;正在烧&nbsp;
+			</c:when>
+			<c:otherwise>
+				<input type="radio" name="status" class="abc input-default" value="正在烧">&nbsp;正在烧&nbsp;
+			</c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${menuStatus == '上菜'}">
+				<input type="radio" name="status" checked="checked" class="abc input-default" value="上菜">&nbsp;上菜&nbsp;
+			</c:when>
+			<c:otherwise>
+				<input type="radio" name="status" class="abc input-default" value="上菜">&nbsp;上菜&nbsp;
+			</c:otherwise>
+		</c:choose>
 
 		<button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
 	</form>
@@ -53,7 +74,9 @@
 <script type="text/javascript">
 function goToPage( pageNum ){
 	/* pageNum为当前页，将被BaseAction中的成员变量接收 */
-	window.location.href = "/ordersystem/menu_orderSuccess.action?pageNum=" + pageNum;
+	/* window.location.href = "/ordersystem/menu_orderSuccess.action?pageNum=" + pageNum; */
+	$(document.forms[0]).append("<input type='hidden' name='pageNum' value='" + pageNum +"'>");
+	document.forms[0].submit(); 
 }
 function changeOrderState(id, status, num){
 	/* 将状态更改为"正在烧" */

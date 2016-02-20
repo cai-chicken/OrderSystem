@@ -131,6 +131,9 @@ public class MenuAction extends ModelDrivenBaseAction<Menu> {
 				.addWhereCondition(!StringUtil.isEmpty(model.getStatus()), "m.status = ?", model.getStatus())//
 				.addWhereCondition("m.count IS NOT NULL", null)//
 				.preparePageBean(menuService, pageNum, pageSize);
+		ActionContext.getContext().put("menuName", menuName);
+		ActionContext.getContext().put("chairNum", chairNum);
+		ActionContext.getContext().put("menuStatus", model.getStatus());
 		return "orderSuccessList";
 	}
 

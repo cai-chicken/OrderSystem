@@ -12,12 +12,26 @@
 	<form class="form-inline definewidth m20" action="employee_list.action" method="post">
 		<!--过滤条件-->
 		员工名称：
-		<input type="text" name="name" value="${emp.name }" class="abc input-default" placeholder="请输入员工名称">&nbsp;&nbsp;
+		<input type="text" name="name" id="empName" value="${emp.name }" class="abc input-default" placeholder="请输入员工名称">&nbsp;&nbsp;
 		家庭地址：
-		<input type="text" name="address" value="${emp.address }" class="abc input-default" placeholder="请输入家庭地址">&nbsp;&nbsp;
+		<input type="text" name="address" id="empAddress" value="${emp.address }" class="abc input-default" placeholder="请输入家庭地址">&nbsp;&nbsp;
 		性别：
-		<input type="radio" name="sex" class="abc input-default"  value="男">&nbsp;男&nbsp;
-		<input type="radio" name="sex" class="abc input-default"  value="女">&nbsp;女&nbsp;
+		<c:choose>
+			<c:when test="${emp.sex == '男' }">
+				<input type="radio" name="sex" class="abc input-default" checked="checked" value="男">&nbsp;男&nbsp;
+			</c:when>
+			<c:otherwise>
+				<input type="radio" name="sex" class="abc input-default"  value="男">&nbsp;男&nbsp;
+			</c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${emp.sex == '女' }">
+				<input type="radio" name="sex" class="abc input-default" checked="checked" value="女">&nbsp;女&nbsp;
+			</c:when>
+			<c:otherwise>
+				<input type="radio" name="sex" class="abc input-default"  value="女">&nbsp;女&nbsp;
+			</c:otherwise>
+		</c:choose>
 		
 		<button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
 		<button type="button" class="btn btn-success" id="addnew">新增员工</button>
@@ -63,9 +77,12 @@
 	});
 	function goToPage( pageNum ){
 		/* pageNum为当前页，将被BaseAction中的成员变量接收 */
-		/* $(document.forms[0]).append("<input type='hidden' name='pageNum' value='" + pageNum +"'>");
-		document.forms[0].submit(); */
-		window.location.href = "/ordersystem/employee_list.action?pageNum=" + pageNum;
+		$(document.forms[0]).append("<input type='hidden' name='pageNum' value='" + pageNum +"'>");
+		document.forms[0].submit(); 
+		/* var empName = $("#empName").val();
+		var empAddress = $("#empAddress").val();
+		var empSex = $('input:radio[name="sex"]:checked').val();
+		window.location.href = "/ordersystem/employee_list.action?pageNum=" + pageNum + "&name="+empName+"&address="+empAddress+"&sex="+empSex; */
 	}
 </script>
 </html>

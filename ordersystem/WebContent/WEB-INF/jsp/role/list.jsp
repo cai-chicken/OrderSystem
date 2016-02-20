@@ -44,9 +44,9 @@
 	    });
 		function goToPage( pageNum ){
 			/* pageNum为当前页，将被BaseAction中的成员变量接收 */
-			/* $(document.forms[0]).append("<input type='hidden' name='pageNum' value='" + pageNum +"'>");
-			document.forms[0].submit(); */
-			window.location.href = "/ordersystem/role_list.action?pageNum=" + pageNum;
+			$(document.forms[0]).append("<input type='hidden' name='pageNum' value='" + pageNum +"'>");
+			document.forms[0].submit();
+			/* window.location.href = "/ordersystem/role_list.action?pageNum=" + pageNum; */
 		}
 	</script>
 

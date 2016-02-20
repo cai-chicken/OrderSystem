@@ -31,6 +31,7 @@ public class CommentAction extends ModelDrivenBaseAction<Comment> {
 				.addWhereCondition((menuId != null && 0 != menuId), "c.menu.id = ?", menuId)//
 				.addWhereCondition((model.getStar() != 0), "c.star = ?", model.getStar())//
 				.preparePageBean(commentService, pageNum, pageSize);
+		ActionContext.getContext().put("mId", menuId);
 		return "list";
 	}
 

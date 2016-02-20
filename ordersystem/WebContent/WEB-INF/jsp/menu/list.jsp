@@ -26,8 +26,22 @@
 		</select>&nbsp;&nbsp;
 		<!--<input type="text" name="name" id="menuname" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;-->
 		是否特色菜：
-		<input type="radio" name="isSpecial" class="abc input-default" value="1">&nbsp;是&nbsp;
-		<input type="radio" name="isSpecial" class="abc input-default" value="0">&nbsp;否&nbsp;
+		<c:choose>
+			<c:when test="${m.isSpecial == '1' }">
+				<input type="radio" name="isSpecial" checked="checked" class="abc input-default" value="1">&nbsp;是&nbsp;
+			</c:when>
+			<c:otherwise>
+				<input type="radio" name="isSpecial" class="abc input-default" value="1">&nbsp;是&nbsp;
+			</c:otherwise>
+		</c:choose>
+		<c:choose>
+			<c:when test="${m.isSpecial == '0' }">
+				<input type="radio" name="isSpecial" checked="checked" class="abc input-default" value="0">&nbsp;否&nbsp;
+			</c:when>
+			<c:otherwise>
+				<input type="radio" name="isSpecial" class="abc input-default" value="0">&nbsp;否&nbsp;
+			</c:otherwise>
+		</c:choose>
 
 		<button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
 		<button type="button" class="btn btn-success" id="addnew">新增菜单</button>
@@ -77,11 +91,9 @@
 	});
 	function goToPage( pageNum ){
 		/* pageNum为当前页，将被BaseAction中的成员变量接收 */
-		/* $(document.forms[0]).append("<input type='hidden' name='pageNum' value='" + pageNum +"'>");
-		document.forms[0].submit(); */
-		var name = $("#name").val();
-		var cuisineId = $("#cuisineId").val();
-		window.location.href = "/ordersystem/menu_list.action?pageNum=" + pageNum;
+		$(document.forms[0]).append("<input type='hidden' name='pageNum' value='" + pageNum +"'>");
+		document.forms[0].submit();
+		/* window.location.href = "/ordersystem/menu_list.action?pageNum=" + pageNum; */
 	}
 </script>
 </html>

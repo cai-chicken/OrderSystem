@@ -12,7 +12,14 @@
 		<select name="menuId">
 			<option value="0">请选择所属菜名</option>
 			<c:forEach items="${menuList }" var="menu">
-				<option value="${menu.id }">${menu.name }</option>
+				<c:choose>
+					<c:when test="${mId == menu.id }">
+						<option value="${menu.id }" selected="selected">${menu.name }</option>
+					</c:when>
+					<c:otherwise>
+						<option value="${menu.id }">${menu.name }</option>
+					</c:otherwise>
+				</c:choose>
 			</c:forEach>
 		</select>&nbsp;&nbsp;
 		评论星级：
@@ -53,7 +60,9 @@
 <script type="text/javascript" >
 	function goToPage( pageNum ){
 		/* pageNum为当前页，将被BaseAction中的成员变量接收 */
-		window.location.href = "/ordersystem/comment_list.action?pageNum=" + pageNum;
+		/* window.location.href = "/ordersystem/comment_list.action?pageNum=" + pageNum; */
+		$(document.forms[0]).append("<input type='hidden' name='pageNum' value='" + pageNum +"'>");
+		document.forms[0].submit(); 
 	}
 </script>
 </html>

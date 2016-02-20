@@ -23,6 +23,7 @@ public class CuisineAction extends ModelDrivenBaseAction<Cuisine> {
 			.addOrderProperty("c.id", false)//
 			.addWhereCondition(!StringUtil.isEmpty(model.getName()), "c.name like ?", "%"+model.getName()+"%")//
 			.preparePageBean(cuisineService, pageNum, pageSize);
+		ActionContext.getContext().put("c", model);
 		return "list";
 	}
 
