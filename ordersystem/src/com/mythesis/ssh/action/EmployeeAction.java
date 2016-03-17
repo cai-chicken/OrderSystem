@@ -29,6 +29,7 @@ import com.opensymphony.xwork2.ActionContext;
 public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 	private Long[] roleIds;
 	private String oldPwd;//旧密码
+	private String gotoFront = "0";//0登录后台，1登录前端
 	/** 列表 */
 	public String list() throws Exception {
 		// 考虑分页,没有进行模糊查询处理
@@ -124,25 +125,31 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 			Utils.displayErrorInfo("errorInfo", "用户名或密码错误");
 			return "loginUI";
 		} else {
-			//将用户数据保存到Session中
-			ActionContext.getContext().getSession().put("employeeLogin", employee);
-			//得到当前登录用户的顶级权限
-			List<Object[]> objects = privilegeService.getTopPrivilegesByEmployee(employee);
-			List<Privilege> privileges = new ArrayList<Privilege>();
-			for(int i=0; i<objects.size(); i++){
-				Object[] objects2 = objects.get(i);
-				Privilege privilege = new Privilege();
-				privilege.setId(Long.parseLong((objects2[0].toString())));
-				privilege.setName((String)objects2[1]);
-				privileges.add(privilege);
-			}
+			//登录后台
+			if("0".equals(gotoFront)){
+				//将用户数据保存到Session中
+				ActionContext.getContext().getSession().put("employeeLogin", employee);
+				//得到当前登录用户的顶级权限
+				List<Object[]> objects = privilegeService.getTopPrivilegesByEmployee(employee);
+				List<Privilege> privileges = new ArrayList<Privilege>();
+				for(int i=0; i<objects.size(); i++){
+					Object[] objects2 = objects.get(i);
+					Privilege privilege = new Privilege();
+					privilege.setId(Long.parseLong((objects2[0].toString())));
+					privilege.setName((String)objects2[1]);
+					privileges.add(privilege);
+				}
 //			List<Privilege> privileges = privilegeService.getTopPrivileges();
-			ActionContext.getContext().getSession().put("privilegeList", privileges);
-			//组成一定格式的json数据
-			String privilegeStr = Utils.getJsonPrivilege(privileges, privilegeService);
-			ActionContext.getContext().getSession().put("privilegeStr", privilegeStr);
-			return "toIndex";
+				ActionContext.getContext().getSession().put("privilegeList", privileges);
+				//组成一定格式的json数据
+				String privilegeStr = Utils.getJsonPrivilege(privileges, privilegeService);
+				ActionContext.getContext().getSession().put("privilegeStr", privilegeStr);
+				return "toIndex";
+			} else if("1".equals(gotoFront)){
+				return "toFrontIndex";//转到前端的首页
+			}
 		}
+		return "";
 	}
 	
 	/**
@@ -216,5 +223,12 @@ public class EmployeeAction extends ModelDrivenBaseAction<Employee> {
 	public void setOldPwd(String oldPwd) {
 		this.oldPwd = oldPwd;
 	}
-	
+
+	public String getGotoFront() {
+		return gotoFront;
+	}
+
+	public void setGotoFront(String gotoFront) {
+		this.gotoFront = gotoFront;
+	}
 }

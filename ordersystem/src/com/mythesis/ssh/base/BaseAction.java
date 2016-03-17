@@ -147,18 +147,25 @@ public class BaseAction extends ActionSupport {
 		    while (-1 != (length = is.read(buffer))){
 		    	os.write(buffer,0,length);
 		    }
-		    if (os != null) {
-		    	os.close();
-		    	os = null;
-			}
-		    if (is != null) {
-		    	is.close();
-		    	is = null;
-			}
+		   
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (os != null) {
+					os.close();
+					os = null;
+				}
+				if (is != null) {
+					is.close();
+					is = null;
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		//保存相对路径到数据库，而不是绝对路径
 		String path = "upload_files/" + uploadFileName;

@@ -202,6 +202,8 @@ a {
 						<font color="red">${errorInfo}</font>
 					</SPAN> 
 					<SPAN style="float: right;">
+					<input type="radio" name="gotoFront" value="0" checked="checked">后台
+					<input type="radio" name="gotoFront" value="1">前端
 					<!-- <A style="color: rgb(204, 204, 204); margin-right: 10px;" href="#">注册</A> -->
 					<A style="background: rgb(0, 142, 173); padding: 7px 10px; border-radius: 4px; border: 1px solid rgb(26, 117, 152); border-image: none; color: rgb(255, 255, 255); font-weight: bold;"
 					href="javascript:login()">登录</A> 

@@ -47,6 +47,10 @@
 			<result name="toIndex" type="redirectAction">employee_index</result>
 			<result name="toShowInfo" type="redirectAction">employee_showInfo</result>
 			<result name="toModifyPwdUI" type="redirectAction">employee_modifyPwd</result>
+			<result name="toFrontIndex" type="redirectAction">
+				<param name="namespace">/front</param>
+				<param name="actionName">front_toIndex</param>
+			</result>
 		</action>
 		<!-- 角色管理 -->
 		<action name="role_*" class="roleAction" method="{1}">
@@ -96,6 +100,11 @@
 		<!-- 统计管理 -->
 		<action name="count_*" class="countAction" method="{1}">
 			<result name="{1}">/WEB-INF/jsp/count/{1}.jsp</result>
+		</action>
+	</package>
+	<package name="front" namespace="/front" extends="struts-default">
+		<action name="front_*" class="indexAction" method="{1}">
+			<result name="index">/WEB-INF/jsp/front/index.jsp</result>
 		</action>
 	</package>
 </struts>

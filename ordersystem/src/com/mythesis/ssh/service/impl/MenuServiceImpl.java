@@ -36,4 +36,17 @@ public class MenuServiceImpl extends BaseDaoImpl<Menu> implements MenuService {
 				.list();
 	}
 
+	@Override
+	public int getSuccessOrderCount() {
+		String hql = "FROM Menu m WHERE m.count > 0 and m.status != null";
+		List<Menu> menus = getSession().createQuery(hql).list();
+		int count = 0;
+		if (menus != null && menus.size() != 0) {
+			for(Menu menu : menus){
+				count += menu.getCount();
+			}
+		}
+		return count;
+	}
+
 }

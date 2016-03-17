@@ -106,6 +106,7 @@ INSERT INTO t_today VALUES(NULL,'2016-2-13','99','156','132','248','','200','','
 
 SELECT * FROM t_week
 SELECT * FROM t_month
+DESC t_year;
 #插入本月的数据
 INSERT INTO t_month VALUES(NULL,'2016-1','1024','1056','1265','1432','1001','873','992','7643');
 INSERT INTO t_month VALUES(NULL,'2016-2','1056','1265','1024','873','992','1001','1432','7643');
@@ -137,3 +138,19 @@ SELECT * FROM t_year
 #插入今年数据
 INSERT INTO t_year VALUES(NULL,'2016','7643','8320','9430','7824','11758','8154','9302','6991','8923','9734','10324','8997','107400');
 INSERT INTO t_year VALUES(NULL,'2015','7824','11758','7643','8320','6991','8923','9734','9430','8154','9302','10324','8997','107400');
+
+DESC role
+DESC privilege
+DESC employee_role
+DESC privilege_role
+DESC menu
+DESC cuisine
+DESC COMMENT
+DESC store
+DESC chair
+DESC knowledge
+DESC t_today
+DESC t_month
+DESC t_year
+
+SELECT * FROM menu;

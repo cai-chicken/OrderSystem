@@ -19,4 +19,10 @@ public interface MenuService extends BaseDao<Menu> {
 	 */
 	List<Menu> findAllOrderMenu();
 
+	/**
+	 * 得到下单成功的份数
+	 * @return
+	 */
+	int getSuccessOrderCount();
+
 }
