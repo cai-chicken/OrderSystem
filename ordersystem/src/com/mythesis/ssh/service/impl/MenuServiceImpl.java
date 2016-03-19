@@ -49,4 +49,18 @@ public class MenuServiceImpl extends BaseDaoImpl<Menu> implements MenuService {
 		return count;
 	}
 
+	@Override
+	public List<Menu> getFiveSpecialMenu() {
+		return getSession().createQuery(//
+				"FROM Menu m WHERE m.image != null and m.isSpecial like '%1%' order by m.id desc")//
+				.setMaxResults(5)//
+				.list();
+	}
+
+	@Override
+	public List<Menu> getOrderSuccessList() {
+		String hql = "FROM Menu m WHERE m.count > 0 and m.status != null";
+		return getSession().createQuery(hql).list();
+	}
+
 }

@@ -70,7 +70,7 @@ INSERT INTO menu VALUES(NULL,'0022','豆角炒肉','',12,'豆角和肉更配哦�
 INSERT INTO menu VALUES(NULL,'0023','香肠','',17,'十里飘香',1,2,'2016-02-18 13:23:34','等待上菜',3,4,13);
 DESC menu
 SELECT * FROM menu m WHERE m.orderTime LIKE '%2016-02-18%' ORDER BY m.count DESC
-ALTER TABLE menu MODIFY orderTime VARCHAR(50)
+ALTER TABLE menu MODIFY positiveRate INT(3)
 SELECT * FROM cuisine WHERE orderTime LIKE '2016-02-18';
 DESC cuisine
 SELECT * FROM COMMENT
@@ -153,4 +153,8 @@ DESC t_today
 DESC t_month
 DESC t_year
 
-SELECT * FROM menu;
+SELECT * FROM menu ORDER BY positiveRate DESC;
+DESC menu;
+SELECT * FROM cuisine
+
+SELECT * FROM COMMENT

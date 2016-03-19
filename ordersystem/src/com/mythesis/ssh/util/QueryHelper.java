@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.mythesis.ssh.base.BaseDao;
 import com.mythesis.ssh.model.PageBean;
+import com.mythesis.ssh.service.MenuService;
 import com.opensymphony.xwork2.ActionContext;
 
 /**

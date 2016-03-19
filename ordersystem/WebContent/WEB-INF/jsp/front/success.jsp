@@ -4,11 +4,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>成功付款</title>
-    <link rel="stylesheet" type="text/css" href="css/base.css" />
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <title>下单成功页</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/front/Css/base.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/front/Css/index.css" />
+    <script type="text/javascript" src="${pageContext.request.contextPath}/style/front/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/style/front/js/index.js"></script>
 </head>
 <body>
     <div class="wrap">
@@ -35,7 +35,7 @@
                 <li>下单时间</li>
             </ul>
         </div>
-        <div class="headline">
+        <div class="banner headline" style="background: red">
             <div class="big_box">
                 <div class="big_boxt">标题</div>
                 <textarea name="" id="" cols="30" rows="10" placeholder="这是内容区"></textarea>
@@ -44,10 +44,13 @@
                 <div class="big_boxt">标题</div>
                 <textarea name="" id="" cols="30" rows="10" placeholder="这是内容区"></textarea>
             </div>
+            <!-- 
             <div class="big_box">
                 <div class="big_boxt">标题</div>
                 <textarea name="" id="" cols="30" rows="10" placeholder="这是内容区"></textarea>
-            </div>
+            </div> -->
+            <span class="leftBtn">&lt;</span>
+            <span class="rightBtn">&gt;</span>
         </div>
          <div class="paging clearfix">
             <div>

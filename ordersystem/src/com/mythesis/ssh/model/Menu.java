@@ -18,11 +18,13 @@ public class Menu implements Serializable {
 	private String description;// 描述
 	private String isSpecial;// 是否是本店特色菜;1是，0不是
 	private Integer count;// 今天卖出的份数
-	private Integer historyCount;//历史卖出的份数
+	private Integer historyCount;// 历史卖出的份数
 	private String orderTime;// 下单时间
 	private String status;// 烹饪状态
 	private Chair chair;// 几号桌下的单
 	private Set<Comment> comments = new HashSet<Comment>();// 评论列表
+	private Integer positiveRate;// 好评率
+	private String mainFood;
 	private Cuisine cuisine;
 
 	public Long getId() {
@@ -135,6 +137,22 @@ public class Menu implements Serializable {
 
 	public void setHistoryCount(Integer historyCount) {
 		this.historyCount = historyCount;
+	}
+
+	public Integer getPositiveRate() {
+		return positiveRate;
+	}
+
+	public void setPositiveRate(Integer positiveRate) {
+		this.positiveRate = positiveRate;
+	}
+
+	public String getMainFood() {
+		return mainFood;
+	}
+
+	public void setMainFood(String mainFood) {
+		this.mainFood = mainFood;
 	}
 
 }

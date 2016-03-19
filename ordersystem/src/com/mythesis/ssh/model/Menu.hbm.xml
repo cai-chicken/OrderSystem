@@ -19,6 +19,8 @@
 		<property name="historyCount" />
 		<property name="orderTime"/>
 		<property name="status" />
+		<property name="positiveRate"/>
+		<property name="mainFood"/>
 		<!-- table属性，是本类与Chair类的多对一关系 -->
 		<many-to-one name="chair" class="Chair" column="chairId" lazy="false"></many-to-one>
 		<!-- comments属性，是本类与Comment类的一对多关系 -->
