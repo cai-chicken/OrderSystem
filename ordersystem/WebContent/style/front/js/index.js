@@ -36,7 +36,7 @@ $(function(e) {
 		function(e) {
 			num--;
 			if (num < 0) {
-				num = 4;
+				num = length-1;
 			}
 			$("#menuImg"+num).siblings().hide();
 			$("#menuImg"+num).show();
@@ -72,8 +72,8 @@ $(function(e) {
 		$(this).css('background', '#ccf').siblings().css('background', '#fcf')
 	});
 	// =======二维码生成========
-	$('.btn span').click(function(event) {
-		$('.nav_picl img').attr('src', 'img/erweima.jpg')
-	});
+	/*$('.btn span').click(function(event) {
+		$('.nav_picl img').attr('src', '/img/erweima.jpg');
+	});*/
 
 });

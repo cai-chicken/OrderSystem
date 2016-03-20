@@ -12,7 +12,7 @@ img{ border:none; display:block;/*img底部空白*/}
 input,area{ outline:none;border:0 none;list-style: :none;padding-left:8px;box-sizing: border-box;}        /* 谷歌浏览器表单元素外框 */
 em,i{font-style:normal;}
 /* 3.设置全局样式 */
-body{ color:#333; font-size:12px; font-family:"微软雅黑";}
+body{ color:#333; font-size:12px; font-family:"微软雅黑";background-color: #f1eded}
 a{color:#fff; text-decoration:none;}
 input{font-family:"微软雅黑";border:0 none;height: 24px;}
 label{cursor:pointer;}

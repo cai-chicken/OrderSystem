@@ -28,8 +28,28 @@
                         <p><span class="span1">菜名:</span><span class="span2">${menu.name }</span></p>
                         <p><span class="span1">好评率：</span><span class="span2" style="color: red;font-weight: bold;font-family: 'Microsoft Yahei'">${menu.positiveRate }%</span></p>
                         <p><span class="span1">价格：</span><span class="span2" style="color: red;font-weight: bold;font-family: 'Microsoft Yahei'">${menu.price }元</span></p>
-                        <p><span class="span1">下单参数：</span><span class="span2">(1)是否放辣椒；(2)是否打包带走；(3)支付方式</span></p>
-                        <p class="btn"><span>提交订单</span></p>
+                        <p>
+                        	<span class="span1">下单参数：</span>
+                       	</p>
+                       	<p>
+                        	<span class="span2">(1)辣味：
+                        		<!-- (1)是否放辣椒；(2)是否打包带走；(3)支付方式 -->
+                        		<input type="radio" name="chilli" value="无辣" checked="checked">无辣
+                        		<input type="radio" name="chilli" value="少辣">少辣
+                        		<input type="radio" name="chilli" value="中辣">中辣
+                        		<input type="radio" name="chilli" value="变态辣">变态辣
+                       		</span>
+                       	</p>
+                       	<p>
+                        	<span class="span2">(2)打包：
+                        		<!-- (1)是否放辣椒；(2)是否打包带走；(3)支付方式 -->
+                        		<input type="radio" name="pack" value="否" checked="checked">否
+                        		<input type="radio" name="pack" value="是">是
+                       		</span>
+                       	</p>
+                        <p class="btn" style="float: right;margin-right: 50px;background: red">
+                        	<span onclick="location.href='/ordersystem/front/front_orderSuccess.action?menuId=${menu.id}'">提交订单</span>
+                        </p>
                     </div>
                 </div>
             </div>

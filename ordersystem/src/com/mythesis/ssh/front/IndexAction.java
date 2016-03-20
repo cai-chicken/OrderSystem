@@ -6,17 +6,22 @@ import java.util.Random;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import com.mythesis.ssh.base.BaseAction;
 import com.mythesis.ssh.base.ModelDrivenBaseAction;
 import com.mythesis.ssh.front.model.MenuParam;
 import com.mythesis.ssh.model.Comment;
 import com.mythesis.ssh.model.Cuisine;
+import com.mythesis.ssh.model.Knowledge;
 import com.mythesis.ssh.model.Menu;
 import com.mythesis.ssh.model.Store;
 import com.mythesis.ssh.util.QueryHelper;
 import com.mythesis.ssh.util.StringUtil;
 import com.opensymphony.xwork2.ActionContext;
 
+/**
+ * @author anbang
+ * @description 前端对应的处理Action类
+ * @date 2016年3月20日 上午10:10:07
+ */
 @Controller("indexAction")
 @Scope("prototype")
 public class IndexAction extends ModelDrivenBaseAction<MenuParam> {
@@ -55,6 +60,14 @@ public class IndexAction extends ModelDrivenBaseAction<MenuParam> {
 	 * @throws Exception
 	 */
 	public String orderSuccess() throws Exception{
+		//准备提示信息
+		prepareMsg();
+		//准备菜单数据
+		Menu menu = menuService.getById(model.getMenuId());
+		ActionContext.getContext().put("menu", menu);
+		//准备所有的小知识信息
+		List<Knowledge> knowledges = knowledgeService.findAll();
+		ActionContext.getContext().put("knowledges", knowledges);
 		return "orderSuccess";
 	}
 	

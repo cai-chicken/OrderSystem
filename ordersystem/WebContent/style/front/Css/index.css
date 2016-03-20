@@ -9,7 +9,7 @@
     }
 .row_one{overflow:hidden;height: 30px;margin-top: 20px;line-height: 30px;}
 .introduct{float: left;}
-.menu{float: right;background: #fcf;height: 30px;padding:0 8px;cursor: pointer;}
+.menu{float: right;background: #0ff30f;height: 30px;padding:0 8px;cursor: pointer;}
 .banner{width:100%; height:380px; margin:20px auto; position:relative; overflow:hidden;}
 .banner ul{width:100%; position:absolute; left:0; top:0; height:380px;}
 .banner ul li{display:inline-block; width:100%; height: 380px;position:relative; overflow:hidden;}
@@ -23,7 +23,7 @@
 .nav{overflow:hidden;}
 .nav_l{float: left;width: 200px;border:1px solid #999;margin-right: 10px;}
 .nav_r{float: right;width: 780px;}
-.all_menu{width: 100%;text-align: center;height: 30px;line-height: 30px;background:#ccf;display: inline-block;}
+.all_menu{width: 100%;text-align: center;height: 30px;line-height: 30px;background:#0ff30f;display: inline-block;}
 .nav_l li{width: 100%;height: 30px;text-align: center;line-height: 30px;border-bottom: 1px solid #999;cursor: pointer;position:relative;}
 .nav_l li:nth-last-of-type(1){border:0 none;}
 .hidee{width: 100%;position:absolute;left:200px;top:0;background:#ffc;display: none;}
@@ -43,11 +43,11 @@
 .nav_picr .span2{color:#666;font-size:14px;margin-left: 5px;float: right;display: inline-block;width: 480px;}
 .paging{overflow:hidden;margin-top: 20px;margin-bottom: 20px;}
 .paging div{float: right;}
-.paging a{padding:3px 4px;background: #fcf;}
-.paging a:hover{background:#ccf;}
+.paging a{padding:3px 4px;background: #c50852;}
+.paging a:hover{background:#0ff30f;}
 /*===================detail============*/
 .btn{margin-top: 20px;}
-.btn span{height: 30px;width: 100px;background:#ccf;color:#fff;display: inline-block;margin:0 auto;cursor: pointer;line-height: 30px;text-align: center;}
+.btn span{height: 30px;width: 100px;background:#ea16a9;color:#fff;display: inline-block;margin:0 auto;cursor: pointer;line-height: 30px;text-align: center;}
 .main{margin-top: 20px;}
 .main_l{float: left;width: 200px;border:1px solid #999;}
 .main_lt{width: 100%;background:#fcf;}
@@ -61,12 +61,13 @@
 .ul1 li{height: 20px;line-height: 20px;}
 .say_table li{float: left;width: 200px;text-align: center;}
 .ul2 li{line-height: 30px;text-align: center;}
-/*==========下单成页面=========*/
+/*==========下单成功页面=========*/
 .arguments{margin-top: 20px;}
-.arguments_t{width: 600px;height: 30px;line-height: 30px;background:#ccf;text-align: center;margin:0 auto;}
-.arguments ul{margin:0 auto;display: block;width: 600px;border-bottom: 1px solid #999;overflow:hidden;}
-.arguments li{float: left;width: 300px;line-height: 30px;background:#fcf;padding-left: 10px;box-sizing: border-box;}
+.arguments_t{width: 800px;height: 30px;line-height: 30px;background:#ccf;text-align: center;margin:0 auto;color:red;font-weight:bold;font-family:'Microsoft Yahei'}
+.arguments ul{margin:0 auto;display: block;width: 800px;border-bottom: 1px solid #999;overflow:hidden;}
+.arguments li{float: left;width: 400px;line-height: 30px;background:#fcf;padding-left: 10px;box-sizing: border-box;}
 .big_box{margin-top: 20px;}
 .big_boxt{text-align: center;font-size: 16px;color:#666;}
-.big_box textarea{width: 600px;display: block;margin:0 auto;border:1px solid #999;margin-top: 10px;}
+.big_box textarea{width: 800px;display: block;margin:0 auto;border:1px solid #999;margin-top: 10px;}
 .nav_picl img{cursor: pointer;}
+.displayDetail{color:red;font-weight:bold;font-family:'Microsoft Yahei'}

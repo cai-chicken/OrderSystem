@@ -2,6 +2,8 @@
 CREATE DATABASE ordersystem
 SHOW TABLES;
 SELECT * FROM privilege
+SELECT * FROM knowledge
+INSERT INTO knowledge VALUES(NULL,'关于喝水','1、早上醒来，先喝一杯水，预防结石；\r\n2、每天喝水八大杯。');
 
 
 #查看员工表结构

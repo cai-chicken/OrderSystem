@@ -18,6 +18,8 @@
 		<property name="count" />
 		<property name="historyCount" />
 		<property name="orderTime"/>
+		<property name="chilli" length="10"/>
+		<property name="pack" length="10"/>
 		<property name="status" />
 		<property name="positiveRate"/>
 		<property name="mainFood"/>
