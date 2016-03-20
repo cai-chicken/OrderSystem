@@ -15,7 +15,7 @@
 .banner ul li{display:inline-block; width:100%; height: 380px;position:relative; overflow:hidden;}
 .banner ul li img{ position:absolute; left:50%; margin-left:-950px; top:0;}
 .banner ol{position:absolute;height: 13px;width: 100px;right:10px;bottom:10px;}
-.banner ol li{width:70px;height: 13px;float: left;margin:0 3px;background: #999;border-radius:13px;cursor:pointer;text-align: center;line-height: 13px;color:#fff;display: none;}
+.banner ol li{width:100px;height: 30px;float: left;margin:-10px;background: #999;border-radius:13px;text-align: center;line-height: 30px;color:#fff;display: none;font-size:16px}
 .banner ol li.current{background: #FC3;display: block;}
 .banner span{width:100px; height:100px;position:absolute; left:50%; top:50%; margin-top: -50px; cursor:pointer; font-size:100px; font-weight:bold; color:#fff; line-height: 100px; text-align: center; display:none;}
 .banner span.leftBtn{ margin-left:-500px;}
@@ -54,6 +54,7 @@
 .main_lb{width: 100%;background:#ccf;}
 .main_r{width: 800px;margin:0 auto}
 .main_r .main_lb{margin-top: 10px;}
+.main_r .main_lt{margin-top: 10px;}
 .say_table{margin-top: 20px;padding:10px;box-sizing: border-box;}
 .say_table p{margin-bottom: 10px;}
 .ul1,.ul2{overflow:hidden;background:#cfc;width: 800px;margin:0 auto}

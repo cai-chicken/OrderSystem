@@ -53,6 +53,16 @@ public class StoreAction extends ModelDrivenBaseAction<Store> {
 		} else {
 			model.setImage("no image");
 		}
+		String state = model.getState();
+		if ("1".equals(state)) {
+			// 将原来状态为1的本店记录修改为0
+			Store oldStore = storeService.findByState();
+			if (oldStore != null) {
+				//如果找到了，则修改
+				oldStore.setState("0");
+				storeService.update(oldStore);
+			}
+		}
 		storeService.save(model);
 		return "toList";
 	}

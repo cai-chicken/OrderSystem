@@ -71,6 +71,8 @@ public class MenuAction extends ModelDrivenBaseAction<Menu> {
 		} else {
 			model.setImage("no image");
 		}
+		// 3、好评率为0
+		model.setPositiveRate(0);
 		menuService.save(model);
 		return "toList";
 	}
@@ -108,6 +110,8 @@ public class MenuAction extends ModelDrivenBaseAction<Menu> {
 			menu.setImage(path);
 		}
 		menu.setDescription(model.getDescription());
+		menu.setMainFood(model.getMainFood());
+		menu.setMethod(model.getMethod());
 		menu.setIsSpecial(model.getIsSpecial());
 		if (cuisineId != null) {
 			menu.setCuisine(cuisineService.getById(cuisineId));

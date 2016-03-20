@@ -26,7 +26,16 @@
                     </div>
                     <div class="nav_picr">
                         <p><span class="span1">菜名:</span><span class="span2">${menu.name }</span></p>
-                        <p><span class="span1">好评率：</span><span class="span2" style="color: red;font-weight: bold;font-family: 'Microsoft Yahei'">${menu.positiveRate }%</span></p>
+                        <p><span class="span1">好评率：</span><span class="span2" style="color: red;font-weight: bold;font-family: 'Microsoft Yahei'">
+                        		<c:choose>
+	                        		<c:when test="${menu.positiveRate == 0 }">
+			                        	暂无评论
+	                        		</c:when>
+	                        		<c:otherwise>
+	                        			${menu.positiveRate }%
+	                        		</c:otherwise>
+	                        	</c:choose>
+                        </span></p>
                         <p><span class="span1">价格：</span><span class="span2" style="color: red;font-weight: bold;font-family: 'Microsoft Yahei'">${menu.price }元</span></p>
                         <p>
                         	<span class="span1">下单参数：</span>
@@ -62,8 +71,10 @@
             <div class="main_r" style="text-align: center;">
             	<div class="main_lt">主要食材</div>
                 <div class="main_lt">${menu.mainFood }</div>
-                <div class="main_lb">${menu.cuisine.name }</div>
-                <div class="main_lb">${menu.cuisine.description }</div>
+                <div class="main_lb">做法</div>
+                <div class="main_lb">${menu.method }</div>
+                <div class="main_lt">${menu.cuisine.name }</div>
+                <div class="main_lt">${menu.cuisine.description }</div>
             </div>
         </div>
         <form action="/ordersystem/front/front_menuDetail.action" id="myform" method="post">

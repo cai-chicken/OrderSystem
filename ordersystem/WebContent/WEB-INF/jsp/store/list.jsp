@@ -11,9 +11,9 @@
 	<table class="table table-bordered table-hover definewidth m10">
 		<thead>
 			<tr>
-				<th>店名</th>
+				<th style="width: 100px">店名</th>
 				<th>宣传图片</th>
-				<th>简介</th>
+				<th style="width: 450px">简介</th>
 				<th>是否启用中</th>
 				<th>操作</th>
 			</tr>

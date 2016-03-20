@@ -50,10 +50,10 @@
 		<thead>
 			<tr>
 				<th>编码</th>
-				<th>菜名</th>
+				<th style="width: 80px">菜名</th>
 				<th>价格</th>
 				<th>图片</th>
-				<th>简介</th>
+				<th style="width: 450px">简介</th>
 				<th>是否特色菜</th>
 				<th>所属菜系</th>
 				<th>操作</th>

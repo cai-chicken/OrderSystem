@@ -26,7 +26,8 @@ public class Menu implements Serializable {
 	private Chair chair;// 几号桌下的单
 	private Set<Comment> comments = new HashSet<Comment>();// 评论列表
 	private Integer positiveRate;// 好评率
-	private String mainFood;
+	private String mainFood;//主要食材
+	private String method;//做法
 	private Cuisine cuisine;
 
 	public Long getId() {
@@ -171,6 +172,14 @@ public class Menu implements Serializable {
 
 	public void setPack(String pack) {
 		this.pack = pack;
+	}
+
+	public String getMethod() {
+		return method;
+	}
+
+	public void setMethod(String method) {
+		this.method = method;
 	}
 
 }

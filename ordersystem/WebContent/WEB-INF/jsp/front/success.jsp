@@ -34,7 +34,15 @@
             </ul>
             <ul>
                 <li>价格：<span class="displayDetail">${menu.price }元</span></li>
-                <li>好评率：<span>${menu.positiveRate }%</span></li>
+                <li>好评率：<span>
+                	<c:choose>
+                   		<c:when test="${menu.positiveRate == 0 }">
+                     	暂无评论
+                   		</c:when>
+                   		<c:otherwise>
+                   			${menu.positiveRate }%
+                   		</c:otherwise>
+                   	</c:choose></span></li>
             </ul>
         </div>
         <div class="banner headline" id="list" style="height: 200px">

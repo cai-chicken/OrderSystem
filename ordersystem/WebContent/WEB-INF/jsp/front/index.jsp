@@ -22,7 +22,9 @@
 <body>
     <div class="wrap">
         <div class="txt_show clearfix">
-            <div class="txt_l"><input type="text" class="txt_l" value="${store.name }"/></div>
+            <div class="txt_l">
+            	<span style="font-size:20px;font-weight:bold;font-family:'Microsoft Yahei'">${store.name }</span>
+            </div>
             <div class="txt_r">
                 <div class="txt_con">
                     <span>${store.description }</span>

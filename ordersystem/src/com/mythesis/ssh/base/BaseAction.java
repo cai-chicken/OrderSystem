@@ -136,6 +136,10 @@ public class BaseAction extends ActionSupport {
 		// >> 获取服务器路径(项目根路径)
 		String basePath = ServletActionContext.getServletContext().getRealPath("/upload_files");
 		LoggerManager.printInfo(getClass(), "basePath----->" + basePath);
+		File file = new File(basePath);
+		if (!file.exists()) {
+			file.mkdirs();
+		}
 		InputStream is = null;
 		OutputStream os = null;
 		try {

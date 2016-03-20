@@ -58,9 +58,12 @@ public class CuisineAction extends ModelDrivenBaseAction<Cuisine> {
 	/** 修改 */
 	public String edit() throws Exception {
 		// 1、从数据库中找到对应的id的对象
+		Cuisine cuisine = cuisineService.getById(model.getId());
 		// 2、设置需要修改的属性
+		cuisine.setName(model.getName());
+		cuisine.setDescription(model.getDescription());
 		// 3、更新到数据库中
-		cuisineService.update(model);
+		cuisineService.update(cuisine);
 		return "toList";
 	}
 }

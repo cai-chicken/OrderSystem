@@ -49,7 +49,18 @@
 					<textarea name="description" id="description" placeholder="请输入菜单简介"><c:out value="${menu.description }"></c:out></textarea>
 				</td>
 			</tr>
-			
+			<tr>
+				<td class="tableleft">主要食材</td>
+				<td>
+					<textarea name="mainFood" id="mainFood" placeholder="请输入主要食材"><c:out value="${menu.mainFood }"></c:out></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">做法</td>
+				<td>
+					<textarea name="method" id="method" placeholder="请输入做法"><c:out value="${menu.method }"></c:out></textarea>
+				</td>
+			</tr>
 			<tr>
 				<td class="tableleft">是否特色菜<span style="color: red;">*</span></td>
 				<td>
