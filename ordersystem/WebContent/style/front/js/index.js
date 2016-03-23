@@ -75,5 +75,5 @@ $(function(e) {
 	/*$('.btn span').click(function(event) {
 		$('.nav_picl img').attr('src', '/img/erweima.jpg');
 	});*/
-
+	
 });

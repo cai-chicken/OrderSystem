@@ -158,6 +158,7 @@ DESC t_year
 
 SELECT * FROM menu ORDER BY positiveRate DESC;
 DESC menu;
-SELECT * FROM cuisine
+SELECT * FROM cuisine;
+SELECT * FROM store
 
 SELECT * FROM COMMENT

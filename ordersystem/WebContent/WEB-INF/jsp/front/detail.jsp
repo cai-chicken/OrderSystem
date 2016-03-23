@@ -22,7 +22,7 @@
             <div class="nav_r clearfix" style="margin: 0 auto;float: none;">
                 <div class="nav_pic clearfix">
                     <div class="nav_picl">
-                        <img src="../${menu.image }" height="130"  alt="" />
+                        <img src="../${menu.image }" height="130" onclick="order('${menu.id}')" alt="no image" id="menuImg"/>
                     </div>
                     <div class="nav_picr">
                         <p><span class="span1">菜名:</span><span class="span2">${menu.name }</span></p>
@@ -57,7 +57,7 @@
                        		</span>
                        	</p>
                         <p class="btn" style="float: right;margin-right: 50px;background: red">
-                        	<span onclick="location.href='/ordersystem/front/front_orderSuccess.action?menuId=${menu.id}'">提交订单</span>
+                        	<span onclick="submitOrder()">提交订单</span>
                         </p>
                     </div>
                 </div>
@@ -107,6 +107,16 @@
 function goToPage( pageNum ){
 	$("#myform").append("<input type='hidden' name='pageNum' value='" + pageNum +"'>");
 	$("#myform").submit();
+}
+/*提交订单*/
+function submitOrder(){
+	$("#menuImg").attr("src","${pageContext.request.contextPath}/style/front/img/erweima.jpg");
+	$("#menuImg").addClass("menuImg");
+}
+function order(menuId){
+	if($("#menuImg").hasClass("menuImg")){
+		location.href='/ordersystem/front/front_orderSuccess.action?menuId='+menuId;
+	}
 }
 </script>
 </html>
