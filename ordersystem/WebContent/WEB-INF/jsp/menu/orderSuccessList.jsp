@@ -46,6 +46,8 @@
 				<th>菜名</th>
 				<th>价格</th>
 				<th>几号桌</th>
+				<th>辣味</th>
+				<th>是否带走</th>
 				<th>下单份数</th>
 				<th>下单时间</th>
 				<th>烹饪状态</th>
@@ -57,6 +59,8 @@
 			<td>${menu.name }</td>
 			<td>${menu.price }</td>
 			<td><span style="color: red;font-weight: bold;">${menu.chair.num }</span></td>
+			<td><span style="color: red;font-weight: bold;">${menu.chilli }</span></td>
+			<td><span style="color: red;font-weight: bold;">${menu.pack }</span></td>
 			<td><span style="color: red;font-weight: bold;">${menu.count }</span></td>
 			<td>${menu.orderTime }</td>
 			<td>${menu.status }</td>

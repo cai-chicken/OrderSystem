@@ -37,25 +37,30 @@
 	                        	</c:choose>
                         </span></p>
                         <p><span class="span1">价格：</span><span class="span2" style="color: red;font-weight: bold;font-family: 'Microsoft Yahei'">${menu.price }元</span></p>
-                        <p>
-                        	<span class="span1">下单参数：</span>
-                       	</p>
-                       	<p>
-                        	<span class="span2">(1)辣味：
-                        		<!-- (1)是否放辣椒；(2)是否打包带走；(3)支付方式 -->
-                        		<input type="radio" name="chilli" value="无辣" checked="checked">无辣
-                        		<input type="radio" name="chilli" value="少辣">少辣
-                        		<input type="radio" name="chilli" value="中辣">中辣
-                        		<input type="radio" name="chilli" value="变态辣">变态辣
-                       		</span>
-                       	</p>
-                       	<p>
-                        	<span class="span2">(2)打包：
-                        		<!-- (1)是否放辣椒；(2)是否打包带走；(3)支付方式 -->
-                        		<input type="radio" name="pack" value="否" checked="checked">否
-                        		<input type="radio" name="pack" value="是">是
-                       		</span>
-                       	</p>
+                        <form id="orderForm" action="/ordersystem/front/front_order.action" method="post">
+                        	<input type="hidden" name="menuId" value="${menu.id }">
+                        	<input type="hidden" name="isOrder" value="1">
+                        	<%-- <input type="hidden" name="chairId" value="${menu.chair.id }"> --%>
+	                        <p>
+	                        	<span class="span1">下单参数：</span>
+	                       	</p>
+	                       	<p>
+	                        	<span class="span2">(1)辣味：
+	                        		<!-- (1)是否放辣椒；(2)是否打包带走；(3)支付方式 -->
+	                        		<input type="radio" name="chilli" value="无辣" checked="checked">无辣
+	                        		<input type="radio" name="chilli" value="少辣">少辣
+	                        		<input type="radio" name="chilli" value="中辣">中辣
+	                        		<input type="radio" name="chilli" value="变态辣">变态辣
+	                       		</span>
+	                       	</p>
+	                       	<p>
+	                        	<span class="span2">(2)打包：
+	                        		<!-- (1)是否放辣椒；(2)是否打包带走；(3)支付方式 -->
+	                        		<input type="radio" name="pack" value="否" checked="checked">否
+	                        		<input type="radio" name="pack" value="是">是
+	                       		</span>
+	                       	</p>
+                       	</form>
                         <p class="btn" style="float: right;margin-right: 50px;background: red">
                         	<span onclick="submitOrder()">提交订单</span>
                         </p>
@@ -115,7 +120,8 @@ function submitOrder(){
 }
 function order(menuId){
 	if($("#menuImg").hasClass("menuImg")){
-		location.href='/ordersystem/front/front_orderSuccess.action?menuId='+menuId;
+		/* location.href='/ordersystem/front/front_orderSuccess.action?menuId='+menuId; */
+		$("#orderForm").submit();
 	}
 }
 </script>

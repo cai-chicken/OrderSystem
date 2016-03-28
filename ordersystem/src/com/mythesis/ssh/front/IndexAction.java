@@ -1,5 +1,7 @@
 package com.mythesis.ssh.front;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Controller;
 
 import com.mythesis.ssh.base.ModelDrivenBaseAction;
 import com.mythesis.ssh.front.model.MenuParam;
+import com.mythesis.ssh.model.Chair;
 import com.mythesis.ssh.model.Comment;
 import com.mythesis.ssh.model.Cuisine;
 import com.mythesis.ssh.model.Knowledge;
@@ -69,6 +72,39 @@ public class IndexAction extends ModelDrivenBaseAction<MenuParam> {
 		List<Knowledge> knowledges = knowledgeService.findAll();
 		ActionContext.getContext().put("knowledges", knowledges);
 		return "orderSuccess";
+	}
+	
+	/**
+	 * 下单
+	 * @return
+	 * @throws Exception
+	 */
+	public String order() throws Exception {
+		Menu menu = menuService.getById(model.getMenuId());
+		if(!StringUtil.isEmpty(model.getIsOrder()) && model.getIsOrder().equals("1")){
+			menu.setChilli(model.getChilli());
+			menu.setPack(model.getPack());
+			Integer count = menu.getCount();
+			if (count == null || count == 0) {
+				count = 1;
+			} else {
+				count += 1;
+			}
+			menu.setCount(count);
+			menu.setOrderTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+			menu.setStatus("等待上菜");
+			Integer hCount = menu.getHistoryCount();
+			if (hCount == null || hCount == 0) {
+				hCount = 1;
+			} else {
+				hCount += 1;
+			}
+			menu.setHistoryCount(hCount);
+			menu.setChair(chairService.getById(3l));//写死，实际上不可这样
+			menuService.update(menu);//保存到数据库
+		}
+		ActionContext.getContext().put("menuId", menu.getId());
+		return "order";
 	}
 	
 	/**

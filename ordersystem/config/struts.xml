@@ -105,6 +105,7 @@
 	<package name="front" namespace="/front" extends="struts-default">
 		<action name="front_*" class="indexAction" method="{1}">
 			<result name="index">/WEB-INF/jsp/front/index.jsp</result>
+			<result name="order" type="redirectAction">front_orderSuccess?menuId=${menuId}</result>
 			<result name="orderSuccess">/WEB-INF/jsp/front/success.jsp</result>
 			<result name="orderSuccessList">/WEB-INF/jsp/front/menu.jsp</result>
 			<result name="menuDetail">/WEB-INF/jsp/front/detail.jsp</result>

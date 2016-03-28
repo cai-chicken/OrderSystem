@@ -12,6 +12,17 @@ public class MenuParam {
 	private Double price2 = null;
 	private Long cuisineId = (long) 0;
 	private Long menuId;
+	private String chilli;// 辣味
+	private String pack;// 是否打包
+	private String isOrder = "0";//用于确定是从详情页扫码下的单，而不是刷新下单成功页
+
+	public String getIsOrder() {
+		return isOrder;
+	}
+
+	public void setIsOrder(String isOrder) {
+		this.isOrder = isOrder;
+	}
 
 	public String getMenuName() {
 		return menuName;
@@ -59,6 +70,22 @@ public class MenuParam {
 
 	public void setMenuId(Long menuId) {
 		this.menuId = menuId;
+	}
+
+	public String getChilli() {
+		return chilli;
+	}
+
+	public void setChilli(String chilli) {
+		this.chilli = chilli;
+	}
+
+	public String getPack() {
+		return pack;
+	}
+
+	public void setPack(String pack) {
+		this.pack = pack;
 	}
 
 }

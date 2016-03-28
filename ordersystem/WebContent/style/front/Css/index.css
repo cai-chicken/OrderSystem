@@ -69,6 +69,6 @@
 .arguments li{float: left;width: 400px;line-height: 30px;background:#fcf;padding-left: 10px;box-sizing: border-box;}
 .big_box{margin-top: 20px;}
 .big_boxt{text-align: center;font-size: 16px;color:#666;}
-.big_box textarea{width: 800px;display: block;margin:0 auto;border:1px solid #999;margin-top: 10px;}
+.big_box textarea{width: 800px;display: block;margin:0 auto;border:1px solid #999;margin-top: 10px;margin-bottom:10px}
 .nav_picl img{cursor: pointer;}
 .displayDetail{color:red;font-weight:bold;font-family:'Microsoft Yahei'}
